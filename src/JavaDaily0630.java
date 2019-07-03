@@ -1,5 +1,5 @@
 public class JavaDaily0630 {
-    private static void testList(List list) {//List list,接口可以创建引用，不可以创建对象
+    private static void testList(List list) {//List list,接口和抽象类可以创建引用，不可以创建对象
         list.pushBack(1);
         list.pushBack(2);
         list.pushBack(3);
