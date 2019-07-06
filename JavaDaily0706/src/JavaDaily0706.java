@@ -15,7 +15,7 @@ public class JavaDaily0706 {
         for(int i=0;i<100;i++){
             a[i]=i;
         }
-
+        //成员内部类
         class Even implements Condition{
 
             @Override
