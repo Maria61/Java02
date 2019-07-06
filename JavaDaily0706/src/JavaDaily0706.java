@@ -27,7 +27,7 @@ public class JavaDaily0706 {
         //打印 2 的倍数
         printCondition(a, new Even() );
 
-        //打印 3 的倍数
+        //打印 3 的倍数  //匿名内部类
         printCondition(a, new Condition() {
             @Override
             public boolean test(int val) {
