@@ -1,4 +1,5 @@
-interface  Condition{
+
+interface  Condition{  //接口
     boolean test(int val);
 }
 public class JavaDaily0706 {
@@ -28,14 +29,16 @@ public class JavaDaily0706 {
         printCondition(a, new Even() );
 
         //打印 3 的倍数  //匿名内部类
-        printCondition(a, new Condition() {
+        /*printCondition(a, new Condition() {
             @Override
             public boolean test(int val) {
                 return val % 3 == 0;
             }
         });
+        */
+        printCondition(a,(int val) -> val % 3 == 0);//Lambda 表达式
 
-        //打印 5 的倍数，使用 Lambda 表达式
+        //打印 5 的倍数，使用 Lambda 表达式，变量 -> 条件
         printCondition(a, (int val) -> val % 5 == 0);
     }
 }
