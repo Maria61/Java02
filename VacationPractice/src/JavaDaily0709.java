@@ -32,7 +32,7 @@ public class JavaDaily0709 {
     }*/
     //斐波那契数列
     public static int  fab(int a){
-        int result = 0;
+        int result;
         if(a == 0 || a == 1){
             result = 1;
         }else{
