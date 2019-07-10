@@ -30,7 +30,16 @@ public class JavaDaily0709 {
         System.out.println("你的信息如下：");
         System.out.println("姓名："+name+"\n"+"年龄："+age+"\n"+"工资："+salary);
     }*/
+    
+    
     //斐波那契数列
+   /* 设斐波那契数列的表达式为F(x) ，x为大于0的整数。且 F(0) = 1，F(1) = 1,对于所有 x > 1 ，都有 F(x) = F(x - 1) + F(x - 2)。
+    你的任务是计算给定x下的F(x)。
+    输入:
+    第一行输入一个整数T，表示有T个测试样例( 1 <= T <= 20)。接下来T行为测试样例，每行输入一个整数x（0 <= x <= 20）。
+    输出:
+    每行输出一个对应x的F(x)。
+*/
     public static int  fab(int a){
         int result;
         if(a == 0 || a == 1){
