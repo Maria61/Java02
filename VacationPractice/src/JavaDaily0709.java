@@ -18,7 +18,7 @@ public class JavaDaily0709 {
     }*/
     //方法二：Scanner类里 next() 方法使用时，不接收空格，回车等为输入内容；
     //        而 nextLine() 方法接收回车和空格
-    /*public static void main(String [] args) {
+    public static void main(String [] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("请输入你的年龄：");
         int age = sc.nextInt();
@@ -29,7 +29,7 @@ public class JavaDaily0709 {
         float salary = sc.nextFloat();
         System.out.println("你的信息如下：");
         System.out.println("姓名："+name+"\n"+"年龄："+age+"\n"+"工资："+salary);
-    }*/
+    }
     
     
     //斐波那契数列
@@ -40,7 +40,7 @@ public class JavaDaily0709 {
     输出:
     每行输出一个对应x的F(x)。
 */
-    public static int  fab(int a){
+    /*public static int  fab(int a){
         int result;
         if(a == 0 || a == 1){
             result = 1;
@@ -66,5 +66,5 @@ public class JavaDaily0709 {
             i++;
             temp--;
         }
-    }
+    }*/
 }
