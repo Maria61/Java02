@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * »ùÓÚTCPĞ­ÒéµÄSocketÍ¨ĞÅ,ÊµÏÖÓÃ»§µÇÂ¼
- * ·şÎñÆ÷¶Ë
+ * åŸºäºTCPåè®®çš„Socketé€šä¿¡,å®ç°ç”¨æˆ·ç™»å½•
+ * æœåŠ¡å™¨ç«¯
  * @author Marie
  *
  */
@@ -20,19 +20,19 @@ public class Server {
 		
 		try {
 			
-			//1.´´½¨Ò»¸ö·şÎñÆ÷¶ËSocket,¼´ServerSocket,Ö¸¶¨°ó¶¨µÄ¶Ë¿Ú£¬²¢¼àÌı´Ë¶Ë¿Ú
-			ServerSocket serverSocket = new ServerSocket(2345);//Ö¸¶¨1023ÍùºóµÄ¶Ë¿Ú
+			//åˆ›å»ºä¸€ä¸ªæœåŠ¡å™¨ç«¯Socket,å³ServerSocket,æŒ‡å®šç»‘å®šçš„ç«¯å£ï¼Œå¹¶ç›‘å¬æ­¤ç«¯å£
+			ServerSocket serverSocket = new ServerSocket(2345);//æŒ‡å®š1023å¾€åçš„ç«¯å£
 			Socket socket = null;
 			int count = 0;
-			System.out.println("***·şÎñÆ÷¼´½«Æô¶¯£¬µÈ´ı¿Í»§¶ËµÄÁ´½Ó***");
-			//Ñ­»·¼àÌı£¬µÈ´ı¿Í»§¶ËµÄÁ¬½Ó
+			System.out.println("***æœåŠ¡å™¨å³å°†å¯åŠ¨ï¼Œç­‰å¾…å®¢æˆ·ç«¯çš„é“¾æ¥***");
+			//å¾ªç¯ç›‘å¬ï¼Œç­‰å¾…å®¢æˆ·ç«¯çš„è¿æ¥
 			while(true) {
-				socket = serverSocket.accept();//µ÷ÓÃ´Ë·½·¨ºó£¬·şÎñÆ÷´¦ÓÚ×èÈûµÄ×´Ì¬£¬µÈ´ı¿Í»§¶ËµÄÕìÌı
+				socket = serverSocket.accept();//è°ƒç”¨æ­¤æ–¹æ³•åï¼ŒæœåŠ¡å™¨å¤„äºé˜»å¡çš„çŠ¶æ€ï¼Œç­‰å¾…å®¢æˆ·ç«¯çš„ä¾¦å¬
 				socketList.add(socket);
 				count++;
-				System.out.println("¿Í»§¶ËµÄÊıÁ¿£º"+count);
+				System.out.println("å®¢æˆ·ç«¯çš„æ•°é‡ï¼š"+count);
 				InetAddress address = socket.getInetAddress();
-				System.out.println("¿Í»§¶ËIPµØÖ·£º"+address.getHostAddress());
+				System.out.println("å®¢æˆ·ç«¯IPåœ°å€ï¼š"+address.getHostAddress());
 			
 				ServerThread serverThread = new ServerThread(socket);
 				serverThread.start();
