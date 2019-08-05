@@ -1,12 +1,9 @@
 package com.imooc.action;
 /**
- * ²âÊÔÔöÉ¾²é¸ÄµÈ·½·¨
+ * æµ‹è¯•å¢åˆ æŸ¥æ”¹ç­‰æ–¹æ³•
  */
 
 import java.util.Date;
-/**
- * ÔöÉ¾²é¸ÄµÈ·½·¨µÄµ÷ÓÃ£¡
- */
 import java.util.List;
 
 import com.imooc.dao.GoddessDao;
@@ -16,15 +13,15 @@ public class GoddessAction {
 	public static void main(String[] args) throws Exception {
 		GoddessDao g = new GoddessDao();
 		
-		//±éÀú±í¸ñ
+		//éå†è¡¨æ ¼
 //		List<Goddess> gs = g.query();
 //		for(Goddess goddess:gs) {
 //			System.out.println(goddess.getUser_name()+","+goddess.getAge());
 //		}
 //		
-		//²âÊÔÔö¼Ó
+		//æµ‹è¯•å¢åŠ 
 //		Goddess g1 = new Goddess();
-//		g1.setUser_name("Ğ¡ºì");
+//		g1.setUser_name("å°çº¢");
 //		g1.setAge(22);
 //		g1.setSex(1);
 //		g1.setBirthday(new Date());
@@ -35,9 +32,9 @@ public class GoddessAction {
 //		g1.setIsdel(1);
 //		g.addGoddess(g1);
 		
-		//²âÊÔ¸üĞÂ¹¦ÄÜ
+		//æµ‹è¯•æ›´æ–°åŠŸèƒ½
 //		Goddess g1 = new Goddess();
-//		g1.setUser_name("Ğ¡ºì");
+//		g1.setUser_name("å°çº¢");
 //		g1.setAge(21);
 //		g1.setSex(1);
 //		g1.setBirthday(new Date());
@@ -48,10 +45,10 @@ public class GoddessAction {
 //		g1.setId(4);
 //		g.updateGoddess(g1);
 		
-		//²âÊÔÉ¾³ı¹¦ÄÜ
+		//æµ‹è¯•åˆ é™¤åŠŸèƒ½
 		g.delGoddess(4);
 		
-		//²âÊÔ²éÑ¯µ¥¸öÅ®ÉñĞÅÏ¢¹¦ÄÜ
+		//æµ‹è¯•æŸ¥è¯¢å•ä¸ªå¥³ç¥ä¿¡æ¯åŠŸèƒ½
 		Goddess g2 = g.get(2);
 		System.out.println(g2.toString());
 		
