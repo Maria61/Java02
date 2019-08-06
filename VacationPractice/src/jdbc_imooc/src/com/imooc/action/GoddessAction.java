@@ -45,7 +45,7 @@ public class GoddessAction {
 //		g1.setId(4);
 //		g.updateGoddess(g1);
 		
-		//测试删除功能
+		//测试删除功能(按序号删除)
 		g.delGoddess(4);
 		
 		//测试查询单个女神信息功能
