@@ -48,6 +48,8 @@ public class GoddessAction {
 		//测试删除功能(按序号删除)
 		g.delGoddess(4);
 		
+		//测试删除功能（按姓名删除）
+		
 		//测试查询单个女神信息功能
 		Goddess g2 = g.get(2);
 		System.out.println(g2.toString());
