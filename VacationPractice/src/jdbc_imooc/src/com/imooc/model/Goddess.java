@@ -1,7 +1,7 @@
 package com.imooc.model;
 
 /**
- * GoddessÀà¶ÔÏóÒÔ¼°Ò»Ğ©ÊôĞÔ
+ * æ¨¡å‹å±‚
  */
 import java.util.Date;
 
