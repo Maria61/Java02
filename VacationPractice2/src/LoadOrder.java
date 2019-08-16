@@ -11,5 +11,6 @@ class Parent{
 public class LoadOrder extends  Parent{
     public static void init(){
 
+
     }
 }
