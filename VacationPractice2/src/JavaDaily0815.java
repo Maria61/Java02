@@ -14,10 +14,10 @@ class Node{
 public class JavaDaily0815{
     //创建链表
     public static Node create(){
-        Node n1 = new Node(1);
-        Node n2 = new Node(2);
-        Node n3 = new Node(3);
-        Node n4 = new Node(4);
+        Node n1 = new Node(3);
+        Node n2 = new Node(8);
+        Node n3 = new Node(4);
+        Node n4 = new Node(2);
 
         n1.next = n2;
         n2.next = n3;
@@ -78,14 +78,58 @@ public class JavaDaily0815{
         }
         return newHead;
     }
+    //拆分链表
+    public static Node cha(int val,Node head){
+        Node sHead = null;
+        Node sLast = sHead;
+        Node bHead = null;
+        Node bLast = bHead;
+        Node cur = head;
+        while(cur != null){
+            if(cur.val < val){
+                if(sHead == null){
+                    sHead = cur;
+                }else{
+                    sLast.next = cur;
+                }
+                sLast = cur;
 
+            }else{
+                if(bHead == null){
+                    bHead = cur;
+                }else{
+                    bLast.next = cur;
+                }
+                bLast = cur;
+
+            }
+            cur = cur.next;
+        }
+        if(sLast == null){
+            return bHead;
+        }else{
+            sLast.next = bHead;
+        }
+        if(bLast == null){
+            return sHead;
+        }else{
+            bLast.next = null;
+        }
+        return sHead;
+    }
     public static void main(String[] args){
-        Node list1 = new JavaDaily0815().create();
-        Node list2 = new JavaDaily0815().create();
-
-        Node newList =merge(list1,list2);
-        for(Node c = newList; c != null; c = c.next){
+//        Node list1 = new JavaDaily0815().create();
+//        Node list2 = new JavaDaily0815().create();
+//
+//        Node newList =merge(list1,list2);
+//        for(Node c = newList; c != null; c = c.next){
+//            System.out.println(c);//相当于 System.out.println(c.toString);
+//        }
+        Node List1 = new JavaDaily0815().create();
+        Node List2 = cha(3,List1);
+        for(Node c = List2; c != null; c = c.next){
             System.out.println(c);//相当于 System.out.println(c.toString);
         }
+//        System.arraycopy();
     }
 }
