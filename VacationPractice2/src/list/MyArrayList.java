@@ -56,15 +56,21 @@ public class MyArrayList implements List {
             System.out.println("下标不合法");
             return -1;
         }
-            array[index] = val;
-            return 0;
+        int oldVal = array[index];
+        array[index] = val;
+        return oldVal;
 
     }
 
     @Override
     public int remove(int index) {
+        if(index<0||index>=size) {
+            System.out.println("下标不合法");
+            return -1;
+        }
+        int oldVal = array[index];
         System.arraycopy(array,index+1,array,index,size-index-1);
-        return 0;
+        return oldVal;
     }
 
     @Override
