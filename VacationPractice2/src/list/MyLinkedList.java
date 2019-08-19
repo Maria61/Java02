@@ -12,7 +12,7 @@ public class MyLinkedList implements List{
             this.next = null;
         }
 
-        public Node(int val,Node next,Node pre){
+        public Node(int val,Node pre,Node next){
             this.val = val;
             this.next = next;
             this.pre = pre;
@@ -50,8 +50,36 @@ public class MyLinkedList implements List{
 
     @Override
     public boolean add(int index, int element) {
+        if(index < 0 || index > size){
+            System.out.println("参数不合法");
+            return false;
+        }
 
-        return false;
+        if(index == 0){
+            head = new Node(element,null,head);
+            if(head.next != null){
+                head.next.pre = head;
+            }
+            size++;
+            return true;
+        }
+
+        if(index == size){
+            last = new Node(element,last,null);
+            if(last.pre !=null){
+                last.pre.next = last;
+            }
+            size++;
+            return true;
+        }
+
+        Node node = getNode(index);
+        Node newNode = new Node(element,node.pre,node);
+        node.pre.next = newNode;
+        node.pre = newNode;
+        size++;
+
+        return true;
     }
 
     @Override
