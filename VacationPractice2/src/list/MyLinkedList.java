@@ -43,9 +43,7 @@ public class MyLinkedList implements List{
 
     @Override
     public boolean add(int element) {
-
-
-        return false;
+        return add(size,element);
     }
 
     @Override
@@ -84,11 +82,18 @@ public class MyLinkedList implements List{
 
     @Override
     public int get(int index) {
-        return 0;
+        if(index < 0 || index >= size){
+            return -1;
+        }
+        return getNode(index).val;
     }
 
     @Override
     public int set(int index, int val) {
+        if(index < 0 || index >=size){
+            return -1;
+        }
+
         return 0;
     }
 

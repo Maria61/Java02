@@ -117,6 +117,7 @@ public class JavaDaily0815{
         }
         return sHead;
     }
+
     public static void main(String[] args){
 //        Node list1 = new JavaDaily0815().create();
 //        Node list2 = new JavaDaily0815().create();
