@@ -1,8 +1,6 @@
 package tree;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * ʕ•ﻌ•ʔ❀ ʚɞ
@@ -144,16 +142,41 @@ public class Trees {
         char rootVal = postorder.get(postorder.size()-1);
         int rootIndex = inorder.indexOf(rootVal);
         Node root = new Node(rootVal);
-        List<Character> leftInorder = inorder.subList(0,rootIndex);
+
+        List<Character> leftInorder = inorder.subList(0,rootIndex);//[ )左闭右开
         List<Character> leftPostorder = postorder.subList(0,rootIndex);
         Node left = buildTree(leftInorder,leftPostorder);
         root.left = left;
+
         List<Character> rightInorder = inorder.subList(rootIndex+1,inorder.size());
-        List<Character> rightPostorder = postorder.subList(rootIndex,postorder.size()-2);
+        List<Character> rightPostorder = postorder.subList(rootIndex,postorder.size()-1);
         Node right = buildTree(rightInorder,rightPostorder);
         root.right = right;
 
         return root;
+    }
+
+    public static void levelOrderTraversal(Node root){
+        if(root == null){
+            return;
+        }
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while(!queue.isEmpty()) {
+            Node front = queue.poll();
+            System.out.println(front.val);
+            if (front.left != null) {
+                queue.add(front.left);
+            }
+
+            if (front.right != null) {
+                queue.add(front.right);
+            }
+
+
+        }
     }
 
     public static void main(String[] args){
