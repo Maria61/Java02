@@ -32,6 +32,11 @@ public class Trees {
 
         return a;
     }
+
+    /**
+     * 先序遍历
+     * @param root
+     */
     public static void preOrderTraversal(Node root){
         if(root == null){
             return;
@@ -41,6 +46,11 @@ public class Trees {
         preOrderTraversal(root.right);
 
     }
+
+    /**
+     * 中序遍历
+     * @param root
+     */
     public static void inOrderTraversal(Node root){
         if(root == null){
             return;
@@ -49,6 +59,11 @@ public class Trees {
         System.out.print(root.val);
         inOrderTraversal(root.right);
     }
+
+    /**
+     * 后序遍历
+     * @param root
+     */
     public static void postOrderTraversal(Node root){
         if(root == null){
             return;
@@ -74,6 +89,11 @@ public class Trees {
 
     }
 
+    /**
+     * 计算树的叶子结点的个数
+     * @param root
+     * @return
+     */
     public static int calcLeafCount(Node root){
         if(root == null){
             return 0;
@@ -87,6 +107,12 @@ public class Trees {
         return left+right;
     }
 
+    /**
+     * 查找树中值为 val 的结点
+     * @param root
+     * @param val
+     * @return
+     */
     public static Node search(Node root,char val){
         if(root == null){
             return null;
@@ -121,6 +147,13 @@ public class Trees {
 
 
     }
+
+    /**
+     * 判断两颗树是否为镜像的
+     * @param p
+     * @param q
+     * @return
+     */
     public static boolean isMirror(Node p,Node q){
         if(q == null && p == null){
             return true;
@@ -134,6 +167,12 @@ public class Trees {
                 && isMirror(p.left,q.right);
     }
 
+    /**
+     * 通过中序遍历和后序遍历的结果推出树的结构
+     * @param inorder
+     * @param postorder
+     * @return
+     */
     public static Node buildTree(List<Character> inorder,List<Character> postorder){
         if(inorder.size() == 0 || postorder.size() == 0){
             return null;
@@ -156,6 +195,11 @@ public class Trees {
         return root;
     }
 
+    /**
+     * 层序遍历
+     * @param root 树的根节点
+     */
+
     public static void levelOrderTraversal(Node root){
         if(root == null){
             return;
@@ -176,6 +220,100 @@ public class Trees {
             }
 
 
+        }
+    }
+
+    /***
+     * 判断是否是完全二叉树
+     */
+    public boolean isComplete(Node root){
+
+        if(root == null){
+            return true;
+        }
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        //层序遍历二叉树，包含空的情况
+        //弹出队首元素，如果队首元素为空则结束遍历
+        while(true){
+            Node front = queue.poll();
+            if(front == null){
+                break;
+            }
+            ((LinkedList<Node>) queue).add(front.left);
+            ((LinkedList<Node>) queue).add(front.right);
+        }
+        //遍历队列其他元素是否都为空，如果都为空，说明是完全二叉树，否则是非完全二叉树
+        while(!queue.isEmpty()){
+            Node node = queue.poll();
+            if(node != null){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * 前序遍历的非递归实现
+     */
+    public static void preTraversal2(Node root) {
+        Stack<Node> stack = new Stack<>();
+        Node cur = root;
+        while(!stack.empty() || cur != null){
+            while(cur != null){
+                System.out.println(cur.val);
+                stack.push(cur);
+                cur = cur.left;
+            }
+
+            Node top = stack.pop();
+            cur = top.right;
+        }
+    }
+
+    /**
+     * 中序遍历的非递归实现
+     */
+    public static void inOrderTraersal2(Node root){
+        Stack<Node> stack = new Stack<>();
+        Node cur = root;
+
+        while(!stack.empty() || cur != null){
+            while(cur != null){
+                stack.push(cur);
+                cur = cur.left;
+            }
+
+            Node top = stack.pop();
+            System.out.println(top.val);
+            cur = top.right;
+        }
+    }
+
+    /**
+     * 后序遍历的非递归实现
+     */
+    public static void postTraesal2(Node root){
+        Stack<Node> stack = new Stack<>();
+        Node cur = root;
+        Node last = null;
+
+        while(!stack.empty() || cur != null){
+            while(cur != null){
+                stack.push(cur);
+                cur = cur.left;
+            }
+
+            Node top = stack.peek();
+            if(top.right == null || top.right == last){
+                stack.pop();
+                System.out.println(top.val);
+                last = top;
+            }else{
+                cur = top.right;
+            }
         }
     }
 

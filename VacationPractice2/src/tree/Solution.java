@@ -1,5 +1,10 @@
 package tree;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 /**
  * ʕ•ﻌ•ʔ❀ ʚɞ
  *
@@ -8,8 +13,10 @@ package tree;
  * @date 2019-08-25 10:56
  */
 public class Solution {
-    //LeetCode 110
-    //平衡二叉树
+    /**
+     * LeetCode 110
+     * 判断是否是平衡二叉树
+     */
 
     public static int high(Node root){
         if(root == null){
@@ -77,4 +84,56 @@ public class Solution {
 
         return root;
     }
+
+    /**
+     * LeetCode 102
+     * 层序遍历并层序返回
+     */
+
+    private  class Element{
+        Node node;
+        int level;
+    }
+
+    public List<List<Character>> levelOrder(Node root) {
+
+        List<List<Character>> retList = new ArrayList<>();
+
+        if(root == null){
+            return retList;
+        }
+
+        Queue<Element> queue = new LinkedList<>();
+        Element e = new Element();
+        e.node = root;
+        e.level = 0;
+        queue.add(e);
+
+        while(!queue.isEmpty()){
+            Element front = queue.poll();
+
+            if(retList.size() == front.level){
+                retList.add(new ArrayList<>());
+            }
+            retList.get(front.level).add(front.node.val);
+
+            if(front.node.left != null){
+                Element l = new Element();
+                l.node = front.node;
+                l.level = front.level + 1;
+                queue.add(l);
+            }
+
+            if(front.node.right != null){
+                Element l = new Element();
+                l.node = front.node;
+                l.level = front.level + 1;
+                queue.add(l);
+            }
+        }
+
+        return retList;
+    }
+
+
 }
