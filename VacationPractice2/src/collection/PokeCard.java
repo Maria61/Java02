@@ -1,4 +1,4 @@
-package Collection;
+package collection;
 
 /**
  * ʕ•ﻌ•ʔ❀ ʚɞ
