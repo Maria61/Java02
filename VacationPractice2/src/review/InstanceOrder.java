@@ -1,3 +1,5 @@
+package review;
+
 class Parent2{
     {
         System.out.println("A");

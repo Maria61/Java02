@@ -1,3 +1,5 @@
+package review;
+
 class Node{
     int val;
     Node next;
@@ -8,7 +10,7 @@ class Node{
 
     @Override
     public String toString() {
-        return String.format("Node(%d)",val);
+        return String.format("review.Node(%d)",val);
     }
 }
 public class JavaDaily0815{
@@ -119,11 +121,11 @@ public class JavaDaily0815{
     }
 
     public static void main(String[] args){
-//        Node list1 = new JavaDaily0815().create();
-//        Node list2 = new JavaDaily0815().create();
+//        review.Node list1 = new review.JavaDaily0815().create();
+//        review.Node list2 = new review.JavaDaily0815().create();
 //
-//        Node newList =merge(list1,list2);
-//        for(Node c = newList; c != null; c = c.next){
+//        review.Node newList =merge(list1,list2);
+//        for(review.Node c = newList; c != null; c = c.next){
 //            System.out.println(c);//相当于 System.out.println(c.toString);
 //        }
         Node List1 = new JavaDaily0815().create();
