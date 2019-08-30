@@ -150,27 +150,18 @@ public class Sorts {
             return;
         }
 
-        int priotIndex = partition1(array,left,right);
+        int priotIndex = partition3(array,left,right);
 
         quickSortInternal(array,left,priotIndex-1);
         quickSortInternal(array,priotIndex+1,right);
     }
 
     private static int partition1(int[] array,int left,int right){
-//        int p = array[right];
-//        int less = left;
-//        int great = right;
-//        while(less < great){
-//            while(array[less] < p && less < great){
-//                less++;
-//            }
-//            while(array[great] > p && great > less){
-//                great--;
-//            }
-//            swap(array,array[less],array[right]);
-//        }
-//        array[less] = p;
-//        return less;
+        /**
+         *左右引用向中间靠，从左边开始遍历，遇到比基准值大的就停下来，
+         * 然后从右边开始遍历，遇到比基准值小的，停下来，然后左右下标所指的值进行交换
+         * 直到左边下标 >= 右边下标，遍历结束，将基准值与中间值进行交换
+         */
         int pivot = array[right];
         int less = left;
         int great = right;
@@ -188,15 +179,21 @@ public class Sorts {
     }
 
     private static int partition2(int[] array,int left,int right){
+        /**
+         *填坑式：左右往中间靠，
+         * 1）从左边开始，遇到比基准值大的就将其赋值给右边的引用
+         * 2）右边开始遍历，遇到比基准值小的就将其赋值给左边的引用
+         * 3）直到左右相遇，即遍历了整个数组，且只遍历了一遍，将基准值赋给中点
+         */
         int p = array[right];
         int less = left;
         int great = right;
         while(less < great){
-            while(array[less] < p && less < great){
+            while(array[less] <= p && less < great){
                 less++;
             }
             array[great] = array[less];
-            while(array[great] > p && great > less){
+            while(array[great] >= p && great > less){
                 great--;
             }
             array[less] = array[great];
@@ -206,6 +203,15 @@ public class Sorts {
     }
 
     private static int partition3(int[] array,int left,int right){
+        /**
+         *分别用两个引用（红色箭头，蓝色箭头）遍历
+         *值小的部分：[0,蓝色箭头）
+         *未知部分：[蓝色箭头，array.length-1]
+         *用红色箭头进行依次遍历,
+         *1）遇到比基准值小的就和蓝色箭头的值交换，交换后蓝色箭头向下走一步
+         *2）遇到比基准值大的就继续走下一步，直到遇到比基准值小的和蓝色箭头交换
+         *3）红色箭头遍历到最后一个就不用进行比较了，直接和蓝色箭头交换，结束！
+         */
         int p = array[right];
         int less = left;//蓝色箭头
         for(int i = left; i < right; i++){//红色箭头
@@ -219,7 +225,90 @@ public class Sorts {
     }
 
     private static int[] partition4(int[] array,int left,int right){
-        return null;
+        /**
+         * 特殊处理数组中值等于基准值的情况
+         * 用less表示比基准值小的区间，[0,less)
+         * 用great表示比基准值大的区间，[great,array.length-1]
+         *  1)用 i 遍历，遇到与基准值相等的部分不做处理，继续遍历
+         *  2)如果遇到比基准值小的，就与less指的值交换，并且i 和 less 一起下一步
+         *  3)如果遇到比基准值大的,并且 i < great，
+         *    great向左遍历，找到一个比基准值小的，然后和 i 交换
+         *  4)直到 i 遍历完所有的数（不包括基准值），遍历结束，返回 less和 great-1 表示值相等的区间
+         */
+
+        int p = array[right];
+        int less = left;
+        int great = right;
+        int i = left;
+
+        while(i < right){
+            if(array[i] == p){
+                i++;
+            }else if(array[i] < p){
+                swap(array,i,less);
+                i++;
+                less++;
+            }else{
+                while(i < great && array[great] > p){
+                    great--;
+                }
+                swap(array,i,great);
+            }
+        }
+        return new int[]{less,great - 1};
+    }
+
+    public static void mergeSort(int[] array){
+        mergeSortInternal(array,0,array.length);
+    }
+
+    private static void mergeSortInternal(int[] array, int low, int high) {
+        if(low + 1 >= high){
+            return;
+        }
+
+        int mid = (low+high)/2;
+        //[low,mid)
+        //[mid,high)
+        mergeSortInternal(array,low,mid);
+        mergeSortInternal(array,mid,high);
+        merge(array,low,mid,high);
+    }
+
+    private static void merge(int[] array, int low, int mid, int high) {
+        /**
+         * 原理类似于合并两个有序链表
+         * 只是最后需要把新数组拷贝到原数组上
+         */
+        int length = high - low;
+        int[] extra = new int[length];
+        //[left,mid)
+        //[mid,high)
+        int i = 0;
+        int left = low;
+        int right = mid;
+        while(left < mid && right < high){
+            if(array[left] <= array[right]){
+                extra [i] = array[left];
+                i++;
+                left++;
+            }else{
+                extra[i] = array[right];
+                right++;
+                i++;
+            }
+        }
+
+        while(left < mid){
+            extra[i++] = array[left++];
+        }
+        while(right < high){
+            extra[i++] = array[right++];
+        }
+
+        for(i = 0; i < length;i++){
+            array[low + i] = extra[i];
+        }
     }
 
     private static int[] buildSortedArray(int n) {
@@ -286,7 +375,7 @@ public class Sorts {
 
         array = buildRandomArray(10);
         System.out.println(Arrays.toString(array));
-        quickSort(array);
+        mergeSort(array);
         System.out.println(Arrays.toString(array));
     }
 }
