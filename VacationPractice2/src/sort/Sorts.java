@@ -369,6 +369,8 @@ public class Sorts {
 ////        System.out.println(end - begin);
 //        System.out.println(Arrays.toString(array));
 //    }
+    
+    
     public static void main(String[] args) {
         // 有序 | 无序 | 随机值 | 完全相等的
         int[] array;
