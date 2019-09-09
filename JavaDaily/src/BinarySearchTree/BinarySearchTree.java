@@ -1,12 +1,15 @@
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+package BinarySearchTree;
+
+import java.util.*;
 
 /**
  * @author Maria
  * @program JavaDaily
  * @date 2019/9/8 20:48
+ */
+
+/**
+ * 通过平衡二叉树实现 Map
  */
 public class BinarySearchTree {
     private static class Node{
@@ -40,13 +43,13 @@ public class BinarySearchTree {
 
 
     /**
-     * 插入
+     * 插入(更新)
      * @param key  对应的键
      * @param value 对应的值
      * @return  如果key原本存在，插入成功后返回key原来对应的值，如果不存在，插入成功后返回-1
      */
 
-    public int put(int key,int value){
+    public int put(int key, int value){
         if(root == null){
             Node node = new Node();
             node.key = key;
@@ -89,7 +92,7 @@ public class BinarySearchTree {
      * @param defaultValue 如果没找到，返回的默认值
      * @return 找到了，返回对应的value,如果没找到，返回参数defalueValue
      */
-    public int getOrDefault(int key,int defaultValue){
+    public int getOrDefault(int key, int defaultValue){
         Node cur = root;
         while(cur != null){
             if(cur.key == key){
@@ -102,6 +105,12 @@ public class BinarySearchTree {
         }
         return defaultValue;
     }
+
+    /**
+     * 查找Map中所有的key
+     *
+     * @return 以set的形式返回所有的 key
+     */
 
     public Set<Integer> keySet(){
         Set<Integer> result = new HashSet<>();
@@ -122,6 +131,51 @@ public class BinarySearchTree {
         }
 
         return result;
+    }
+
+    public static class Entry {
+        private int key;
+        private int val;
+
+        public int getKey() {
+            return key;
+        }
+
+        public int getVal() {
+            return val;
+        }
+    }
+
+    /**
+     * 用搜索树实现entrySet,遍历map
+     *
+     * @return 返回map中所有的键值对，用set存放
+     */
+
+    public Set<Entry> entrySet() {
+        Set<Entry> set = new HashSet<>();
+        if (root == null) {
+            return set;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            Node front = queue.poll();
+            Entry e = new Entry();
+            e.key = front.key;
+            e.val = front.value;
+            set.add(e);
+
+            if (front.left != null) {
+                queue.add(front.left);
+            }
+            if (front.right != null) {
+                queue.add(front.right);
+            }
+
+        }
+
+        return set;
     }
 
 }
