@@ -1,4 +1,4 @@
-package BinarySearchTree;
+package solution;
 
 import java.util.*;
 
@@ -7,7 +7,7 @@ import java.util.*;
  * @program JavaDaily
  * @date 2019/9/11 15:44
  */
-public class Solution {
+public class Solution1002 {
     //LeetCode 1002题
 
     /**
