@@ -8,6 +8,7 @@ import java.util.Comparator;
  * @date 2019/9/9 20:15
  */
 public class MyTreeMap<K, V> {
+    
     public static class Entry<M, N> {
         private M key;
         private N value;
@@ -18,7 +19,5 @@ public class MyTreeMap<K, V> {
 
     private Entry<K, V> root;
     private Comparator<K> comparator = null;
-
-
 
 }
