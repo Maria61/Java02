@@ -45,6 +45,7 @@ public class TreeMapDemo {
         set.add(c1);
         System.out.println(set.contains(c2));
 
+
         TreeMap<Card, String> map = new TreeMap<Card, String>(comptor);
         map.put(c1, "黑桃A");
         System.out.println(map.get(c2));

@@ -32,7 +32,6 @@ public class HashMapDemo {
         map.put(c1, "黑桃A");
         System.out.println(map.get(c2));
 
-
         MaJiang m1 = new MaJiang("万", "一");
         MaJiang m2 = new MaJiang("万", "一");
         System.out.println(m1.hashCode());
