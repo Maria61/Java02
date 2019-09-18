@@ -32,6 +32,6 @@ public class Card {
         }
 
         Card c = (Card) o;
-        return value == c.value && type.equals(c);
+        return value == c.value && type.equals(c.type);
     }
 }
