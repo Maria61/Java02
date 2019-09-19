@@ -15,6 +15,7 @@ public class Solution1053 {
         int c = 0;
         int d = 0;
         int max = -1;
+        //逆序遍历,找出第一个降序的数的下标c
         for (i = A.length - 2; i >= 0; i--) {
             if (A[i] > A[i + 1]) {
                 c = i;
@@ -24,6 +25,7 @@ public class Solution1053 {
         if (i == -1) {
             return A;
         }
+        //找出比A[c]小的数里的最大的数的下标
         for (int j = c + 1; j < A.length; j++) {
             if (A[j] < A[c]) {
                 if (A[j] > max) {
