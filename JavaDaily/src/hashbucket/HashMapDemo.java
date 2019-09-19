@@ -1,7 +1,7 @@
-package HashBucket;
+package hashbucket;
 
-import BinarySearchTree.Card;
-import BinarySearchTree.MaJiang;
+import binarysearchtree.Card;
+import binarysearchtree.MaJiang;
 
 import java.util.HashMap;
 import java.util.HashSet;

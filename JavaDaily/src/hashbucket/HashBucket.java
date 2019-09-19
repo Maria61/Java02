@@ -1,6 +1,5 @@
-package HashBucket;
+package hashbucket;
 
-import javax.xml.soap.Node;
 import java.util.*;
 
 /**
