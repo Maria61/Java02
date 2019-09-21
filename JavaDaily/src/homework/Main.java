@@ -1,6 +1,10 @@
 package homework;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Maria
@@ -40,6 +44,29 @@ public class Main {
         return result;
     }
 
+    public static Map<String, int[]> statistics(Student[] students) {
+        Map<String, int[]> map = new HashMap<>();
+        for (Student s : students) {
+            if (map.containsKey(s.major)) {
+                if (s.gender.equals("男")) {
+                    map.get(s.major)[1] += 1;
+                } else {
+                    map.get(s.major)[0] += 1;
+                }
+
+            } else {
+                int[] m = new int[2];
+                map.put(s.major, m);
+                if (s.gender.equals("男")) {
+                    map.get(s.major)[1] += 1;
+                } else {
+                    map.get(s.major)[0] += 1;
+                }
+            }
+        }
+        return map;
+    }
+
     public static void main(String[] args) {
         System.out.println(judgeZodiac(2019));
         Student s1 = new Student("张三", "男", "计算机");
@@ -48,5 +75,14 @@ public class Main {
         Student s4 = new Student("赵六", "女", "计算机");
         Student[] s = {s1, s2, s3, s4};
         System.out.println(Arrays.toString(statGender(s, "网络")));
+        Map<String, int[]> counts = statistics(s);
+        /**
+         * 遍历重点看！！！
+         */
+        for (Map.Entry<String, int[]> m : counts.entrySet()) {
+            String major = m.getKey();
+            int[] g = m.getValue();
+            System.out.println("专业:" + major + "," + Arrays.toString(g));
+        }
     }
 }
