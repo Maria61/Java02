@@ -149,9 +149,4 @@ public final class MyString implements Comparable<MyString> {
         return new MyString(newValue);
     }
 
-    public static void main(String[] args) {
-        char[] a = {'a', 'b', 'c'};
-        MyString s = new MyString(a);
-
-    }
 }
