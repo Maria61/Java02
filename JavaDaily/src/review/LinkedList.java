@@ -38,6 +38,9 @@ public class LinkedList {
 
     }
 
+
+
+
     public void addLast(int value) {
         Node node = new Node(value);
         if (first == null) {
