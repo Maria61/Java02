@@ -32,7 +32,7 @@ public class BinarySearchTree {
         while(cur != null){
             if(root.key == key){
                 return cur.value;
-            }else if(key > cur.left.key){
+            } else if (key > cur.key) {
                 cur = cur.right;
             }else{
                 cur = cur.left;
