@@ -31,7 +31,6 @@ public class LinkedList {
         node.next = first;
         if (first != null) {
             first.pre = node;
-            node.next = first;
         } else {
             last = node;
         }
@@ -81,7 +80,34 @@ public class LinkedList {
         }
     }
 
-    public static void main(String[] args) {
+    public void print() {
+        Node cur = first;
+        while (cur != null) {
+            System.out.println(cur.value + "(" + cur + "    ," + cur.pre + "              ," + cur.next + ")");
+            cur = cur.next;
+        }
+    }
 
+
+    public void test() throws Exception {
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        addFirst(1);
+        addLast(2);
+        addFirst(3);
+        print();
+        pollFirst();
+        print();
+        pollLast();
+        print();
+//        pollFirst();
+        pollLast();
+        print();
+    }
+
+    public static void main(String[] args) throws Exception {
+        LinkedList list = new LinkedList();
+        list.test();
     }
 }
