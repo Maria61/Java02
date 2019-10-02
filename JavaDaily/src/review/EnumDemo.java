@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @date 2019/9/27 18:55
  */
 enum Week {
-    MONDAY, TUESDAY, WEDNESDAY, THURSDAY,, FRIDAY, SATURDAY, SUNDAY
+    MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
 }
 
 public class EnumDemo {
