@@ -7,6 +7,10 @@ import java.util.Arrays;
  * @program JavaDaily
  * @date 2019/9/27 18:55
  */
+/**
+ *枚举类型关键字enum;
+ *枚举的元素必须全部大写
+ */
 enum Week {
     MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
 }
