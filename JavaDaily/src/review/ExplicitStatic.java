@@ -5,35 +5,46 @@ package review;
  * @program JavaDaily
  * @date 2019/10/7 20:36
  */
-class Cup {
-
-    Cup(int x) {
-        System.out.println("Cup(" + x + ")");
+class Parent {
+    static {
+        System.out.println("A");
     }
-
-    void f(int x) {
-        System.out.println("f(" + x + ")");
+    static {
+        System.out.println("B");
     }
 }
 
+public class ExplicitStatic extends Parent {
+    private static int initB() {
+        System.out.println(1);
+        return 0;
+    }
 
-class Cups {
-    static Cup cup1;
-    static Cup cup2;
+    static int a = initA();
 
     static {
-        cup1 = new Cup(1);
-        cup2 = new Cup(2);
+        System.out.println(2);
     }
 
-    Cups() {
-        System.out.println("Cups()");
-    }
-}
+    static int b = initB();
 
-public class ExplicitStatic {
+    private static int initA() {
+        System.out.println(3);
+        return 0;
+    }
+
+    private static int initC() {
+        System.out.println(5);
+        return 0;
+    }
+
+    static {
+        System.out.println(4);
+    }
+
     public static void main(String[] args) {
-        System.out.println("Inside");
-        Cups.cup1.f(99);
+        // 不会再触发类的加载，因为已经在内存中了
+        ExplicitStatic.a = 10;
+        System.out.println(a);
     }
 }
