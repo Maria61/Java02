@@ -44,7 +44,7 @@ public class ExplicitStatic extends Parent {
 
     public static void main(String[] args) {
         // 不会再触发类的加载，因为已经在内存中了
-        ExplicitStatic.a = 10;
-        System.out.println(a);
+//        ExplicitStatic.a = 10;
+//        System.out.println(a);
     }
 }
