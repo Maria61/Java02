@@ -20,7 +20,6 @@ class Parent2 {
         System.out.println("父类  构造代码块1");//3
     }
 
-
     Parent2() {
         System.out.println("父类  的无参构造方法");//5
     }
