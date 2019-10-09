@@ -16,6 +16,8 @@ public class Main {
             isQuit = currentUser.input();
 
         } while (!isQuit);
+
+
         System.out.println("Bye!");
     }
 }
