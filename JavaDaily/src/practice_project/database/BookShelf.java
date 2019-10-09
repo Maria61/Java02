@@ -1,6 +1,7 @@
 package practice_project.database;
 
 import practice_project.classes.Book;
+import practice_project.exception.NoSuchBookException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +14,24 @@ import java.util.List;
 public class BookShelf {
     private List<Book> bookList = new ArrayList<>();
 
-    public List<Book> getBookList() {
-        return bookList;
+    //单例模式
+    private static BookShelf instance = new BookShelf();
+
+    public static BookShelf getInstance() {
+        return instance;
     }
 
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
+
+    public Book search(String ISBN) throws NoSuchBookException {
+        for (Book book : bookList) {
+            if (book.is(ISBN)) {
+                return book;
+            }
+        }
+        throw new NoSuchBookException("该书不存在");
+    }
+
+    public void putbook(Book book) {
+        bookList.add(book);
     }
 }

@@ -34,7 +34,19 @@ public class Teacher extends User {
             case 0:
                 return true;
             case 1:
-                System.out.println("上架");
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("请输入ISBN：");
+                String ISBN = scanner.nextLine();
+                System.out.println("请输入name：");
+                String name = scanner.nextLine();
+                System.out.println("author：");
+                String author = scanner.nextLine();
+                System.out.println("请输入price：");
+                double price = scanner.nextDouble();
+                System.out.println("请输入count");
+                int count = scanner.nextInt();
+
+
                 break;
             case 2:
                 System.out.println("查询");
