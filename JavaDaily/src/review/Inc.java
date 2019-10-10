@@ -16,7 +16,11 @@ public class Inc {
         // 所以在执行完++后执行 = ，是把表达式的 0 赋值给了i，i的值又从1 变作 0;
 
 
-        System.out.println(i);//0
+//        System.out.println(i);//0
+
+
+        int a = 0;
+        System.out.println(a++);
     }
 
     void f(int i) {
