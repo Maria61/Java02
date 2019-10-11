@@ -10,6 +10,9 @@ class Parent {
         System.out.println("A");
     }
 
+    Parent() {
+        System.out.println("sdfsaf");
+    }
     static {
         System.out.println("B");
     }
@@ -19,7 +22,6 @@ class Parent2 {
     {
         System.out.println("父类  构造代码块1");//3
     }
-
 
     Parent2() {
         System.out.println("父类  的无参构造方法");//5
@@ -94,6 +96,10 @@ public class ExplicitStatic extends Parent2 {
         new ExplicitStatic(100);
         System.out.println("=================");
         new ExplicitStatic().method();
+
+//        new Parent();
+//        System.out.println("=========华丽的分割线=========");
+//        new Parent();
     }
 
 
