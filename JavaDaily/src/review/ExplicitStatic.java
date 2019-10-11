@@ -45,12 +45,12 @@ public class ExplicitStatic extends Parent2 {
     }
 
     ExplicitStatic() {
-//        super();
+        super();
         System.out.println("子类  无参构造方法");
     }
 
     ExplicitStatic(int v) {
-//        this();
+        this();
         System.out.println("子类  有参构造方法");
     }
 
