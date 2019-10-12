@@ -13,7 +13,6 @@ public class Action {
     public static Book putBook(String ISBN, String name, String author, double price, int count) {
         BookShelf bookShelf = BookShelf.getInstance();
         try {
-
             Book book = bookShelf.search(ISBN);
             book.increaseCount(count);
             return book;
