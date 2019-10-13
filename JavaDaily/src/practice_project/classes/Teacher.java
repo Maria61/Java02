@@ -1,5 +1,7 @@
 package practice_project.classes;
 
+import practice_project.action.Action;
+
 import java.util.Scanner;
 
 /**
@@ -34,19 +36,7 @@ public class Teacher extends User {
             case 0:
                 return true;
             case 1:
-                Scanner scanner = new Scanner(System.in);
-                System.out.println("请输入ISBN：");
-                String ISBN = scanner.nextLine();
-                System.out.println("请输入name：");
-                String name = scanner.nextLine();
-                System.out.println("author：");
-                String author = scanner.nextLine();
-                System.out.println("请输入price：");
-                double price = scanner.nextDouble();
-                System.out.println("请输入count");
-                int count = scanner.nextInt();
-
-
+                putBook();
                 break;
             case 2:
                 System.out.println("查询");
@@ -57,4 +47,23 @@ public class Teacher extends User {
         }
         return false;
     }
+
+    private void putBook() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("请输入ISBN：");
+        String ISBN = scanner.nextLine();
+        System.out.println("请输入name：");
+        String name = scanner.nextLine();
+        System.out.println("author：");
+        String author = scanner.nextLine();
+        System.out.println("请输入price：");
+        double price = scanner.nextDouble();
+        System.out.println("请输入count");
+        int count = scanner.nextInt();
+
+        Book book = Action.putBook(ISBN, name, author, price, count);
+        System.out.println("《" + name + "》上架成功！");
+    }
+
+
 }
