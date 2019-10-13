@@ -5,39 +5,28 @@ package review;
  * @program JavaDaily
  * @date 2019/10/11 23:13
  */
-class Test02 {
-    {
-        System.out.println("我是 父类 构造代码块");
+abstract class Test02 {
+
+    public abstract void method();
+
+    public void method2() {
+        this.method();//此处的this代表的是继承该类的类，而不是该类本身
+        System.out.println("抽象类内部可以有普通方法");
     }
 }
 
 public class Test01 extends Test02 {
 
-
-    {
-        System.out.println("我是 子类 构造代码块");
-    }
-
-    static {
-        System.out.println("静态代码块");
-    }
-
+    @Override
     public void method() {
-        {
-            System.out.println("普通代码块1");
-        }
-
-        System.out.println("普通方法体");
-
-        {
-            System.out.println("普通代码块2");
-        }
+        System.out.println("实现抽象类的抽象方法");
     }
-
     public static void main(String[] args) {
-        new Test01();
-        System.out.println("===================华丽的分割线===================");
-        new Test01().method();
-
+        Test02 test02 = new Test01();
+        test02.method();
+        System.out.println("===========");
+        test02.method2();
     }
+
 }
+
