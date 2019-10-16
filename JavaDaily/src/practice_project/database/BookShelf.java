@@ -28,15 +28,21 @@ public class BookShelf {
                 return book;
             }
         }
-        throw new NoSuchBookException("该书不存在");
+        throw new NoSuchBookException(ISBN);
     }
 
 
-    public void putbook(Book book) {
+    public void putBook(Book book) {
         bookList.add(book);
     }
 
-    public List<Book> qurryBook() {
-        return new ArrayList<>(bookList);
+    public List<Book> queryBooks(Where<Book> Where) {
+        List<Book> ret = new ArrayList<>();
+        for (Book book : bookList) {
+            if (Where == null || Where.test(book)) {
+                ret.add(book);
+            }
+        }
+        return ret;
     }
 }

@@ -1,10 +1,13 @@
 package practice_project.action;
 
 import practice_project.classes.Book;
+import practice_project.classes.Record;
 import practice_project.classes.User;
 import practice_project.database.BookShelf;
 import practice_project.database.RecordShelf;
+import practice_project.database.Where;
 import practice_project.exception.BorrowOutException;
+import practice_project.exception.NoBorrowedException;
 import practice_project.exception.NoSuchBookException;
 import practice_project.exception.YetBorrowedException;
 
@@ -36,18 +39,27 @@ public class Action {
 
         } catch (NoSuchBookException exc) {
             Book book = new Book(ISBN, name, author, price, count);
-            bookShelf.putbook(book);
+            bookShelf.putBook(book);
             return book;
         }
     }
     /**
      * 查询图书
      */
-    public static List<Book> qurryBook(){
+    public static List<Book> queryBooks() {
         BookShelf bookShelf = BookShelf.getInstance();
-        return bookShelf.qurryBook();
+        return bookShelf.queryBooks(null);
     }
 
+    public static List<Book> queryBooksByWhere(Where<Book> where) {
+        BookShelf bookShelf = BookShelf.getInstance();
+        return bookShelf.queryBooks(where);
+    }
+
+    public static List<Book> queryBooksByName(Where<Book> where) {
+        BookShelf bookShelf = BookShelf.getInstance();
+        return bookShelf.queryBooks(where);
+    }
     /**
      * 借阅图书
      * @param currentUser
@@ -65,7 +77,29 @@ public class Action {
             throw new YetBorrowedException();
         }
         book.borrowBook();
-        recordShelf.putRecord();
+        recordShelf.putRecord(currentUser, ISBN);
         return book;
     }
+
+    public static Book returnBook(User currentUser, String ISBN) throws NoSuchBookException, NoBorrowedException {
+        BookShelf bookShelf = BookShelf.getInstance();
+        RecordShelf recordShelf = RecordShelf.getInstance();
+        Book book = bookShelf.search(ISBN);
+        recordShelf.remove(currentUser, ISBN);
+        book.returnBook();
+        return book;
+    }
+
+    /**
+     * 查询借阅记录
+     *
+     * @return
+     */
+    public static List<Record> queryRecords() {
+        RecordShelf recordShelf = RecordShelf.getInstance();
+        return recordShelf.queryRecord();
+    }
+
+
+
 }

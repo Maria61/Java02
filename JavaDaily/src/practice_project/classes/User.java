@@ -1,7 +1,7 @@
 package practice_project.classes;
 
 import practice_project.action.Action;
-import practice_project.database.BookShelf;
+import practice_project.database.Where;
 
 import java.util.List;
 import java.util.Scanner;
@@ -20,7 +20,9 @@ public abstract class User {
         this.id = id;
         this.name = name;
     }
-    private  static User currentUser = null;//为什么要是静态属性
+
+    private static User currentUser = null;
+
     public static User login() throws Exception {
 
         Scanner s = new Scanner(System.in);
@@ -52,13 +54,63 @@ public abstract class User {
 
     public abstract boolean input();
 
-    public void qurryBook(){
-        List<Book> bookList = Action.qurryBook();
+    private static class Current implements Where<Book> {
+
+        @Override
+        public boolean test(Book book) {
+            return book.getCurrentCount() > 0;
+        }
+    }
+
+    private static class SelectBookByName implements Where<Book> {
+        String name;
+
+        public SelectBookByName(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public boolean test(Book book) {
+            return book.getName().equals(name);
+        }
+    }
+
+    protected void queryBooks() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请选择条件查询还是全查询");
+        System.out.println("1.全查询");
+        System.out.println("2.查询图书现存量>0的书");
+        System.out.println("3.按书名查询");
+        int input = sc.nextInt();
+        List<Book> bookList = null;
+        switch (input) {
+            case 1:
+                bookList = Action.queryBooks();
+                break;
+            case 2:
+                bookList = Action.queryBooksByWhere(new Current());
+                break;
+            case 3:
+                System.out.println("请输入书名：");
+                String name = sc.nextLine();
+                bookList = Action.queryBooksByName(new SelectBookByName(name));
+                break;
+        }
+
         for(Book book:bookList){
-            System.out.printf("《%s》by %s 价格：%f 存量：%d 借阅次数：%d",
-                    book.getName(),book.getAuthor(),book.getPrice(),book.getCount(),book.getRecords());
+            System.out.printf(" %s 《%s》by %s 价格：%.2f 存量：%d 借阅次数：%d %n",
+                    book.getISBN(), book.getName(), book.getAuthor(), book.getPrice(), book.getTotalCount(), book.getBorrowCount());
         }
         System.out.println("共查询到"+bookList.size()+"本书");
+    }
+
+    protected void queryRecords() {
+
+        List<Record> recordList = Action.queryRecords();
+        for (Record record : recordList) {
+            System.out.printf("%s %s %s%n", record.getUserId(), record.getBookISBN(), record.getRecordTime());
+        }
+        System.out.println("共查询到" + recordList.size() + "条记录");
     }
 
     public String getId() {

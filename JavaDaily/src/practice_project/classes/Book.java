@@ -33,8 +33,8 @@ public class Book {
         this.borrowCount = 0;
     }
 
-    public static boolean is(String ISBN) {
-        return ISBN.equals(ISBN);
+    public boolean is(String ISBN) {
+        return this.ISBN.equals(ISBN);
     }
 
     public String getISBN() {
@@ -73,6 +73,16 @@ public class Book {
 
 
     public void increaseCount(int count) {
-        this.count += count;
+        currentCount += count;
+        totalCount += count;
+    }
+
+    public void borrowBook() {
+        currentCount--;
+        borrowCount++;
+    }
+
+    public void returnBook() {
+        currentCount++;
     }
 }

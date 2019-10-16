@@ -39,11 +39,12 @@ public class Teacher extends User {
                 putBook();
                 break;
             case 2:
-                qurryBook();
+                queryBooks();
 //                System.out.println("查询");
                 break;
             case 3:
-                System.out.println("查看借阅记录");
+//                System.out.println("查看借阅记录");
+                queryRecords();
                 break;
         }
         return false;

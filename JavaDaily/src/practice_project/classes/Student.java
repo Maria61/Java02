@@ -1,8 +1,13 @@
 package practice_project.classes;
 
 import practice_project.action.Action;
+import practice_project.exception.BorrowOutException;
+import practice_project.exception.NoBorrowedException;
+import practice_project.exception.NoSuchBookException;
+import practice_project.exception.YetBorrowedException;
 
 import java.util.Scanner;
+
 
 
 /**
@@ -34,7 +39,7 @@ public class Student extends User {
             case 0:
                 return true;
             case 1:
-                qurryBook();
+                queryBooks();
 //                System.out.println("查询");
                 break;
             case 2:
@@ -42,10 +47,8 @@ public class Student extends User {
 //                System.out.println("借阅");
                 break;
             case 3:
-                System.out.println("归还");
-                break;
-            case 4:
-                System.out.println("查询");
+                returnBook();
+//                System.out.println("归还");
                 break;
         }
         return false;
@@ -57,7 +60,34 @@ public class Student extends User {
         System.out.println("请输入借阅图书ISBN:");
         String ISBN = sc.nextLine();
         User currentUser = User.getCurrentUser();
-        Book book = Action.borrowBook(currentUser,ISBN);
+        try {
+            Book book = Action.borrowBook(currentUser, ISBN);
+            System.out.printf("《%s》 借阅成功！%n", book.getName());
+        } catch (NoSuchBookException e) {
+            System.out.println("错误！没有这本书！");
+        } catch (BorrowOutException e) {
+            System.out.println("错误！该书已被借完！");
+        } catch (YetBorrowedException e) {
+            System.out.println("错误！该书你已经借过了！");
+
+        }
+    }
+
+    private void returnBook() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入归还图书ISBN:");
+        String ISBN = sc.nextLine();
+        User currentUser = User.getCurrentUser();
+
+        Book book = null;
+        try {
+            book = Action.returnBook(currentUser, ISBN);
+        } catch (NoSuchBookException e) {
+            System.out.println("错误！没有这本书！");
+        } catch (NoBorrowedException e) {
+            System.out.println("错误！你没有借这本书！");
+        }
+        System.out.printf("《%s》 归还成功！%n", book.getName());
 
     }
 }

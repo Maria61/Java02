@@ -1,5 +1,6 @@
 package practice_project.classes;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -11,6 +12,12 @@ public class Record {
     private String userId;
     private String bookISBN;
     private Date recordTime;
+
+    public Record(String userId, String bookISBN) {
+        this.bookISBN = bookISBN;
+        this.userId = userId;
+        this.recordTime = new Date();
+    }
 
     public String getUserId() {
         return userId;
@@ -28,11 +35,16 @@ public class Record {
         this.bookISBN = bookISBN;
     }
 
-    public Date getRecordTime() {
-        return recordTime;
+    public String getRecordTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+        return sdf.format(recordTime);
     }
 
     public void setRecordTime(Date recordTime) {
         this.recordTime = recordTime;
+    }
+
+    public boolean is(User currentUser, String ISBN) {
+        return userId.equals(currentUser.getId()) && bookISBN.equals(ISBN);
     }
 }
