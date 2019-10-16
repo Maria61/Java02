@@ -116,7 +116,7 @@ public class Sorts {
         /**
          *堆排序
          */
-        Heaps.createHeap(array,array.length-1);
+        Heaps.createHeap(array,array.length-2);
         for(int i = 0; i < array.length - 1; i++){
             swap(array,0,array.length - i - 1);
             Heaps.heapify(array,array.length,0);
@@ -166,10 +166,10 @@ public class Sorts {
         int less = left;
         int great = right;
         while (less < great) {
-            while (less < great && array[less] <= pivot) {
+            while (less < great && array[less] <= pivot) { // 一定要加=
                 less++;
             }
-            while (less < great && array[great] >= pivot) {
+            while (less < great && array[great] >= pivot) {// 一定要加=
                 great--;
             }
             swap(array, less, great);
@@ -379,7 +379,7 @@ public class Sorts {
 
         array = buildRandomArray(10);
         System.out.println(Arrays.toString(array));
-        mergeSort(array);
+        heapSort(array);
         System.out.println(Arrays.toString(array));
     }
 }

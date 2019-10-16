@@ -10,69 +10,67 @@ public class Book {
     private String name;
     private String author;
     private double price;
-    private int count;
-    private int records;
+    /**
+     * 图书总数
+     */
+    private int totalCount;
+    /**
+     * 当前数量
+     */
+    private int currentCount;
+    /**
+     * 借阅次数
+     */
+    private int borrowCount;
 
     public Book(String ISBN, String name, String author, double price, int count) {
         this.ISBN = ISBN;
-        this.author = author;
-        this.count = count;
         this.name = name;
+        this.author = author;
         this.price = price;
+        this.totalCount = count;
+        this.currentCount = count;
+        this.borrowCount = 0;
     }
 
     public static boolean is(String ISBN) {
         return ISBN.equals(ISBN);
     }
 
-
     public String getISBN() {
         return ISBN;
     }
 
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
-    }
+
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+
+    public int getTotalCount() {
+        return totalCount;
     }
 
-    public int getCount() {
-        return count;
+    public int getCurrentCount() {
+        return currentCount;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public int getBorrowCount() {
+        return borrowCount;
     }
 
-    public int getRecords() {
-        return records;
-    }
-
-    public void setRecords(int records) {
-        this.records = records;
-    }
 
     public void increaseCount(int count) {
         this.count += count;

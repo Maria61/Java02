@@ -14,7 +14,7 @@ import java.util.List;
 public class BookShelf {
     private List<Book> bookList = new ArrayList<>();
 
-    //单例模式
+    //饿汉模式
     private static BookShelf instance = new BookShelf();
 
     public static BookShelf getInstance() {
@@ -34,5 +34,9 @@ public class BookShelf {
 
     public void putbook(Book book) {
         bookList.add(book);
+    }
+
+    public List<Book> qurryBook() {
+        return new ArrayList<>(bookList);
     }
 }

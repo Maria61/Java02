@@ -1,6 +1,9 @@
 package practice_project.classes;
 
+import practice_project.action.Action;
+
 import java.util.Scanner;
+
 
 /**
  * @author Maria
@@ -31,10 +34,12 @@ public class Student extends User {
             case 0:
                 return true;
             case 1:
-                System.out.println("查询");
+                qurryBook();
+//                System.out.println("查询");
                 break;
             case 2:
-                System.out.println("借阅");
+                  borrowBook();
+//                System.out.println("借阅");
                 break;
             case 3:
                 System.out.println("归还");
@@ -44,5 +49,15 @@ public class Student extends User {
                 break;
         }
         return false;
+    }
+
+
+    private void borrowBook() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入借阅图书ISBN:");
+        String ISBN = sc.nextLine();
+        User currentUser = User.getCurrentUser();
+        Book book = Action.borrowBook(currentUser,ISBN);
+
     }
 }

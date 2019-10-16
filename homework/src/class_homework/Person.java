@@ -1,4 +1,4 @@
-package homework;
+package class_homework;
 
 /**
  * @author Maria

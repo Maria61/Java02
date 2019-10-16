@@ -2,6 +2,7 @@ package practice_project;
 
 import practice_project.classes.User;
 
+
 /**
  * @author Maria
  * @program JavaDaily
@@ -9,13 +10,16 @@ import practice_project.classes.User;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        User currentUser = User.login();
-        boolean isQuit;
-        do {
-            currentUser.menu();
-            isQuit = currentUser.input();
+        while(true){
+            User currentUser = User.login();
+            boolean isQuit;
+            do {
+                currentUser.menu();
+                isQuit = currentUser.input();
 
-        } while (!isQuit);
-        System.out.println("Bye!");
+            } while (!isQuit);
+        }
+
+//        System.out.println("Bye!");
     }
 }

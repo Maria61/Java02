@@ -13,6 +13,12 @@ import java.util.List;
 public class RecordShelf {
     private List<Record> recordList = new ArrayList<>();
 
+    private static RecordShelf instance = new RecordShelf();
+
+    public static RecordShelf getInstance() {
+        return instance;
+    }
+
     public List<Record> getRecordList() {
         return recordList;
     }

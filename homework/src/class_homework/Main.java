@@ -1,6 +1,4 @@
-package homework;
-
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+package class_homework;
 
 import java.util.Arrays;
 import java.util.HashMap;

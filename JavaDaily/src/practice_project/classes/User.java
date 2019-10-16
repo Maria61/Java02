@@ -1,5 +1,9 @@
 package practice_project.classes;
 
+import practice_project.action.Action;
+import practice_project.database.BookShelf;
+
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -16,7 +20,7 @@ public abstract class User {
         this.id = id;
         this.name = name;
     }
-
+    private  static User currentUser = null;//为什么要是静态属性
     public static User login() throws Exception {
 
         Scanner s = new Scanner(System.in);
@@ -27,21 +31,35 @@ public abstract class User {
         System.out.println("请输入角色");
         String role = s.nextLine();
 
-        User user;
+//        User user;
         if (role.equals("老师")) {
-            user = new Teacher(id, name);
+            currentUser = new Teacher(id, name);
         } else if (role.equals("学生")) {
-            user = new Student(id, name);
+            currentUser = new Student(id, name);
         } else {
             throw new Exception("输入角色有误");
         }
 
-        return user;
+        return currentUser;
+    }
+
+
+    protected static User getCurrentUser() {
+        return currentUser;
     }
 
     public abstract void menu();
 
     public abstract boolean input();
+
+    public void qurryBook(){
+        List<Book> bookList = Action.qurryBook();
+        for(Book book:bookList){
+            System.out.printf("《%s》by %s 价格：%f 存量：%d 借阅次数：%d",
+                    book.getName(),book.getAuthor(),book.getPrice(),book.getCount(),book.getRecords());
+        }
+        System.out.println("共查询到"+bookList.size()+"本书");
+    }
 
     public String getId() {
         return id;
