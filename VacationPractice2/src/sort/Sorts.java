@@ -280,6 +280,7 @@ public class Sorts {
          * 原理类似于合并两个有序链表
          * 只是最后需要把新数组拷贝到原数组上
          */
+
         int length = high - low;
         int[] extra = new int[length];
         //[left,mid)
