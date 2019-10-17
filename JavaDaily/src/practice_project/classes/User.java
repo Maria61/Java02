@@ -82,6 +82,7 @@ public abstract class User {
         System.out.println("2.查询图书现存量>0的书");
         System.out.println("3.按书名查询");
         int input = sc.nextInt();
+        sc.nextLine();
         List<Book> bookList = null;
         switch (input) {
             case 1:
@@ -95,6 +96,8 @@ public abstract class User {
                 String name = sc.nextLine();
                 bookList = Action.queryBooksByName(new SelectBookByName(name));
                 break;
+            default:
+                System.out.println("输入有误！");
         }
 
         for(Book book:bookList){

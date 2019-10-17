@@ -21,7 +21,6 @@ public class BookShelf {
         return instance;
     }
 
-
     public Book search(String ISBN) throws NoSuchBookException {
         for (Book book : bookList) {
             if (book.is(ISBN)) {
