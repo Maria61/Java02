@@ -1,6 +1,6 @@
-package practice_project.database;
+package library_management_system.database;
 
-import practice_project.classes.User;
+import library_management_system.classes.User;
 
 import java.util.ArrayList;
 import java.util.List;

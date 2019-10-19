@@ -1,4 +1,4 @@
-package practice_project.database;
+package library_management_system.database;
 
 /**
  * @author Maria

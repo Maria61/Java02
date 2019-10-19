@@ -1,7 +1,7 @@
-package practice_project.database;
+package library_management_system.database;
 
-import practice_project.classes.Book;
-import practice_project.exception.NoSuchBookException;
+import library_management_system.classes.Book;
+import library_management_system.exception.NoSuchBookException;
 
 import java.util.ArrayList;
 import java.util.List;

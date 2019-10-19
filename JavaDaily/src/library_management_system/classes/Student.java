@@ -1,10 +1,10 @@
-package practice_project.classes;
+package library_management_system.classes;
 
-import practice_project.action.Action;
-import practice_project.exception.BorrowOutException;
-import practice_project.exception.NoBorrowedException;
-import practice_project.exception.NoSuchBookException;
-import practice_project.exception.YetBorrowedException;
+import library_management_system.action.Action;
+import library_management_system.exception.BorrowOutException;
+import library_management_system.exception.NoBorrowedException;
+import library_management_system.exception.NoSuchBookException;
+import library_management_system.exception.YetBorrowedException;
 
 import java.util.Scanner;
 

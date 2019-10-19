@@ -1,8 +1,8 @@
-package practice_project.database;
+package library_management_system.database;
 
-import practice_project.classes.Record;
-import practice_project.classes.User;
-import practice_project.exception.NoBorrowedException;
+import library_management_system.classes.Record;
+import library_management_system.classes.User;
+import library_management_system.exception.NoBorrowedException;
 
 import java.util.ArrayList;
 import java.util.Iterator;

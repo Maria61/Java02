@@ -1,4 +1,4 @@
-package practice_project.exception;
+package library_management_system.exception;
 
 /**
  * @author Maria

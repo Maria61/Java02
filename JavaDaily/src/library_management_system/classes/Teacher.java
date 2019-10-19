@@ -1,6 +1,6 @@
-package practice_project.classes;
+package library_management_system.classes;
 
-import practice_project.action.Action;
+import library_management_system.action.Action;
 
 import java.util.Scanner;
 

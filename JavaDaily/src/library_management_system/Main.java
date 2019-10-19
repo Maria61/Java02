@@ -1,6 +1,8 @@
-package practice_project;
+package library_management_system;
 
-import practice_project.classes.User;
+import library_management_system.classes.User;
+
+import java.util.Scanner;
 
 
 /**
@@ -18,6 +20,13 @@ public class Main {
                 isQuit = currentUser.input();
 
             } while (!isQuit);
+            Scanner sc = new Scanner(System.in);
+            System.out.println("1.退出");
+            System.out.println("2.切换用户");
+            int input = sc.nextInt();
+            if (input == 1) {
+                break;
+            }
         }
 
 //        System.out.println("Bye!");

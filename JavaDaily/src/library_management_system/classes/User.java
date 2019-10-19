@@ -1,7 +1,7 @@
-package practice_project.classes;
+package library_management_system.classes;
 
-import practice_project.action.Action;
-import practice_project.database.Where;
+import library_management_system.action.Action;
+import library_management_system.database.Where;
 
 import java.util.List;
 import java.util.Scanner;
