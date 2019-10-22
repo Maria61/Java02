@@ -42,6 +42,18 @@ public class Main {
                     } catch (NoPersonException e) {
                         System.out.println("查无此人");
                     }
+                    break;
+                case 2:
+                    System.out.println("请输入联系人姓名:");
+                    name = sc.nextLine();
+                    System.out.println("请输入电话号码:");
+                    String telephone = sc.nextLine();
+                    System.out.println("请输入备注:");
+                    String note = sc.nextLine();
+                    Action.insert(name,note,telephone);
+
+                case 3:
+
 
             }
         } while (input != 0);
