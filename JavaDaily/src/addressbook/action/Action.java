@@ -30,7 +30,6 @@ public class Action {
         AddressBook addressBook = AddressBook.getInstance();
         List addresses = null;
         addresses = addressBook.select(name);
-
         return addresses;
     }
 
