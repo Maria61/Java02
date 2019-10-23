@@ -19,6 +19,6 @@ public class StringDemo {
         return "此人是"+year+"年"+month+"月"+day+"日"+"出生,是"+sex+"性。";
     }
     public static void main(String[] args) {
-        System.out.println(judgeIDNumber("612526199906016621"));
+        System.out.println(judgeIDNumber("632566199906216621"));
     }
 }
