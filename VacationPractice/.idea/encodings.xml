@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/com/imooc/collection/ChildCourse.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/com/imooc/collection/Course.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/com/imooc/collection/ListTest.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/com/imooc/collection/MapTest.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/com/imooc/collection/SetTest.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/com/imooc/collection/Student.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/com/imooc/collection/TestGeneric.java" charset="GBK" />
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
