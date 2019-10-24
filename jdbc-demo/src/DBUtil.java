@@ -1,3 +1,6 @@
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+
+import javax.sql.DataSource;
 import java.sql.*;
 
 /**
@@ -7,17 +10,57 @@ import java.sql.*;
  */
 public class DBUtil {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/learning_bit";
+    private static final String URL = "jdbc:mysql://localhost:3306/learning_bit?useUnicode=true&characterEncoding=UTF-8";
     private static final String USER_NAME = "root";
     private static final String PASSWORD = "899900";
+
+    //获取连接的第二种方法
+    private static DataSource DATASOURCE = new MysqlDataSource();
+
+    static{
+        ((MysqlDataSource)DATASOURCE).setUrl(URL);
+        ((MysqlDataSource)DATASOURCE).setUser(USER_NAME);
+        ((MysqlDataSource)DATASOURCE).setPassword(PASSWORD);
+    }
+
+    //将获取数据库连接封装成一个返回值为connection的方法
+    public static Connection getConnection(){
+        try {
+            return DATASOURCE.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            //RuntimeException 非受查异常
+            throw new RuntimeException("数据库连接失败");
+        }
+    }
+
+    public static void close(Connection connection,PreparedStatement ps,ResultSet rs){
+        try {
+            if(rs != null){
+                rs.close();
+            }
+            if(ps != null){
+                ps.close();
+            }
+            if(connection != null){
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public static void close(Connection connection,PreparedStatement ps){
+        close(connection,ps,null);
+    }
 
 
     /**
      * 1.加载驱动
      * 2.建立连接
      * 3.创建执行对象Statement
-     * 4.执行sql
-     * 5.处理结果集ResultSet
+     * 4.执行sql获取结果集ResultSet
+     * 5.处理结果集
      * 6.释放资源
      * @param args
      */
@@ -28,7 +71,7 @@ public class DBUtil {
         ResultSet resultSet = null;
 
         try {
-            //初始化类jdbc.Driver，又叫加载类
+            //初始化类jdbc.Driver，又叫加载驱动类
             Class.forName("com.mysql.jdbc.Driver");
             //建立连接
             connection = DriverManager.
@@ -70,7 +113,6 @@ public class DBUtil {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
         }
     }
 }
