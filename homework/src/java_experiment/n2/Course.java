@@ -1,4 +1,4 @@
-package java_experiment;
+package java_experiment.n2;
 
 /**
  * @author Maria
