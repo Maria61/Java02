@@ -64,6 +64,13 @@ public class Experiment1023 {
         return -1;
     }
 
+    /**
+     * 二叉搜索树查找
+     * @param array
+     * @param n
+     * @return
+     */
+
     public static Boolean binaryTreeSearch(float[] array,float n){
         Node tree = create(array);
         Node cur = tree;
