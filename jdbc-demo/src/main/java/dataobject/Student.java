@@ -1,5 +1,7 @@
 package main.java.dataobject;
 
+import java.util.List;
+
 /**
  * @author Maria
  * @program jdbc-demo
@@ -12,6 +14,15 @@ public class Student {
     private String qqMail;
     private Classes classes;
     private Integer classesId;
+    private List<Score> scores;
+
+    public List<Score> getScores() {
+        return scores;
+    }
+
+    public void setScores(List<Score> scores) {
+        this.scores = scores;
+    }
 
     public Integer getClassesId() {
         return classesId;
