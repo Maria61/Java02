@@ -32,6 +32,7 @@ public class Book {
         }
         result[0] = n;
         result[1] = p;
+        br.close();
         return result;
     }
 
@@ -54,6 +55,7 @@ public class Book {
                 break;
             }
         }
+        br.close();
         return result;
     }
 
@@ -67,6 +69,7 @@ public class Book {
                 result++;
             }
         }
+        br.close();
         return result;
     }
 
