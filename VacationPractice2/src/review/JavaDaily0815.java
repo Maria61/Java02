@@ -133,6 +133,5 @@ public class JavaDaily0815{
         for(Node c = List2; c != null; c = c.next){
             System.out.println(c);//相当于 System.out.println(c.toString);
         }
-//        System.arraycopy();
     }
 }
