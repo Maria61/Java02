@@ -29,12 +29,20 @@ class OverrideTest {
     public void method() {
         System.out.println("父类的方法");
     }
+
+    public static void method(int a) {
+        System.out.println("父类的静态方法");
+    }
 }
 
 class Son extends OverrideTest {
     @Override//子类重写父类方法时可以加上这个注解，自动帮你校验重写格式是否正确
     public void method() {
         System.out.println("子类重写的方法");
+    }
+
+    public static void method(int a) {
+        System.out.println("子类静态方法");
     }
 
     protected static void methodB() {
@@ -44,11 +52,12 @@ class Son extends OverrideTest {
 
 public class OverrideOrOverloadDemo {
     public static void main(String[] args) {
-        new OverrideTest().method();
-        new Son().method();
+//        new OverrideTest().method();
+//        new Son().method();
         OverrideTest ot = new Son();
 //        ot.methodB();//以引用为准，引用为OverrideTest，该类中的没有方法methodB()，因此会报编译错误
         ot.method();//当子类重写了父类的方法时，调用子类的重写的方法
-
+        //调用静态方法时，以引用类型为准
+        ot.method(1);
     }
 }

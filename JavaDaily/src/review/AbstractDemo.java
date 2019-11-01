@@ -15,14 +15,14 @@ abstract class Test02 {
     }
 }
 
-public class Test01 extends Test02 {
+public class AbstractDemo extends Test02 {
 
     @Override
     public void method() {
         System.out.println("实现抽象类的抽象方法");
     }
     public static void main(String[] args) {
-        Test02 test02 = new Test01();
+        Test02 test02 = new AbstractDemo();
         test02.method();
         System.out.println("===========");
         test02.method2();
