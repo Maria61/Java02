@@ -14,7 +14,7 @@ import java.net.UnknownHostException;
  * @author Marie
  *
  */
-public class Client {
+public class Client1 {
 	public static void main(String[] args) {
 		try {
 			//1.创建客户端，指定服务器地址和端口
