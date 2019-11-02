@@ -40,6 +40,7 @@ public class Calculator extends JFrame{
         this.add(panel1);
         this.add(panel2);
         setVisible(true);//设置窗口可见
+
     }
 
     public static void main(String[] args) {
