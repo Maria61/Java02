@@ -21,8 +21,8 @@ public class Calculator extends JFrame{
         panel1.setLocation(30, 30);
         panel1.setLayout(new GridLayout(6,4));
         String[] strs1={"%","√x","x²","1/x","CE","C","✘","÷","7","8","9","×",
-                        "4","5","6","－","1","2","3","+"};
-        bts1=new JButton[8];
+                        "4","5","6","－","1","2","3","+","+/-","0",".","="};
+        bts1=new JButton[24];
         for(int i=0;i<bts1.length;i++)
         {
             bts1[i]=new JButton(strs1[i]);
