@@ -15,7 +15,7 @@ public class Calculator extends JFrame{
     public JTextField content;
 
     public Calculator() {
-        setSize(400,400);//设置窗口大小
+        setSize(520,600);//设置窗口大小
         setTitle("计算器");//设置窗口标题
         setLayout(null);
         content = new JTextField("0");
@@ -23,11 +23,11 @@ public class Calculator extends JFrame{
         panel1=new JPanel();
         panel2=new JPanel();
         panel2.add(content);
-        panel1.setSize(300, 200);
-        panel1.setLocation(40, 100);
+        panel1.setSize(500, 400);
+        panel1.setLocation(0, 150);
         panel1.setLayout(new GridLayout(6,4));
-        panel2.setSize(300, 30);
-        panel2.setLocation(40, 50);
+        panel2.setSize(500, 100);
+        panel2.setLocation(0, 50);
         panel2.setLayout(new GridLayout(1,1));
         String[] strs1={"%","√x","x²","1/x","CE","C","✘","÷","7","8","9","×",
                         "4","5","6","－","1","2","3","+","+/-","0",".","="};
