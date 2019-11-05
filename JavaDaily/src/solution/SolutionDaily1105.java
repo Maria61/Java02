@@ -61,7 +61,7 @@ public class SolutionDaily1105 {
      * @param
      * @return
      */
-    public static int findKth2(int[] a, int n, int KK {
+    public static int findKth2(int[] a, int n, int K) {
         return 0;
     }
 
