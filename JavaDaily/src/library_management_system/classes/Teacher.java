@@ -24,7 +24,6 @@ public class Teacher extends User {
         System.out.println("**2.查询书籍**");
         System.out.println("**3.查看借阅记录**");
 
-
     }
 
     @Override
