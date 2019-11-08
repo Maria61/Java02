@@ -24,6 +24,12 @@ class Son extends Child {
 
 }
 public class SolutionDaily1107 {
+    /**
+     * 查找字符串的最大数字串
+     *
+     * @param s
+     * @return
+     */
     public static String longestNumString(String s) {
         if (s == null) {
             return null;
@@ -52,7 +58,11 @@ public class SolutionDaily1107 {
         return max;
     }
 
+    /**
+     * 判断有效括号
+     */
     public static boolean judge(String A, int n) {
+
         if (A == null || A.length() == 0 || A.length() != n) {
             return false;
         }
