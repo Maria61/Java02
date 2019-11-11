@@ -42,7 +42,8 @@ public class SolutionDaily1110 {
         int A = (int) array1[0];
         int B = (int) array1[1];
         int C = (int) array1[2];
-        if ((A == array1[0]) && (B == array1[1]) && (C == array1[2]) && (A >= 0) && (B >= 0) && (C >= 0)) {
+        if ((A == array1[0]) && (B == array1[1]) && (C == array1[2]) && (A >= 0) && (B >= 0) && (C >= 0)
+                && (A <= 30) && (B <= 30) && (C <= 30)) {
             System.out.println(A + " " + B + " " + C);
         } else {
             System.out.println("NO");
