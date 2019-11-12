@@ -52,9 +52,7 @@ public class SolutionDaily1107 {
                 continue;
             }
         }
-        if (flag == false) {
-            max = re;
-        }
+        max = (re.length() >= max.length()) ? re : max;
         return max;
     }
 
@@ -82,28 +80,32 @@ public class SolutionDaily1107 {
                 stack.push(A.charAt(i));
             }
             if (A.charAt(i) == ')') {
+                if (stack.empty()) {
+                    re = false;
+                    break;
+                }
                 stack.pop();
             }
         }
-        if (stack.empty() != true) {
+        if (!stack.empty()) {
             re = false;
         }
         return re;
     }
 
     public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        String s = sc.nextLine();
-//        System.out.println(longestNumString(s));
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        System.out.println(longestNumString(s));
 //        System.out.println(judge("()()",4));
 //        Person p = new Child();
 //        String s1 = "hello";
 //        String s2 = "he"+new String("llo");
 //        System.out.println(s1 == s2);
 
-        Person p1 = new Person();
-        Person p2 = new Child();
-        Person p3 = new Son();
+//        Person p1 = new Person();
+//        Person p2 = new Child();
+//        Person p3 = new Son();
 
     }
 }
