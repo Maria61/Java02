@@ -34,9 +34,29 @@ public class SolutionDaily1112 {
         return re;
     }
 
+    /**
+     * @param w
+     * @param h
+     * @return
+     */
     public static int cakes(int w, int h) {
-        int re = 1;
-
+        int re = 0;
+        int[][] box = new int[h][w];
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                if (box[i][j] != 1 && i < h - 2 && j < w - 2) {
+                    box[i][j + 2] = 1;
+                    box[i + 2][j] = 1;
+                }
+            }
+        }
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                if (box[i][j] == 0) {
+                    re++;
+                }
+            }
+        }
         return re;
     }
 
@@ -44,6 +64,7 @@ public class SolutionDaily1112 {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         int b = sc.nextInt();
-        System.out.println(minMultiple(a, b));
+//        System.out.println(minMultiple(a, b));
+        System.out.println(cakes(a, b));
     }
 }
