@@ -46,10 +46,12 @@ public class ThreadAdvantage {
             System.out.println(threads[i].getName());
         }
         //线程让步  ?被再次调度到怎么办？
+        //如果再次被调度到，仍然会进到while循环，判断当前线程数是否大于1
 //        while(Thread.activeCount() > 1){
 //            Thread.yield();//当前活跃线程数大于1时，main线程让步，重新回到就绪状态，
 //        }
         //线程join   ?顺序遍历？
+        //顺序遍历，但这些线程都是在之前同时start()的，顺序遍历时，当遍历到某线程时，有可能该线程已经结束
         for (Thread thread : threads) {
             thread.join();//该线程加入到JavaMain线程中，JavaMain线程阻塞
         }
