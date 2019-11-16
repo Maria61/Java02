@@ -1,5 +1,7 @@
 package solution;
 
+import java.util.Scanner;
+
 /**
  * @author Maria
  * @program JavaDaily
@@ -17,7 +19,7 @@ public class SolutionDaily1115 {
         return 0;
     }
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
 //        byte b1 = 1,b2 = 2,b3,b6;
 //        final byte b4 = 4,b5 = 6;
 //        b6 = b4 + b5;
@@ -38,5 +40,38 @@ public class SolutionDaily1115 {
 //        System.out.println("和是"+add(9,34));
 
 
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        System.out.println(countFab(n));
+    }
+
+    private static int countFab(int n) {
+        int re = 0;
+        int i = 0;
+        while (re < n) {
+            i++;
+            re = fab(i);
+        }
+        if (re == n) {
+            return 0;
+        }
+        if ((re - n) < (n - fab(i - 1))) {
+            return re - n;
+        } else {
+            return n - fab(i - 1);
+        }
+    }
+
+    private static int fab(int i) {
+        if (i == 0) {
+            return 0;
+        }
+        if (i == 1) {
+            return 1;
+        }
+        return fab(i - 1) + fab(i - 2);
     }
 }
