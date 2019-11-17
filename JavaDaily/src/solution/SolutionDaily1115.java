@@ -48,6 +48,12 @@ public class SolutionDaily1115 {
         System.out.println(countFab(n));
     }
 
+    /**
+     * 统计几步可以变成斐波那契数
+     *
+     * @param n
+     * @return
+     */
     private static int countFab(int n) {
         int re = 0;
         int i = 0;
