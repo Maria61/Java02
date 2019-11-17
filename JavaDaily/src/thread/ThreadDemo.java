@@ -1,5 +1,7 @@
 package thread;
 
+import java.util.ArrayList;
+
 /**
  * @author Maria
  * @program JavaDaily
@@ -9,10 +11,10 @@ public class ThreadDemo {
     private static class MyThread extends Thread {
         @Override
         public void run() {
+            System.out.println(Thread.currentThread().getName());
             while (true) {
 
             }
-//            System.out.println(Thread.currentThread().getName());
         }
     }
 
