@@ -127,8 +127,6 @@ public class SolutionDaily1114 {
         }
         return re;
     }
-
-
     //
     private static String revserNum(int n) {
         String s = new String();

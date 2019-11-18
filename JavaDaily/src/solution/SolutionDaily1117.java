@@ -14,6 +14,7 @@ public class SolutionDaily1117 {
         return AB;
     }
 
+
     public static void main(String[] args) {
 
     }
