@@ -33,7 +33,7 @@ public class Notify {
                     try {
                         for (int j = 0; j < 10; j++) {
                             synchronized (Notify.class) {
-//                                if(COUNT + 3 >100){
+//                                if(COUNT + 3 >100){//不可以用if判断，因为COUNT在经过一次改变后，不一定会满足条件！
                                 while (COUNT + 3 > 100) {
                                     Notify.class.wait();
                                 }
