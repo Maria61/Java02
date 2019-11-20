@@ -1,5 +1,6 @@
 package solution;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -40,43 +41,66 @@ public class SolutionDaily1119 {
     }
 
     public static String addLongInteger(String addend, String augend) {
-        String re = new String();
         if (addend.length() < augend.length()) {
             String t = addend;
             addend = augend;
             augend = t;
         }
-        String[] s1 = addend.split("");
-        String[] s2 = augend.split("");
-        int l1 = s1.length;
-        int l2 = s2.length;
-        int x = 0;
-        int y = 0;
-        int i = l1 - 1;
-        while (i > l2) {
-            int sum = Integer.parseInt(s1[i]) + Integer.parseInt(s2[i]) + x;
-            if (sum >= 10) {
-                x = sum / 10;
-                y = sum % 10;
-            } else {
-                y = sum;
-            }
-            re += String.valueOf(y);
-            i--;
+        char[] s1 = addend.toCharArray();
+        char[] s2 = augend.toCharArray();
+        if (!judge(s1)) {
+            return null;
         }
-        while (i >= 0) {
-            int sum = x + Integer.parseInt(s1[i]);
-            if (sum >= 10) {
-                x = sum / 10;
-                y = sum % 10;
-            } else {
-                y = sum;
-            }
-            re += String.valueOf(y);
-            i--;
+        if (!judge(s2)) {
+            return null;
         }
-        re += x;
+        char[] re = new char[addend.length() + 1];
+        for (int i = 0; i < re.length; i++) {
+            re[i] = '0';
+        }
+        s1 = reverse(s1);
+        s2 = reverse(s2);
+        int i = 0;
+        int sum = 0;
+        for (; i < re.length - 1; i++) {
+            if (i < s1.length && i < s2.length) {
+                sum = s1[i] - '0' + s2[i] - '0';
+            } else if (i < s1.length && i >= s2.length) {
+                sum = s1[i] - '0';
+            } else if (i < s2.length && i >= s1.length) {
+                sum = s2[i] - '0';
+            }
+            re[i] = (char) (sum % 10 + '0');//必须转化为相应的ASCII值再进行强转
+            re[i + 1] = (char) (sum / 10 + '0');
+        }
+        if (re[i] == '0') {
+            char[] re1 = Arrays.copyOf(re, re.length - 1);
+            re = reverse(re1);
+        } else {
+            re = reverse(re);
+        }
+        String s = String.valueOf(re);
+        return s;
+    }
+
+    private static boolean judge(char[] s1) {
+        boolean re = true;
+        for (int i = 0; i < s1.length; i++) {
+            if (s1[i] > '9' || s1[i] < '0') {
+                re = false;
+                break;
+            }
+        }
         return re;
+    }
+
+    private static char[] reverse(char[] s1) {
+        char[] s = new char[s1.length];
+        for (int i = 0, j = s1.length - 1; i < s.length; i++, j--) {
+            s[i] = s1[j];
+        }
+        return s;
+
     }
 
     public static void main(String[] args) {
@@ -94,3 +118,4 @@ public class SolutionDaily1119 {
         System.out.println(addLongInteger(s1, s2));
     }
 }
+
