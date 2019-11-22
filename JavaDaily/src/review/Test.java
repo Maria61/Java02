@@ -9,6 +9,7 @@ import java.util.Scanner;
  */
 public class Test {
     /**
+     * 牛客答题测试
      * 编写方法，计算从0 到  n 中 2 出现的次数，eg: 输入10 ，输出 1
      *
      * @param n
