@@ -1,4 +1,4 @@
-package operating_system_experiment.homework.out.production.homework.experiment1.experiment1;
+package operating_system_experiment.experiment1;
 
 public class PCB implements Comparable<PCB>{
     private String name;

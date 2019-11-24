@@ -1,4 +1,4 @@
-package operating_system_experiment.homework.out.production.homework.experiment1.experimemt2;
+package operating_system_experiment.experimemt2;
 
 public class Banker {
 

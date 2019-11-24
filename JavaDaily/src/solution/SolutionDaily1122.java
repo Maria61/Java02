@@ -40,9 +40,10 @@ public class SolutionDaily1122 {
         }
         int n = num[0];
         int flag = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n && flag < num.length; i++) {
             int n1 = num[++flag];
             int[] array = new int[2 * n1];
+
             int k = num[++flag];
             for (int j = 0; j < 2 * n1; j++) {
                 array[j] = num[++flag];
