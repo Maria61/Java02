@@ -39,9 +39,11 @@ public class VegetableClassify {
         if (feature[fact[0] - 1].equals("红色的")) {
             if (feature[fact[1] - 1].equals("圆的")) {
                 if (feature[fact[2] - 1].equals("酸的")) {
-                    if (feature[fact[3] - 1].equals("可生食的")) {
-                        System.out.println("结果为：番茄");
-                        return;
+                    if (feature[fact[3] - 1].equals("瓜果类")) {
+                        if (feature[fact[4] - 1].equals("可生食的")) {
+                            System.out.println("结果为：番茄");
+                            return;
+                        }
                     }
                 }
             }
@@ -49,9 +51,11 @@ public class VegetableClassify {
         if (feature[fact[0] - 1].equals("黄色的")) {
             if (feature[fact[1] - 1].equals("圆的")) {
                 if (feature[fact[2] - 1].equals("无味")) {
-                    if (feature[fact[3] - 1].equals("不可生食的")) {
-                        System.out.println("结果为：土豆");
-                        return;
+                    if (feature[fact[3] - 1].equals("块茎类")) {
+                        if (feature[fact[4] - 1].equals("不可生食的")) {
+                            System.out.println("结果为：土豆");
+                            return;
+                        }
                     }
                 }
             }
@@ -59,9 +63,11 @@ public class VegetableClassify {
         if (feature[fact[0] - 1].equals("黄色的")) {
             if (feature[fact[1] - 1].equals("圆的")) {
                 if (feature[fact[2] - 1].equals("甜的")) {
-                    if (feature[fact[3] - 1].equals("不可生食的")) {
-                        System.out.println("结果为：南瓜");
-                        return;
+                    if (feature[fact[3] - 1].equals("瓜果类")) {
+                        if (feature[fact[4] - 1].equals("不可生食的")) {
+                            System.out.println("结果为：南瓜");
+                            return;
+                        }
                     }
                 }
             }
@@ -69,9 +75,11 @@ public class VegetableClassify {
         if (feature[fact[0] - 1].equals("绿色的")) {
             if (feature[fact[1] - 1].equals("长条的")) {
                 if (feature[fact[2] - 1].equals("青涩味")) {
-                    if (feature[fact[3] - 1].equals("可生食的")) {
-                        System.out.println("结果为：黄瓜");
-                        return;
+                    if (feature[fact[3] - 1].equals("瓜果类")) {
+                        if (feature[fact[4] - 1].equals("可生食的")) {
+                            System.out.println("结果为：黄瓜");
+                            return;
+                        }
                     }
                 }
             }
@@ -79,16 +87,18 @@ public class VegetableClassify {
         if (feature[fact[0] - 1].equals("绿色的")) {
             if (feature[fact[1] - 1].equals("长条的")) {
                 if (feature[fact[2] - 1].equals("无味")) {
-                    if (feature[fact[3] - 1].equals("不可生食的")) {
-                        System.out.println("条件不足，请选择特征：");
-                        System.out.println("1.包含可食豆类的  2.不包含可食豆类的");
-                        int f = sc.nextInt();
-                        if(f == 1){
-                            System.out.println("结果为：豆角");
-                        }else{
-                            System.out.println("结果为：冬瓜");
+                    if (feature[fact[3] - 1].equals("瓜果类")) {
+                        if (feature[fact[4] - 1].equals("不可生食的")) {
+                            System.out.println("条件不足，请选择特征：");
+                            System.out.println("1.包含可食豆类的  2.不包含可食豆类的");
+                            int f = sc.nextInt();
+                            if (f == 1) {
+                                System.out.println("结果为：豆角");
+                            } else {
+                                System.out.println("结果为：冬瓜");
+                            }
+                            return;
                         }
-                        return;
                     }
                 }
             }
@@ -96,9 +106,11 @@ public class VegetableClassify {
         if (feature[fact[0] - 1].equals("绿色的")) {
             if (feature[fact[1] - 1].equals("长条的")) {
                 if (feature[fact[2] - 1].equals("苦味")) {
-                    if (feature[fact[3] - 1].equals("可生食的")) {
-                        System.out.println("结果为：苦瓜");
-                        return;
+                    if (feature[fact[3] - 1].equals("瓜果类")) {
+                        if (feature[fact[4] - 1].equals("可生食的")) {
+                            System.out.println("结果为：苦瓜");
+                            return;
+                        }
                     }
                 }
             }
@@ -106,24 +118,28 @@ public class VegetableClassify {
         if (feature[fact[0] - 1].equals("紫色的")) {
             if (feature[fact[1] - 1].equals("长条的")) {
                 if (feature[fact[2] - 1].equals("无味")) {
-                    if (feature[fact[3] - 1].equals("不可生食的")) {
-                        System.out.println("结果为：茄子");
-                        return;
+                    if (feature[fact[3] - 1].equals("瓜果类")) {
+                        if (feature[fact[4] - 1].equals("不可生食的")) {
+                            System.out.println("结果为：茄子");
+                            return;
+                        }
                     }
                 }
             }
         }
         if (feature[fact[0] - 1].equals("绿色的")) {
             if (feature[fact[1] - 1].equals("长条的")) {
-                if (feature[fact[2] - 1].equals("苦味")) {
-                    if (feature[fact[3] - 1].equals("可生食的")) {
-                        System.out.println("结果为：苦瓜");
-                        return;
+                if (feature[fact[2] - 1].equals("无味")) {
+                    if (feature[fact[3] - 1].equals("叶菜类")) {
+                        if (feature[fact[4] - 1].equals("不可生食的")) {
+                            System.out.println("结果为：青菜");
+                            return;
+                        }
                     }
                 }
             }
         }
-        System.out.println("现有事实无法推断出结果！");
+        System.out.println("推断蔬菜不在该系统中！");
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -134,9 +150,9 @@ public class VegetableClassify {
                             "15.圆的、16.长条的、" +"\n"+
                             "17.菌类、18.叶菜类、19.块茎类、20.瓜果类、21.花菜类"+"\n"+
                             "22.不可生食的、23.可生食的、"+"\n");
-        int[] fact = new int[4];
-        System.out.println("请依次输入四个数字表述蔬菜四个特征(颜色、形状、味道、是否可生食):");
-        for(int i = 0 ; i < 4; i++){
+        int[] fact = new int[5];
+        System.out.println("请依次输入五个数字（用回车间隔）表述蔬菜四个特征(颜色、形状、味道、类别、是否可生食):");
+        for(int i = 0 ; i < 5; i++){
             fact[i] = sc.nextInt();
         }
         rules(fact);
