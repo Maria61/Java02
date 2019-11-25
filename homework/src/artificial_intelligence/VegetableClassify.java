@@ -34,7 +34,7 @@ public class VegetableClassify {
             "不可生食的","可生食的"};
     static String[] vegetable = {"土豆","南瓜","番茄","黄瓜","茄子","苦瓜","冬瓜","白菜","青菜","紫甘蓝","西兰花",
             "菜花","豆角","青椒","蘑菇","香菇","红薯","胡萝卜","木耳","金针菇"};
-    private static void rules(int[] fact) {
+    public static void rules(int[] fact) {
         Scanner sc = new Scanner(System.in);
         if (feature[fact[0] - 1].equals("红色的")) {
             if (feature[fact[1] - 1].equals("圆的")) {
@@ -151,13 +151,11 @@ public class VegetableClassify {
                             "17.菌类、18.叶菜类、19.块茎类、20.瓜果类、21.花菜类"+"\n"+
                             "22.不可生食的、23.可生食的、"+"\n");
         int[] fact = new int[5];
-        System.out.println("请依次输入五个数字（用回车间隔）表述蔬菜四个特征(颜色、形状、味道、类别、是否可生食):");
+        System.out.println("请依次输入五个数字（用回车间隔）表述蔬菜五个特征(颜色、形状、味道、类别、是否可生食):");
         for(int i = 0 ; i < 5; i++){
             fact[i] = sc.nextInt();
         }
         rules(fact);
-
     }
-
 
 }
