@@ -11,9 +11,19 @@ public class QuickSort {
     }
 
     private static void quickSortIntenel(int[] array, int left, int right) {
-        int p = array[right];
-        partinal(array, 0, )
+        if (left >= right) {
+            return;
+        }
+        int p = partition(array, left, right);
+        quickSortIntenel(array, left, p - 1);
+        quickSortIntenel(array, p + 1, right);
     }
+
+//    private static int partition(int[] array, int left, int right) {
+//
+//
+//    }
+
 
 
     public static void main(String[] args) {
