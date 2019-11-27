@@ -1,5 +1,9 @@
 package solution;
 
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+
 /**
  * @author Maria
  * @program JavaDaily
@@ -16,16 +20,21 @@ public class SolutionDaily1126 {
 
     public static String[] sort(String[] s, boolean b) {
         String[] re = new String[s.length];
+        Map<String, Integer> map = new TreeMap<>();
         for (int i = 0; i < s.length; i++) {
             String[] s1 = s[i].split(" ");
-            for (int j = 0; j < re.length; j++) {
-                if (s1[1] < re[])
-            }
+            map.put(s1[0], Integer.valueOf(s1[1]));
         }
         return null;
     }
 
     public static void main(String[] args) {
-
+        Map<String, Integer> map = new TreeMap<>();
+        map.put("acb", 12);
+        map.put("sdf", 12);
+        map.put("c", 13);
+        for (Map.Entry<String, Integer> m : map.entrySet()) {
+            System.out.println(m.getKey() + "," + m.getValue());
+        }
     }
 }
