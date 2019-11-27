@@ -126,6 +126,7 @@ public class Experiment1023 {
         Random random = new Random();
         float[] array = randomNumArray(20);
         int randomIndex = random.nextInt(20);
+        System.out.println("查找成功的情况：");
         System.out.println("随机生成的下标是："+randomIndex+"对应的数组中的数是："+array[randomIndex]);
 
         //查找成功！
@@ -137,6 +138,8 @@ public class Experiment1023 {
         System.out.println("二叉树查找的结果是："+exist);
 
         //查找失败！
+        System.out.println();
+        System.out.println("查找失败的情况：");
         float random1 = random.nextFloat();
         System.out.println("随机数为："+random1+",找到的对应数组中的下标是："+sequenceSearch(array,random1));
         System.out.println("随机数为："+random1+",找到的对应数组中的下标是："+binarySearch(array,random1));
