@@ -7,12 +7,14 @@ package algorithm_experiment;
  */
 public class Experiment1127 {
     static int[] queen = new int[9];
+    static int count = 0;
     public static void nQueen(int now){
         int i;
         if(now==9){
             for(i=0;i<9;i++){
                 System.out.print(queen[i]+" ");
             }
+            count++;
             System.out.println();
 
             return;
@@ -33,5 +35,6 @@ public class Experiment1127 {
     }
     public static void main(String[] args) {
             nQueen(0);
+//        System.out.println(count);
     }
 }
