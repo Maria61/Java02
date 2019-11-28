@@ -6,19 +6,19 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class LoginFrame extends JFrame implements ActionListener,MouseListener{
-    //¶¨Òå´°¿ÚÖĞ´æÔÚµÄ¿Ø¼ş
+    //å®šä¹‰çª—å£ä¸­å­˜åœ¨çš„æ§ä»¶
 	JLabel userLa,passLa;
 	JTextField userTxt;
 	JPasswordField passTxt;
 	JButton loBt,quitBt;
 	
-	//¶¨ÒåÖ÷´°¿ÚÖĞµÄÁ½¸öÃæ°å£¨²Ù×÷Ñ¡ÔñÃæ°åºÍ²Ù×÷Ãæ°å£©
+	//å®šä¹‰ä¸»çª—å£ä¸­çš„ä¸¤ä¸ªé¢æ¿ï¼ˆæ“ä½œé€‰æ‹©é¢æ¿å’Œæ“ä½œé¢æ¿ï¼‰
 	JPanel selectPa;
 	JButton[] selectBts;
 	
 	
 	JPanel controlPa;
-	//²éÕÒµÄ¿Ø¼ş 
+	//æŸ¥æ‰¾çš„æ§ä»¶ 
 	JLabel numLa,nameLa;
 	JTextField numTxt,nameTxt,renum,rename;
 	JButton findBt;
@@ -27,130 +27,130 @@ public class LoginFrame extends JFrame implements ActionListener,MouseListener{
 	{
 		//Dimension dime=new Dimension(400,300);
 		//this.setSize(dime);
-		this.setSize(400, 300);//ÉèÖÃ´°ÌåµÄ´óĞ¡
-		this.setTitle("µÇÂ¼´°¿Ú");//ÉèÖÃ´°Ìå±êÌâ
-		//ÒÔÏÂ´úÂëÊÇ´´½¨¿Ø¼ş²¢°Ú·Åµ½´°¿ÚÖĞ
-		/*userLa=new JLabel("ÓÃ»§Ãû");//´´½¨±êÇ©
-		this.add(userLa,BorderLayout.WEST);//½«±êÇ©·Åµ½´°ÌåÉÏ
+		this.setSize(400, 300);//è®¾ç½®çª—ä½“çš„å¤§å°
+		this.setTitle("ç™»å½•çª—å£");//è®¾ç½®çª—ä½“æ ‡é¢˜
+		//ä»¥ä¸‹ä»£ç æ˜¯åˆ›å»ºæ§ä»¶å¹¶æ‘†æ”¾åˆ°çª—å£ä¸­
+		/*userLa=new JLabel("ç”¨æˆ·å");//åˆ›å»ºæ ‡ç­¾
+		this.add(userLa,BorderLayout.WEST);//å°†æ ‡ç­¾æ”¾åˆ°çª—ä½“ä¸Š
 		//userLa=new JLabel();
-		//userLa.setText("ÓÃ»§Ãû");
+		//userLa.setText("ç”¨æˆ·å");
 		//userLa.setForeground(Color.RENORTHD);
-		userTxt=new JTextField();//´´½¨ÎÄ±¾¿ò
-		this.add(userTxt,BorderLayout.SOUTH);//½«ÎÄ±¾¿ò·Åµ½´°ÌåÉÏ
-		passLa=new JLabel("ÃÜ   Âë");//´´½¨±êÇ©
-		this.add(passLa,BorderLayout.EAST);//½«±êÇ©·Åµ½´°ÌåÉÏ
-		passTxt=new JPasswordField();//´´½¨ÃÜÂë¿ò
-		this.add(passTxt,BorderLayout.NORTH);//½«ÃÜÂë¿ò·Åµ½´°ÌåÉÏ
-		loBt=new JButton("µÇÂ¼");//´´½¨°´Å¥
-		this.add(loBt,BorderLayout.CENTER);//½«°´Å¥·Åµ½´°ÌåÉÏ
-		//quitBt=new JButton("ÍË³ö");//´´½¨°´Å¥
-		//this.add(quitBt);//½«°´Å¥·Åµ½´°ÌåÉÏ*/
+		userTxt=new JTextField();//åˆ›å»ºæ–‡æœ¬æ¡†
+		this.add(userTxt,BorderLayout.SOUTH);//å°†æ–‡æœ¬æ¡†æ”¾åˆ°çª—ä½“ä¸Š
+		passLa=new JLabel("å¯†   ç ");//åˆ›å»ºæ ‡ç­¾
+		this.add(passLa,BorderLayout.EAST);//å°†æ ‡ç­¾æ”¾åˆ°çª—ä½“ä¸Š
+		passTxt=new JPasswordField();//åˆ›å»ºå¯†ç æ¡†
+		this.add(passTxt,BorderLayout.NORTH);//å°†å¯†ç æ¡†æ”¾åˆ°çª—ä½“ä¸Š
+		loBt=new JButton("ç™»å½•");//åˆ›å»ºæŒ‰é’®
+		this.add(loBt,BorderLayout.CENTER);//å°†æŒ‰é’®æ”¾åˆ°çª—ä½“ä¸Š
+		//quitBt=new JButton("é€€å‡º");//åˆ›å»ºæŒ‰é’®
+		//this.add(quitBt);//å°†æŒ‰é’®æ”¾åˆ°çª—ä½“ä¸Š*/
 		//this.setLayout(new FlowLayout());
-		//½«´°ÌåµÄ²¼¾Ö·½Ê½¸ÄÎªÁ÷²¼¾Ö¶ÔÏó
+		//å°†çª—ä½“çš„å¸ƒå±€æ–¹å¼æ”¹ä¸ºæµå¸ƒå±€å¯¹è±¡
 		
-		/*userLa=new JLabel("ÓÃ»§Ãû");//´´½¨±êÇ©
-		this.add(userLa);//½«±êÇ©·Åµ½´°ÌåÉÏ
+		/*userLa=new JLabel("ç”¨æˆ·å");//åˆ›å»ºæ ‡ç­¾
+		this.add(userLa);//å°†æ ‡ç­¾æ”¾åˆ°çª—ä½“ä¸Š
 		//userLa=new JLabel();
-		//userLa.setText("ÓÃ»§Ãû");
+		//userLa.setText("ç”¨æˆ·å");
 		//userLa.setForeground(Color.RENORTHD);
-		userTxt=new JTextField();//´´½¨ÎÄ±¾¿ò
-		this.add(userTxt);//½«ÎÄ±¾¿ò·Åµ½´°ÌåÉÏ
-		passLa=new JLabel("ÃÜ   Âë");//´´½¨±êÇ©
-		this.add(passLa);//½«±êÇ©·Åµ½´°ÌåÉÏ
-		passTxt=new JPasswordField();//´´½¨ÃÜÂë¿ò
-		this.add(passTxt);//½«ÃÜÂë¿ò·Åµ½´°ÌåÉÏ
-		loBt=new JButton("µÇÂ¼");//´´½¨°´Å¥
-		this.add(loBt);//½«°´Å¥·Åµ½´°ÌåÉÏ
-		quitBt=new JButton("ÍË³ö");//´´½¨°´Å¥
-		this.add(quitBt);//½«°´Å¥·Åµ½´°ÌåÉÏ*/
+		userTxt=new JTextField();//åˆ›å»ºæ–‡æœ¬æ¡†
+		this.add(userTxt);//å°†æ–‡æœ¬æ¡†æ”¾åˆ°çª—ä½“ä¸Š
+		passLa=new JLabel("å¯†   ç ");//åˆ›å»ºæ ‡ç­¾
+		this.add(passLa);//å°†æ ‡ç­¾æ”¾åˆ°çª—ä½“ä¸Š
+		passTxt=new JPasswordField();//åˆ›å»ºå¯†ç æ¡†
+		this.add(passTxt);//å°†å¯†ç æ¡†æ”¾åˆ°çª—ä½“ä¸Š
+		loBt=new JButton("ç™»å½•");//åˆ›å»ºæŒ‰é’®
+		this.add(loBt);//å°†æŒ‰é’®æ”¾åˆ°çª—ä½“ä¸Š
+		quitBt=new JButton("é€€å‡º");//åˆ›å»ºæŒ‰é’®
+		this.add(quitBt);//å°†æŒ‰é’®æ”¾åˆ°çª—ä½“ä¸Š*/
 		/*this.setLayout(new GridLayout(3,2));
-		userLa=new JLabel("ÓÃ»§Ãû");//´´½¨±êÇ©
-		this.add(userLa);//½«±êÇ©·Åµ½´°ÌåÉÏ
+		userLa=new JLabel("ç”¨æˆ·å");//åˆ›å»ºæ ‡ç­¾
+		this.add(userLa);//å°†æ ‡ç­¾æ”¾åˆ°çª—ä½“ä¸Š
 		//userLa=new JLabel();
-		//userLa.setText("ÓÃ»§Ãû");
+		//userLa.setText("ç”¨æˆ·å");
 		//userLa.setForeground(Color.RENORTHD);
-		userTxt=new JTextField();//´´½¨ÎÄ±¾¿ò
-		this.add(userTxt);//½«ÎÄ±¾¿ò·Åµ½´°ÌåÉÏ
-		passLa=new JLabel("ÃÜ   Âë");//´´½¨±êÇ©
-		this.add(passLa);//½«±êÇ©·Åµ½´°ÌåÉÏ
-		passTxt=new JPasswordField();//´´½¨ÃÜÂë¿ò
-		this.add(passTxt);//½«ÃÜÂë¿ò·Åµ½´°ÌåÉÏ
-		loBt=new JButton("µÇÂ¼");//´´½¨°´Å¥
-		this.add(loBt);//½«°´Å¥·Åµ½´°ÌåÉÏ
-		quitBt=new JButton("ÍË³ö");//´´½¨°´Å¥
-		this.add(quitBt);//½«°´Å¥·Åµ½´°ÌåÉÏ*/
+		userTxt=new JTextField();//åˆ›å»ºæ–‡æœ¬æ¡†
+		this.add(userTxt);//å°†æ–‡æœ¬æ¡†æ”¾åˆ°çª—ä½“ä¸Š
+		passLa=new JLabel("å¯†   ç ");//åˆ›å»ºæ ‡ç­¾
+		this.add(passLa);//å°†æ ‡ç­¾æ”¾åˆ°çª—ä½“ä¸Š
+		passTxt=new JPasswordField();//åˆ›å»ºå¯†ç æ¡†
+		this.add(passTxt);//å°†å¯†ç æ¡†æ”¾åˆ°çª—ä½“ä¸Š
+		loBt=new JButton("ç™»å½•");//åˆ›å»ºæŒ‰é’®
+		this.add(loBt);//å°†æŒ‰é’®æ”¾åˆ°çª—ä½“ä¸Š
+		quitBt=new JButton("é€€å‡º");//åˆ›å»ºæŒ‰é’®
+		this.add(quitBt);//å°†æŒ‰é’®æ”¾åˆ°çª—ä½“ä¸Š*/
 		
 		
 		this.setLayout(null);
-		//ÉèÖÃ´°ÌåµÄ²¼¾Ö¶ÔÏóÎª¿Õ
-		userLa=new JLabel("ÓÃ»§Ãû");//´´½¨±êÇ©
+		//è®¾ç½®çª—ä½“çš„å¸ƒå±€å¯¹è±¡ä¸ºç©º
+		userLa=new JLabel("ç”¨æˆ·å");//åˆ›å»ºæ ‡ç­¾
 		userLa.setSize(60, 30);
 		userLa.setLocation(90, 50);
-		this.add(userLa);//½«±êÇ©·Åµ½´°ÌåÉÏ
+		this.add(userLa);//å°†æ ‡ç­¾æ”¾åˆ°çª—ä½“ä¸Š
 		
-		userTxt=new JTextField();//´´½¨ÎÄ±¾¿ò
+		userTxt=new JTextField();//åˆ›å»ºæ–‡æœ¬æ¡†
 		userTxt.setSize(150, 30);
 		userTxt.setLocation(160, 50);
-		this.add(userTxt);//½«ÎÄ±¾¿ò·Åµ½´°ÌåÉÏ
+		this.add(userTxt);//å°†æ–‡æœ¬æ¡†æ”¾åˆ°çª—ä½“ä¸Š
 		
-		passLa=new JLabel("ÃÜ   Âë");//´´½¨±êÇ©
+		passLa=new JLabel("å¯†   ç ");//åˆ›å»ºæ ‡ç­¾
 		passLa.setSize(60, 30);
 		passLa.setLocation(90, 100);
-		this.add(passLa);//½«±êÇ©·Åµ½´°ÌåÉÏ
-		passTxt=new JPasswordField();//´´½¨ÃÜÂë¿ò
+		this.add(passLa);//å°†æ ‡ç­¾æ”¾åˆ°çª—ä½“ä¸Š
+		passTxt=new JPasswordField();//åˆ›å»ºå¯†ç æ¡†
 		passTxt.setSize(150, 30);
 		passTxt.setLocation(160, 100);
-		this.add(passTxt);//½«ÃÜÂë¿ò·Åµ½´°ÌåÉÏ
-		loBt=new JButton("µÇÂ¼");//´´½¨°´Å¥
+		this.add(passTxt);//å°†å¯†ç æ¡†æ”¾åˆ°çª—ä½“ä¸Š
+		loBt=new JButton("ç™»å½•");//åˆ›å»ºæŒ‰é’®
 		loBt.setSize(60, 30);
 		loBt.setLocation(120, 150);
 		loBt.addActionListener(this);
-		this.add(loBt);//½«°´Å¥·Åµ½´°ÌåÉÏ
-		quitBt=new JButton("ÍË³ö");//´´½¨°´Å¥
+		this.add(loBt);//å°†æŒ‰é’®æ”¾åˆ°çª—ä½“ä¸Š
+		quitBt=new JButton("é€€å‡º");//åˆ›å»ºæŒ‰é’®
 		quitBt.setSize(60, 30);
 		quitBt.setLocation(210, 150);
-		this.add(quitBt);//½«°´Å¥·Åµ½´°ÌåÉÏ*/
+		this.add(quitBt);//å°†æŒ‰é’®æ”¾åˆ°çª—ä½“ä¸Š*/
 		
 		
-		this.setVisible(true);//ÉèÖÃ´°Ìå¿É¼û
+		this.setVisible(true);//è®¾ç½®çª—ä½“å¯è§
 	}
 	
 	public void actionPerformed(ActionEvent e)
 	{
 		JButton bt=(JButton)e.getSource();
-		if(bt.getText().equals("µÇÂ¼"))
+		if(bt.getText().equals("ç™»å½•"))
 		{
 		String name=userTxt.getText().trim();
-		//»ñÈ¡ÓÃ»§Ãû
+		//è·å–ç”¨æˆ·å
 		String num=passTxt.getText().trim();
-		//»ñÈ¡Ñ§ºÅ
+		//è·å–å­¦å·
 		StudentDeal deal=new StudentDeal();
-		//´´½¨Ñ§ÉúÎÄ¼ş´¦Àí¶ÔÏó
+		//åˆ›å»ºå­¦ç”Ÿæ–‡ä»¶å¤„ç†å¯¹è±¡
 		if(num.equals(deal.findNumByName(name)))
 		{
 			/*this.setVisible(false);
-			//½«µ±Ç°µÇÂ¼´°¿ÚÒş²Ø
+			//å°†å½“å‰ç™»å½•çª—å£éšè—
 			MainFrame main=new MainFrame();
-			//´´½¨Ö÷´°¿Ú£¬²¢ÏÔÊ¾*/
+			//åˆ›å»ºä¸»çª—å£ï¼Œå¹¶æ˜¾ç¤º*/
 			this.setSize(800, 600);
-			//ĞŞ¸Ä´°ÌåµÄ´óĞ¡
-			this.setTitle("Ö÷´°¿Ú");
+			//ä¿®æ”¹çª—ä½“çš„å¤§å°
+			this.setTitle("ä¸»çª—å£");
 			this.getContentPane().removeAll();
-			//½«´°¿ÚÉÏµÄËùÓĞ¿Ø¼şÒÆ³ı
-			initSelectPanel();//³õÊ¼»¯Ñ¡ÔñÃæ°å
-			initControlPa();//³õÊ¼»¯²Ù×÷Ãæ°å
+			//å°†çª—å£ä¸Šçš„æ‰€æœ‰æ§ä»¶ç§»é™¤
+			initSelectPanel();//åˆå§‹åŒ–é€‰æ‹©é¢æ¿
+			initControlPa();//åˆå§‹åŒ–æ“ä½œé¢æ¿
 		}
 		}
 		else
 		{
-			if(bt.getText().equals("²éÕÒ"))
+			if(bt.getText().equals("æŸ¥æ‰¾"))
 			{
 				StudentDeal deal=new StudentDeal();
 				String name=deal.findNameByNum(numTxt.getText().trim());
 				nameTxt.setText(name);
 				
 			}
-			if(bt.getText().equals("Ìí¼Ó"))
+			if(bt.getText().equals("æ·»åŠ "))
 			{	
 				StudentDeal deal=new StudentDeal();
 				StudentInfo  tmp=new StudentInfo();
@@ -160,13 +160,13 @@ public class LoginFrame extends JFrame implements ActionListener,MouseListener{
 				tmp.setNum(num);
 				deal.addStudent(tmp);
 			}
-			if(bt.getText().equals("É¾³ı"))
+			if(bt.getText().equals("åˆ é™¤"))
 			{	
 				StudentDeal deal=new StudentDeal();
 				String num=numTxt.getText();
 				deal.deleteStudent(num);
 			}
-			if(bt.getText().equals("ĞŞ¸Ä"))
+			if(bt.getText().equals("ä¿®æ”¹"))
 			{	
 				StudentDeal deal=new StudentDeal();
 				StudentInfo  tmp=new StudentInfo();
@@ -189,7 +189,7 @@ public class LoginFrame extends JFrame implements ActionListener,MouseListener{
 		selectPa.setLayout(null);
 		selectPa.setSize(200, 600);
 		selectPa.setBackground(Color.orange);
-		String[] strs={"Ôö¼ÓÑ§Éú","É¾³ıÑ§Éú","ĞŞ¸ÄÑ§Éú","²éÕÒÑ§Éú"};
+		String[] strs={"å¢åŠ å­¦ç”Ÿ","åˆ é™¤å­¦ç”Ÿ","ä¿®æ”¹å­¦ç”Ÿ","æŸ¥æ‰¾å­¦ç”Ÿ"};
 		selectBts=new JButton[strs.length];
 		for(int i=0;i<selectBts.length;i++)
 		{
@@ -219,15 +219,15 @@ public class LoginFrame extends JFrame implements ActionListener,MouseListener{
 	    JButton sourceBt=(JButton)e.getSource();
 	    System.out.println("OK");
 		String str=sourceBt.getText();
-		if(str.equals("²éÕÒÑ§Éú"))
+		if(str.equals("æŸ¥æ‰¾å­¦ç”Ÿ"))
 		{
 			controlPa.removeAll();
-			//Çå¿Õ²Ù×÷Ãæ°åµÄËùÓĞ¿Ø¼ş
-			numLa=new JLabel("ÇëÊäÈëÑ§ºÅ");
+			//æ¸…ç©ºæ“ä½œé¢æ¿çš„æ‰€æœ‰æ§ä»¶
+			numLa=new JLabel("è¯·è¾“å…¥å­¦å·");
 			numLa.setSize(100, 30);
 			numLa.setLocation(30, 30);
 			controlPa.add(numLa);
-			nameLa=new JLabel("Ñ§ÉúĞÕÃû");
+			nameLa=new JLabel("å­¦ç”Ÿå§“å");
 			nameLa.setSize(100, 30);
 			nameLa.setLocation(30, 80);
 			controlPa.add(nameLa);
@@ -239,22 +239,22 @@ public class LoginFrame extends JFrame implements ActionListener,MouseListener{
 			nameTxt.setSize(100, 30);
 			nameTxt.setLocation(140, 80);
 			controlPa.add(nameTxt);
-			findBt=new JButton("²éÕÒ");
+			findBt=new JButton("æŸ¥æ‰¾");
 			findBt.setSize(60, 30);
 			findBt.setLocation(120, 130);
 			findBt.addActionListener(this);
 			controlPa.add(findBt);
 			this.getContentPane().repaint();
 		}
-		if(str.equals("Ôö¼ÓÑ§Éú"))
+		if(str.equals("å¢åŠ å­¦ç”Ÿ"))
 		{
 			controlPa.removeAll();
-			//Çå¿Õ²Ù×÷Ãæ°åµÄËùÓĞ¿Ø¼ş
-			numLa=new JLabel("ÇëÊäÈëÑ§ºÅ");
+			//æ¸…ç©ºæ“ä½œé¢æ¿çš„æ‰€æœ‰æ§ä»¶
+			numLa=new JLabel("è¯·è¾“å…¥å­¦å·");
 			numLa.setSize(100, 30);
 			numLa.setLocation(30, 30);
 			controlPa.add(numLa);
-			nameLa=new JLabel("Ñ§ÉúĞÕÃû");
+			nameLa=new JLabel("å­¦ç”Ÿå§“å");
 			nameLa.setSize(100, 30);
 			nameLa.setLocation(30, 80);
 			controlPa.add(nameLa);
@@ -266,18 +266,18 @@ public class LoginFrame extends JFrame implements ActionListener,MouseListener{
 			nameTxt.setSize(100, 30);
 			nameTxt.setLocation(140, 80);
 			controlPa.add(nameTxt);
-			findBt=new JButton("Ìí¼Ó");
+			findBt=new JButton("æ·»åŠ ");
 			findBt.setSize(60, 30);
 			findBt.setLocation(120, 130);
 			findBt.addActionListener(this);
 			controlPa.add(findBt);
 			this.getContentPane().repaint();
 		}
-		if(str.equals("É¾³ıÑ§Éú"))
+		if(str.equals("åˆ é™¤å­¦ç”Ÿ"))
 		{
 			controlPa.removeAll();
-			//Çå¿Õ²Ù×÷Ãæ°åµÄËùÓĞ¿Ø¼ş
-			numLa=new JLabel("ÇëÊäÈëÒªÉ¾³ıµÄÑ§ºÅ");
+			//æ¸…ç©ºæ“ä½œé¢æ¿çš„æ‰€æœ‰æ§ä»¶
+			numLa=new JLabel("è¯·è¾“å…¥è¦åˆ é™¤çš„å­¦å·");
 			numLa.setSize(150, 30);
 			numLa.setLocation(30, 30);
 			controlPa.add(numLa);
@@ -286,26 +286,26 @@ public class LoginFrame extends JFrame implements ActionListener,MouseListener{
 			numTxt.setLocation(160, 30);
 			controlPa.add(numTxt);
 			nameTxt=new JTextField();
-			findBt=new JButton("É¾³ı");
+			findBt=new JButton("åˆ é™¤");
 			findBt.setSize(60, 30);
 			findBt.setLocation(120, 130);
 			findBt.addActionListener(this);
 			controlPa.add(findBt);
 			this.getContentPane().repaint();
 		}
-		if(str.equals("ĞŞ¸ÄÑ§Éú"))
+		if(str.equals("ä¿®æ”¹å­¦ç”Ÿ"))
 		{
 			controlPa.removeAll();
-			//Çå¿Õ²Ù×÷Ãæ°åµÄËùÓĞ¿Ø¼ş
-			numLa=new JLabel("ÇëÊäÈëÒªĞŞ¸ÄµÄÑ§ºÅ");
+			//æ¸…ç©ºæ“ä½œé¢æ¿çš„æ‰€æœ‰æ§ä»¶
+			numLa=new JLabel("è¯·è¾“å…¥è¦ä¿®æ”¹çš„å­¦å·");
 			numLa.setSize(150, 30);
 			numLa.setLocation(30, 30);
 			controlPa.add(numLa);
-			numLa=new JLabel("ÇëÊäÈëĞŞ¸ÄºóµÄÑ§ºÅ");
+			numLa=new JLabel("è¯·è¾“å…¥ä¿®æ”¹åçš„å­¦å·");
 			numLa.setSize(150, 30);
 			numLa.setLocation(30, 80);
 			controlPa.add(numLa);
-			nameLa=new JLabel("ÇëÊäÈëĞŞ¸ÄºóµÄÑ§ÉúĞÕÃû");
+			nameLa=new JLabel("è¯·è¾“å…¥ä¿®æ”¹åçš„å­¦ç”Ÿå§“å");
 			nameLa.setSize(150, 30);
 			nameLa.setLocation(30, 130);
 			controlPa.add(nameLa);
@@ -321,7 +321,7 @@ public class LoginFrame extends JFrame implements ActionListener,MouseListener{
 			rename.setSize(100, 30);
 			rename.setLocation(180, 130);
 			controlPa.add(rename);
-			findBt=new JButton("ĞŞ¸Ä");
+			findBt=new JButton("ä¿®æ”¹");
 			findBt.setSize(60, 30);
 			findBt.setLocation(120, 180);
 			findBt.addActionListener(this);

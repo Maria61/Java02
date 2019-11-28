@@ -10,9 +10,9 @@ public class ActionEventTest extends JFrame implements ActionListener,MouseListe
 	public ActionEventTest()
 	{
 		this.setSize(300, 150);
-		this.setTitle("¶¯×÷ÊÂ¼şÊµÀı");
+		this.setTitle("åŠ¨ä½œäº‹ä»¶å®ä¾‹");
 		bts=new JButton[3];
-		String[] colors={"ºìÉ«","À¶É«","ÂÌÉ«"};
+		String[] colors={"çº¢è‰²","è“è‰²","ç»¿è‰²"};
 		this.setLayout(null);
 		for(int i=0;i<bts.length;i++)
 		{
@@ -23,7 +23,7 @@ public class ActionEventTest extends JFrame implements ActionListener,MouseListe
 			//deal.frame=this;
 			//bts[i].addActionListener(this);
 			bts[i].addMouseListener(this);
-			//½«ÊÂ¼şÔ´ºÍÊÂ¼ş´¦Àí¶ÔÏó°ó¶¨
+			//å°†äº‹ä»¶æºå’Œäº‹ä»¶å¤„ç†å¯¹è±¡ç»‘å®š
 			this.add(bts[i]);
 		}
 		//bts[0].addActionListener(this);
@@ -32,20 +32,20 @@ public class ActionEventTest extends JFrame implements ActionListener,MouseListe
 		this.setVisible(true);
 	}
 	
-	//¾ßÌå´¦Àí¶¯×÷ÊÂ¼şµÄ´úÂë
+	//å…·ä½“å¤„ç†åŠ¨ä½œäº‹ä»¶çš„ä»£ç 
 	public void actionPerformed(ActionEvent e)
 	{
 		JButton sourceBt=(JButton)e.getSource();
-		//»ñÈ¡ÊÂ¼şÔ´£¬²¢Ç¿ÖÆ×ª»»Îª°´Å¥¶ÔÏó
+		//è·å–äº‹ä»¶æºï¼Œå¹¶å¼ºåˆ¶è½¬æ¢ä¸ºæŒ‰é’®å¯¹è±¡
 		String colorTxt=sourceBt.getText();
-		//»ñÈ¡°´Å¥ÉÏµÄÎÄ±¾
-		if(colorTxt.equals("ºìÉ«"))
+		//è·å–æŒ‰é’®ä¸Šçš„æ–‡æœ¬
+		if(colorTxt.equals("çº¢è‰²"))
 		{
 			this.getContentPane().setBackground(Color.RED);
 		}
 		else
 		{
-			if(colorTxt.equals("À¶É«"))
+			if(colorTxt.equals("è“è‰²"))
 			{
 				this.getContentPane().setBackground(Color.blue);
 			}
@@ -59,16 +59,16 @@ public class ActionEventTest extends JFrame implements ActionListener,MouseListe
 	 public void mouseClicked(MouseEvent e)
 	 {
 		 JButton sourceBt=(JButton)e.getSource();
-			//»ñÈ¡ÊÂ¼şÔ´£¬²¢Ç¿ÖÆ×ª»»Îª°´Å¥¶ÔÏó
+			//è·å–äº‹ä»¶æºï¼Œå¹¶å¼ºåˆ¶è½¬æ¢ä¸ºæŒ‰é’®å¯¹è±¡
 			String colorTxt=sourceBt.getText();
-			//»ñÈ¡°´Å¥ÉÏµÄÎÄ±¾
-			if(colorTxt.equals("ºìÉ«"))
+			//è·å–æŒ‰é’®ä¸Šçš„æ–‡æœ¬
+			if(colorTxt.equals("çº¢è‰²"))
 			{
 				this.getContentPane().setBackground(Color.RED);
 			}
 			else
 			{
-				if(colorTxt.equals("À¶É«"))
+				if(colorTxt.equals("è“è‰²"))
 				{
 					this.getContentPane().setBackground(Color.blue);
 				}
@@ -83,37 +83,37 @@ public class ActionEventTest extends JFrame implements ActionListener,MouseListe
 	 public void mouseEntered(MouseEvent e)
 	 {
 		 JButton sourceBt=(JButton)e.getSource();
-		 //»ñÈ¡ÊÂ¼şÔ´£¬²¢Ç¿ÖÆ×ª»»Îª°´Å¥¶ÔÏó
+		 //è·å–äº‹ä»¶æºï¼Œå¹¶å¼ºåˆ¶è½¬æ¢ä¸ºæŒ‰é’®å¯¹è±¡
 		 sourceBt.setBackground(Color.yellow);
 	 }
 	 public void mouseExited(MouseEvent e)
 	 {
 		 JButton sourceBt=(JButton)e.getSource();
-		 //»ñÈ¡ÊÂ¼şÔ´£¬²¢Ç¿ÖÆ×ª»»Îª°´Å¥¶ÔÏó
+		 //è·å–äº‹ä»¶æºï¼Œå¹¶å¼ºåˆ¶è½¬æ¢ä¸ºæŒ‰é’®å¯¹è±¡
 		 sourceBt.setBackground(Color.white);
 	 }
 	 
 	    public void windowOpened(WindowEvent e)
 	    {
-	    	System.out.println("´°ÌåÒÑ¾­´ò¿ª");
+	    	System.out.println("çª—ä½“å·²ç»æ‰“å¼€");
 	    }
 	    public void windowClosing(WindowEvent e){
-	    	System.out.println("´°ÌåÕıÔÚ¹Ø±Õ");
+	    	System.out.println("çª—ä½“æ­£åœ¨å…³é—­");
 	    }
 	    public void windowClosed(WindowEvent e){
-	    	System.out.println("´°ÌåÒÑ¾­¹Ø±Õ");
+	    	System.out.println("çª—ä½“å·²ç»å…³é—­");
 	    }
 	    public void windowIconified(WindowEvent e){
-	    	System.out.println("´°Ìå×îĞ¡»¯");
+	    	System.out.println("çª—ä½“æœ€å°åŒ–");
 	    }
 	    public void windowDeiconified(WindowEvent e){
-	    	System.out.println("´°Ìå×î´ó»¯");
+	    	System.out.println("çª—ä½“æœ€å¤§åŒ–");
 	    }
 	    public void windowActivated(WindowEvent e){
-	    	System.out.println("´°Ìå»ñµÃ½¹µã");
+	    	System.out.println("çª—ä½“è·å¾—ç„¦ç‚¹");
 	    }
 	    public void windowDeactivated(WindowEvent e){
-	    	System.out.println("´°ÌåÊ§È¥½¹µã");
+	    	System.out.println("çª—ä½“å¤±å»ç„¦ç‚¹");
 	    }
 	
 }
