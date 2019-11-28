@@ -28,7 +28,7 @@ public class SolutionDaily1126 {
         return null;
     }
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         Map<String, Integer> map = new TreeMap<>();
         map.put("acb", 12);
         map.put("sdf", 12);
@@ -37,4 +37,9 @@ public class SolutionDaily1126 {
             System.out.println(m.getKey() + "," + m.getValue());
         }
     }
+
+    public static void main(String[] args) {
+
+    }
+
 }
