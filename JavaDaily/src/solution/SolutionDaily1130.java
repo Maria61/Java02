@@ -1,0 +1,83 @@
+package solution;
+
+import java.util.Scanner;
+
+/**
+ * @author Maria
+ * @program JavaDaily
+ * @date 2019/12/2 14:16
+ */
+
+public class SolutionDaily1130 {
+    static boolean[] flag = new boolean[5];
+
+    public boolean isBalance(TreeNode root) {
+        return false;
+    }
+
+    public static double[] judge(String s) {
+        int f = 0;
+        double[] re = new double[5];
+        String[] s1 = s.split(" ");
+        int[] nums = new int[s1.length];
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = Integer.parseInt(s1[i]);
+        }
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] % 5 == 0) {
+                if (nums[j] % 2 == 0) {
+                    flag[0] = true;
+                    re[0] += nums[j];
+                }
+            }
+            if (nums[j] % 5 == 1) {
+                flag[1] = true;
+                re[1] += (Math.pow(-1, f) * nums[j]);
+                f++;
+            }
+            if (nums[j] % 5 == 2) {
+                flag[2] = true;
+                re[2] += 1;
+            }
+            if (nums[j] % 5 == 3) {
+                flag[3] = true;
+                count++;
+                re[3] += nums[j];
+            }
+            if (nums[j] % 5 == 4) {
+                flag[4] = true;
+                re[4] = Math.max(re[4], nums[j]);
+            }
+
+        }
+        re[3] = re[3] / count;
+        return re;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        double[] re = judge(s);
+        for (int i = 0; i < re.length; i++) {
+            if (flag[i] == false) {
+                if (i == re.length - 1) {
+                    System.out.print("N");
+                } else {
+                    System.out.print("N ");
+                }
+            } else if (i == re.length - 1) {
+                System.out.printf("%.0f", re[i]);
+            } else {
+                if (i == 3) {
+                    System.out.printf("%.1f ", re[i]);
+                } else {
+
+                    System.out.printf("%.0f ", re[i]);
+                }
+            }
+
+        }
+    }
+
+}
