@@ -19,12 +19,12 @@ public class SolutionDaily1130 {
         int f = 0;
         double[] re = new double[5];
         String[] s1 = s.split(" ");
-        int[] nums = new int[s1.length];
+        int[] nums = new int[Integer.parseInt(s1[0])];
         int count = 0;
         for (int i = 0; i < nums.length; i++) {
             nums[i] = Integer.parseInt(s1[i]);
         }
-        for (int j = 0; j < nums.length; j++) {
+        for (int j = 1; j < nums.length; j++) {
             if (nums[j] % 5 == 0) {
                 if (nums[j] % 2 == 0) {
                     flag[0] = true;
