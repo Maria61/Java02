@@ -25,11 +25,11 @@ public class FileTest {
 //        for(File f : d.listFiles()){
 //            System.out.println(f.getPath());
 //        }
-        File f = new File("E:/learningcode/Java02/JavaDaily/src");
+        File f = new File("E:/learningcode/Java02/JavaDaily/src/io");
         List<File> l = listFiles(f);
 //        l.stream().forEach(System.out::println);
         l.stream().forEach((file2) -> {
-            System.out.println(f);
+            System.out.println(file2.getPath());
         });
     }
 
