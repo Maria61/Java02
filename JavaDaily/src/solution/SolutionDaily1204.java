@@ -30,17 +30,20 @@ public class SolutionDaily1204 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        sc.nextLine();
-        String[] candidate = new String[n];
-        String s = sc.nextLine();
-        addCandidate(s, candidate);
-        int v = sc.nextInt();
-        sc.nextLine();
-        String[] vote = new String[v];
-        s = sc.nextLine();
-        Vote(s, vote);
-        printResult(candidate, vote);
+        while (sc.hasNext()) {
+            int n = sc.nextInt();
+            sc.nextLine();
+            String[] candidate = new String[n];
+            String s = sc.nextLine();
+            candidate = addCandidate(s, candidate);
+            int v = sc.nextInt();
+            sc.nextLine();
+            String[] vote = new String[v];
+            s = sc.nextLine();
+            vote = Vote(s, vote);
+            printResult(candidate, vote);
+        }
+
     }
 
     private static void printResult(String[] candidate, String[] vote) {
@@ -62,18 +65,20 @@ public class SolutionDaily1204 {
 
     }
 
-    private static void Vote(String s, String[] vote) {
+    private static String[] Vote(String s, String[] vote) {
         String[] c = s.split(" ");
         for (int i = 0; i < vote.length; i++) {
             vote[i] = c[i];
         }
+        return vote;
     }
 
-    private static void addCandidate(String s, String[] candidate) {
+    private static String[] addCandidate(String s, String[] candidate) {
         String[] c = s.split(" ");
         for (int i = 0; i < candidate.length; i++) {
             candidate[i] = c[i];
         }
+        return candidate;
     }
 
 
