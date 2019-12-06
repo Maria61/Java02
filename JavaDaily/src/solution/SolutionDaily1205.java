@@ -8,6 +8,7 @@ import java.util.Scanner;
  * @date 2019/12/6 16:13
  */
 public class SolutionDaily1205 {
+    //找X
     public static void main1(String[] args) {
         int re = -1;
         Scanner sc = new Scanner(System.in);
@@ -25,6 +26,20 @@ public class SolutionDaily1205 {
                 }
             }
             System.out.println(re);
+        }
+    }
+
+    //整数与IP地址之间的转换
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()) {
+            String s = sc.nextLine();
+            char[] c = s.toCharArray();
+            for (int i = 0; i < c.length; i++) {
+                if (c[i] == '.') {
+
+                }
+            }
         }
     }
 }
