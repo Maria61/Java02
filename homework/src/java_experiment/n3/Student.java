@@ -10,6 +10,13 @@ public class Student extends Person {
     private String cname;
     private int score;
 
+    public Student(String name,String gender,int age,int id,String cname,int score) {
+        super(name,gender,age);
+        this.id = id;
+        this.cname = cname;
+        this.score = score;
+    }
+
     public int getId() {
         return id;
     }
@@ -35,7 +42,7 @@ public class Student extends Person {
     }
 
     public void display(){
-        System.out.println(" 姓名："+getName()+" 性别："+getGender()+" 年龄："+
+        System.out.println("姓名："+getName()+" 性别："+getGender()+" 年龄："+
                 getAge()+" 学号：" +id+" 班名："+cname+" 成绩："+score);
     }
 }
