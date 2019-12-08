@@ -16,13 +16,16 @@ import java.net.Socket;
 public class TcpServer {
     private static final int PORT = 9999;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        InputStream inputStream = null;
+        InputStreamReader ins = null;
+        BufferedReader reader = null;
         try {
             ServerSocket server = new ServerSocket(PORT);
             Socket socket = server.accept();//不同的客户端，对应不同的socket对象
-            InputStream inputStream = socket.getInputStream();
-            InputStreamReader ins = new InputStreamReader(inputStream);
-            BufferedReader reader = new BufferedReader(ins);
+            inputStream = socket.getInputStream();
+            ins = new InputStreamReader(inputStream);
+            reader = new BufferedReader(ins);
             String data = null;
             while ((data = reader.readLine()) != null) {
                 System.out.println(data);
@@ -30,7 +33,9 @@ public class TcpServer {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-
+            reader.close();
+            ins.close();
+            inputStream.close();
 
         }
 
