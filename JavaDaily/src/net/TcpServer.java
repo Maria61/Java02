@@ -1,11 +1,9 @@
 package net;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 /**
  * @author Maria
@@ -23,12 +21,20 @@ public class TcpServer {
         try {
             ServerSocket server = new ServerSocket(PORT);
             Socket socket = server.accept();//不同的客户端，对应不同的socket对象
+            //服务端接收客服端数据输入流
             inputStream = socket.getInputStream();
             ins = new InputStreamReader(inputStream);
             reader = new BufferedReader(ins);
+            //服务端发送数据输出流
+            OutputStream os = socket.getOutputStream();
+            PrintWriter writer = new PrintWriter(os, true);
             String data = null;
+            Scanner sc = new Scanner(System.in);
             while ((data = reader.readLine()) != null) {
-                System.out.println(data);
+                System.out.println("服务端接收到：" + data);
+                System.out.print("服务端：");
+                String s = sc.nextLine();
+                writer.println(s);
             }
         } catch (IOException e) {
             e.printStackTrace();
