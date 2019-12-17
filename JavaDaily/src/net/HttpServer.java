@@ -104,6 +104,50 @@ class HttpTask implements Runnable {
                     pw.println("HTTP/1.0 302 重定向");
                     pw.println("Content-Type: text/html;charset=utf-8");
                     pw.println("Location: https://www.baidu.com");
+                } else if ("/login".equals(request.getUrl())) {
+                    String sessionId = request.getHeader("SESSIONID");
+                    if (sessionId == null) {
+                        String username = request.getParameter("username");
+                        String password = request.getParameter("password");
+                    }
+                    pw.println("HTTP/1.1 200 OK");
+                    pw.println("Content-Type: text/html;charset=utf-8");
+                    pw.println();
+                    pw.println("<h2>欢迎用户["
+                            + request.getParameter("username")
+                            + "]登录</h2>");
+                } else if ("/setCookie".equals(request.getUrl())) {
+                    pw.println("HTTP/1.1 200 OK");
+                    pw.println("Set-Cookie");
+                    pw.println("Content-Type: text/html;charset=utf-8");
+                    pw.println();
+                } else {
+                    //访问/login.html,转化为访问./login.html
+                    InputStream htmlIs = HttpServer.class.getClassLoader()
+                            .getResourceAsStream("." + request.getUrl());
+                    if (htmlIs != null) {
+                        pw.println("HTTP/1.1 200 OK");
+                        pw.println("Content-Type: text/html;charset=utf-8");
+                        pw.println();
+                        //返回静态资源文件
+                        InputStreamReader htmlIsr = new InputStreamReader(htmlIs);//字节流转换为字符流
+                        BufferedReader bf = new BufferedReader(htmlIsr);
+                        String content;
+                        System.out.println("=============1");
+                        while ((content = bf.readLine()) != null) {
+                            System.out.println("=================2");
+                            pw.println(content);
+                        }
+
+                    } else {
+                        //返回404
+                        pw.println("HTTP/1.1 404 Not Found");
+                        pw.println("Content-Type: text/html;charset=utf-8");
+                        pw.println();
+                        pw.println("<h2>找不到资源</h2>");
+                    }
+
+
                 }
 
 
