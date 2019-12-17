@@ -99,17 +99,16 @@ class HttpTask implements Runnable {
                 os = socket.getOutputStream();
                 pw = new PrintWriter(os, true);//需要自动刷新
 
-                //?????
                 if ("/302".equals(request.getUrl())) {
                     pw.println("HTTP/1.0 302 重定向");
                     pw.println("Content-Type: text/html;charset=utf-8");
                     pw.println("Location: https://www.baidu.com");
                 } else if ("/login".equals(request.getUrl())) {
-                    String sessionId = request.getHeader("SESSIONID");
-                    if (sessionId == null) {
-                        String username = request.getParameter("username");
-                        String password = request.getParameter("password");
-                    }
+//                    String sessionId = request.getHeader("SESSIONID");
+//                    if (sessionId == null) {
+//                        String username = request.getParameter("username");
+//                        String password = request.getParameter("password");
+//                    }
                     pw.println("HTTP/1.1 200 OK");
                     pw.println("Content-Type: text/html;charset=utf-8");
                     pw.println();
@@ -124,7 +123,7 @@ class HttpTask implements Runnable {
                 } else {
                     //访问/login.html,转化为访问./login.html
                     InputStream htmlIs = HttpServer.class.getClassLoader()
-                            .getResourceAsStream("." + request.getUrl());
+                            .getResourceAsStream("." + request.getUrl());//返回值？
                     if (htmlIs != null) {
                         pw.println("HTTP/1.1 200 OK");
                         pw.println("Content-Type: text/html;charset=utf-8");
@@ -133,9 +132,7 @@ class HttpTask implements Runnable {
                         InputStreamReader htmlIsr = new InputStreamReader(htmlIs);//字节流转换为字符流
                         BufferedReader bf = new BufferedReader(htmlIsr);
                         String content;
-                        System.out.println("=============1");
                         while ((content = bf.readLine()) != null) {
-                            System.out.println("=================2");
                             pw.println(content);
                         }
 
