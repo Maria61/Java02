@@ -3,6 +3,9 @@ package net;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -21,6 +24,7 @@ public class HttpServer {
     private static final ExecutorService EXE
             = Executors.newFixedThreadPool(COUNT);//创建固定大小为COUNT的线程池
 
+    public static Map<String, Object> SESSION_MAP = new HashMap<>();
     public static void main(String[] args) {
         try {
             ServerSocket server = new ServerSocket(PORT);
@@ -104,17 +108,20 @@ class HttpTask implements Runnable {
                     pw.println("Content-Type: text/html;charset=utf-8");
                     pw.println("Location: https://www.baidu.com");
                 } else if ("/login".equals(request.getUrl())) {
-//                    String sessionId = request.getHeader("SESSIONID");
-//                    if (sessionId == null) {
-//                        String username = request.getParameter("username");
-//                        String password = request.getParameter("password");
-//                    }
                     pw.println("HTTP/1.1 200 OK");
+                    String username = request.getParameter("username");
+                    String password = request.getParameter("password");
+                    //判断用户名密码是否合法
+                    String sessionId = UUID.randomUUID().toString();
+                    HttpServer.SESSION_MAP.put(sessionId, username);
+                    pw.println("Set-Cookie: SESSIONID=" + sessionId);
                     pw.println("Content-Type: text/html;charset=utf-8");
-                    pw.println();
-                    pw.println("<h2>欢迎用户["
+                    String content = "<h2>欢迎用户["
                             + request.getParameter("username")
-                            + "]登录</h2>");
+                            + "]登录</h2>";
+                    pw.println("Content-Length: " + content.getBytes());
+                    pw.println();
+                    pw.println(content);
                 } else if ("/setCookie".equals(request.getUrl())) {
                     pw.println("HTTP/1.1 200 OK");
                     pw.println("Set-Cookie");
