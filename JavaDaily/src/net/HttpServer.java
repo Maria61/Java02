@@ -119,14 +119,43 @@ class HttpTask implements Runnable {
                     String content = "<h2>欢迎用户["
                             + request.getParameter("username")
                             + "]登录</h2>";
-                    pw.println("Content-Length: " + content.getBytes());
+                    pw.println("Content-Length: " + content.getBytes().length);
                     pw.println();
                     pw.println(content);
                 } else if ("/setCookie".equals(request.getUrl())) {
                     pw.println("HTTP/1.1 200 OK");
-                    pw.println("Set-Cookie");
+                    String sessionId = UUID.randomUUID().toString();
+                    pw.println("Set-Cookie: SESSIONID=" + sessionId);
                     pw.println("Content-Type: text/html;charset=utf-8");
+                    String content = "设置Cookie成功";
+                    pw.println("Content-Length: " + content.getBytes().length);
                     pw.println();
+                    pw.println(content);
+                } else if ("/getCookie".equals(request.getUrl())) {
+                    String cookie = request.getHeader("Cookie");
+                    String[] cookies = cookie.split(";");
+                    for (String s : cookies) {
+                        String[] s2 = s.split("=");
+                        String key = s2[0].trim();
+                        String value = s2[1].trim();
+                        if (key.equals("SESSIONID")
+                                && HttpServer.SESSION_MAP.containsKey(value)) {
+                            pw.println("HTTP/1.1 200 OK");
+                            pw.println("Content-Type: text/html; charset=utf-8");
+                            String content = "<h2>用户"
+                                    + HttpServer.SESSION_MAP.get(value) + "能够访问</h2>";
+                            pw.println("Content-Length: " + content.getBytes().length);
+                            pw.println();
+                            pw.println(content);
+                            return;
+                        }
+                    }
+                    pw.println("HTTP/1.1 403 Forbidden");
+                    pw.println("Content-Type: text/html; charset=utf-8");
+                    String content = "没有访问权限";
+                    pw.println("Content-Length: " + content.getBytes().length);
+                    pw.println();
+                    pw.println(content);
                 } else {
                     //访问/login.html,转化为访问./login.html
                     InputStream htmlIs = HttpServer.class.getClassLoader()
