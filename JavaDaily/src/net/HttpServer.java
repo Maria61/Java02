@@ -122,7 +122,7 @@ class HttpTask implements Runnable {
                     pw.println("Content-Length: " + content.getBytes().length);
                     pw.println();
                     pw.println(content);
-                } else if ("/setCookie".equals(request.getUrl())) {
+                } else if ("/setCookie".equals(request.getUrl())) {//?????
                     pw.println("HTTP/1.1 200 OK");
                     String sessionId = UUID.randomUUID().toString();
                     pw.println("Set-Cookie: SESSIONID=" + sessionId);
@@ -131,7 +131,7 @@ class HttpTask implements Runnable {
                     pw.println("Content-Length: " + content.getBytes().length);
                     pw.println();
                     pw.println(content);
-                } else if ("/getCookie".equals(request.getUrl())) {
+                } else if ("/getCookie".equals(request.getUrl())) {//????
                     String cookie = request.getHeader("Cookie");
                     String[] cookies = cookie.split(";");
                     for (String s : cookies) {
