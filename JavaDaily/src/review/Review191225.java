@@ -20,6 +20,14 @@ interface D {
 }
 
 class A {
+
+    public A(int a) {
+        System.out.println("有参构造");
+    }
+
+    A() {
+        System.out.println("无参构造");
+    }
     public void method() {
         System.out.println("A中的方法");
     }
@@ -30,6 +38,11 @@ class A {
 }
 
 class B extends A {
+
+    public B() {
+
+    }
+
     public void method() {
         System.out.println("B中的方法");
     }
