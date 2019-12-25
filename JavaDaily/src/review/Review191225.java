@@ -5,6 +5,19 @@ package review;
  * @program JavaDaily
  * @date 2019/12/25 15:24
  */
+abstract class C {
+    public void method() {
+        System.out.println("sadfsa");
+    }
+}
+
+interface D {
+    public void method();
+
+    static void method1() {
+
+    }
+}
 
 class A {
     public void method() {
