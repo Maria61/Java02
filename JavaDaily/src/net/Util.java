@@ -8,6 +8,6 @@ package net;
 //????
 public class Util {
     public static void main(String[] args) {
-        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
+//        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
     }
 }
