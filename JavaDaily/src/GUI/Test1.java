@@ -22,6 +22,7 @@ public class Test1 {
 
         JPanel panel = new JPanel();
         panel.setSize(300, 200);
+        panel.setBounds(10, 10, 10, 10);
         panel.setLocation(1000, 1000);
         panel.setLayout(new GridLayout(1, 4));
         panel.setVisible(true);
