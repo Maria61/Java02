@@ -17,8 +17,8 @@ public class SolutionDaily1114 {
     }
 
     public void method(String str, char c[]) {
-//        str = "test";
-        str = new String("test");
+//        str = "Test1";
+        str = new String("Test1");
         c[0] = 'c';
     }
 
