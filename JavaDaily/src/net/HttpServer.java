@@ -113,7 +113,7 @@ class HttpTask implements Runnable {
                     String password = request.getParameter("password");
                     //判断用户名密码是否合法
                     String sessionId = UUID.randomUUID().toString();
-                    HttpServer.SESSION_MAP.put(sessionId, username);//????
+                    HttpServer.SESSION_MAP.put(sessionId, username);
                     pw.println("Set-Cookie: SESSIONID=" + sessionId);
                     pw.println("Content-Type: text/html;charset=utf-8");
                     String content = "<h2>欢迎用户["
