@@ -122,7 +122,7 @@ class HttpTask implements Runnable {
                     pw.println("Content-Length: " + content.getBytes().length);
                     pw.println();
                     pw.println(content);
-                } else if ("/setCookie".equals(request.getUrl())) {//
+                } else if ("/setCookie".equals(request.getUrl())) {//设置cookie,记录登录访客
                     pw.println("HTTP/1.1 200 OK");
                     String sessionId = UUID.randomUUID().toString();//返回随机字符串
                     pw.println("Set-Cookie: SESSIONID=" + sessionId);
