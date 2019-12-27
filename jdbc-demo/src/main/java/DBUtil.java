@@ -64,7 +64,6 @@ public class DBUtil {
      * 4.执行sql获取结果集ResultSet
      * 5.处理结果集
      * 6.释放资源
-     * @param args
      */
     public static void main(String[] args)  {
 
