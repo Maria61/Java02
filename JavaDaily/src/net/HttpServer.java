@@ -24,7 +24,7 @@ public class HttpServer {
     private static final ExecutorService EXE
             = Executors.newFixedThreadPool(COUNT);//创建固定大小为COUNT的线程池
 
-    public static Map<String, Object> SESSION_MAP = new HashMap<>();
+    public static final Map<String, Object> SESSION_MAP = new HashMap<>();
     public static void main(String[] args) {
         try {
             ServerSocket server = new ServerSocket(PORT);
@@ -122,9 +122,9 @@ class HttpTask implements Runnable {
                     pw.println("Content-Length: " + content.getBytes().length);
                     pw.println();
                     pw.println(content);
-                } else if ("/setCookie".equals(request.getUrl())) {//?????
+                } else if ("/setCookie".equals(request.getUrl())) {//
                     pw.println("HTTP/1.1 200 OK");
-                    String sessionId = UUID.randomUUID().toString();
+                    String sessionId = UUID.randomUUID().toString();//返回随机字符串
                     pw.println("Set-Cookie: SESSIONID=" + sessionId);
                     pw.println("Content-Type: text/html;charset=utf-8");
                     String content = "设置Cookie成功";
