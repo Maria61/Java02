@@ -10,8 +10,10 @@ public class Staff extends Employee {
     private String level;
     private String title;
 
-    public Staff(String office,int s,MyDate date,MyDate workTime, String level, String title) {
-        super(office,s,date);
+    public Staff(String name, String address, String telephone,
+                 String email, String office, int salary, MyDate employeeDate,
+                 MyDate workTime, String level, String title) {
+        super(name, address, telephone, email, office, salary, employeeDate);
         this.workTime = workTime;
         this.level = level;
         this.title = title;
@@ -44,9 +46,6 @@ public class Staff extends Employee {
     @Override
     public String toString() {
         return "Staff{" +
-                "workTime=" + workTime +
-                ", level='" + level + '\'' +
-                ", title='" + title + '\'' +
-                '}';
+                " 姓名："+getName()+" 地址："+getAddress()+" 电话："+getTelephone()+" email："+getEmail()+" 职位："+getTitle()+" 办公室："+getOffice()+"}";
     }
 }

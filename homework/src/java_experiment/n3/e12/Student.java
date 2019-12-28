@@ -11,6 +11,10 @@ public class Student extends Person {
     private final String CLASSSTATUS3 = "三年级";
     private final String CLASSSTATUS4 = "四年级";
 
+    public Student(String name, String address, String telephone, String email) {
+        super(name, address, telephone, email);
+    }
+
     public String getCLASSSTATUS1() {
         return CLASSSTATUS1;
     }

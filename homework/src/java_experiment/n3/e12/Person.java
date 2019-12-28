@@ -11,6 +11,13 @@ public class Person {
     private String telephone;
     private String email;
 
+    public Person(String name, String address, String telephone, String email) {
+        this.name = name;
+        this.address = address;
+        this.telephone = telephone;
+        this.email = email;
+    }
+
     public String getName() {
         return name;
     }
