@@ -1,13 +1,19 @@
 package operating_system_experiment.ex3;
 
-import java.util.Comparator;
-
+/**
+ * 内存块对象
+ */
 public class MemoryZone implements Comparable<MemoryZone> {
+    //内存块开始地址
     private int start;
+    //内存块大小
     private int size;
+    //内存块状态：空闲为false,工作为true
     private boolean status;
+    //若状态为true,则有对应的作业号（不为0），状态为false，workNum=0
     private int workNum;
 
+    //创造作业内存分区对象，状态默认为true，需传入作业号
     public MemoryZone(int start, int size, int workNum) {
         this.start = start;
         this.size = size;
@@ -15,6 +21,7 @@ public class MemoryZone implements Comparable<MemoryZone> {
         this.workNum = workNum;
     }
 
+    //创造空闲内存分区对象，状态默认为false
     public MemoryZone(int start, int size) {
         this.start = start;
         this.size = size;
@@ -53,19 +60,7 @@ public class MemoryZone implements Comparable<MemoryZone> {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "MemoryZone{" +
-                "start=" + start +
-                ", size=" + size +
-                ", status=" + status +
-                ", workNum=" + workNum +
-                '}';
-    }
-
-
-
-
+    //覆写comparaTo方法，使内存分配表按照内存分区开始地址排序
     @Override
     public int compareTo(MemoryZone o) {
         return this.getStart() - o.getStart();
