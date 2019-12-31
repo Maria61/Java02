@@ -80,13 +80,13 @@ public class Experiment1019 {
 
 
     public static void main(String[] args) {
-        System.out.println("HelloWorld!");
-        System.out.println("1000以内的素数为：");
-        primeNumber(1000);
-        System.out.println("1000以内的完数为：");
-        perfectNumber(1000);
-        System.out.println("1！+2！+3！+ …+n!≤9999,解得n为：");
-        factorial(9999);
+//        System.out.println("HelloWorld!");
+//        System.out.println("1000以内的素数为：");
+//        primeNumber(1000);
+//        System.out.println("1000以内的完数为：");
+//        perfectNumber(1000);
+//        System.out.println("1！+2！+3！+ …+n!≤9999,解得n为：");
+//        factorial(9999);
         System.out.println("所有水仙花数为：");
         narciNum();
     }
