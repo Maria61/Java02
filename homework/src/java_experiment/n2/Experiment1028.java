@@ -39,8 +39,8 @@ public class Experiment1028 {
 //        MyPoint p2 = new MyPoint(10,30.5);
 //        System.out.println(p1.distance(p2));
 //
-        Course c = new Course("123","大数据",1);
-        c.printCourseInfo();
+//        Course c = new Course("123","大数据",1);
+//        c.printCourseInfo();
     }
 
 }
