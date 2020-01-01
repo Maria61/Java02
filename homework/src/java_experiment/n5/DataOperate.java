@@ -71,14 +71,14 @@ class CreateGraph{
             if(button[i].getText().equals("添加")){
                 int j=i;
                 button[j].addActionListener(e1->{
-                    try{
+                    try {
                         if(!text[0].getText().equals("")&&!text[1].getText().equals("")) {
-                            String sql="insert into student_info(sno,name) values('"+text[0].getText(0,7)+"','"+text[1].getText(0,6)+"')";
+                            String sql="insert into student_info(sno,name) values('"+text[0].getText()+"','"+text[1].getText()+"')";
                             stmt.execute(sql);
                             stmt.close();
                             conn.close();
                         }
-                    }catch(SQLException | BadLocationException e){
+                    } catch (SQLException e) {
                         e.printStackTrace();
                     }
                 });
