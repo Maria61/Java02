@@ -77,6 +77,7 @@ class CreateGraph{
                             stmt.execute(sql);
                             stmt.close();
                             conn.close();
+
                         }
                     } catch (SQLException e) {
                         e.printStackTrace();
