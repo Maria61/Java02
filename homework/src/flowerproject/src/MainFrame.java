@@ -163,7 +163,8 @@ public class MainFrame extends JFrame implements ActionListener
 					}
 					else
 					{
-						AddOrUpdateFrame newFrame=new AddOrUpdateFrame("增加",null,this);
+						AddOrUpdateFrame newFrame=new AddOrUpdateFrame(
+								"增加",null,this);
 					}
 				}
 			}

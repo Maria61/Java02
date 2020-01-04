@@ -119,7 +119,8 @@ public void addFlower(FlowerInfo flower)
 public void delFlower(String name)
 {
 	try{
-		PreparedStatement ps=con.prepareStatement("delete from flower where name=?");
+		PreparedStatement ps=con.prepareStatement(
+		        "delete from flower where name=?");
 		//创建SQL语句执行对象
 		ps.setString(1, name);
 		ps.execute();
@@ -138,7 +139,8 @@ public void updateFlower(FlowerInfo flower)
 {
 	
 		try{
-			PreparedStatement ps=con.prepareStatement("update flower set other_name=?,family=?,florescence=?,distribution=?,characteristics=? where name=?");
+			PreparedStatement ps=con.prepareStatement(
+					"update flower set other_name=?,family=?,florescence=?,distribution=?,characteristics=? where name=?");
 			//创建SQL语句执行对象
 			ps.setString(1,flower.getOther_name());
 			ps.setString(2, flower.getFamily());
