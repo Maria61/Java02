@@ -19,6 +19,7 @@ public class EnumDemo {
     public static void main(String[] args) {
         Week w = Week.MONDAY;
         System.out.println(w);
+        //打印week的所有枚举值
         System.out.println(Arrays.toString(Week.values()));
     }
 
