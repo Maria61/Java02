@@ -180,11 +180,7 @@ class HttpTask implements Runnable {
                         pw.println();
                         pw.println("<h2>找不到资源</h2>");
                     }
-
-
                 }
-
-
             } finally {
                 if (br != null) {
                     br.close();
@@ -203,6 +199,5 @@ class HttpTask implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
