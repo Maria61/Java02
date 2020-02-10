@@ -10,20 +10,24 @@ import java.util.Arrays;
 public class Day02 {
 
     public static int removeElement(int[] nums, int val){
-        int flag = -1;
-        int count = nums.length;
-        for(int  i = 0,j = -1; i < nums.length;i++){
-            if(nums[i] == val && j == -1){
-                j = i;
+        int count = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] != val){
+                count++;
             }
-            if(nums[i] != val && j != -1){
+        }
+        for(int  i = 0,j = 0; i < nums.length;i++){
+            if(nums[i] != val && nums[j] == val){
                 int temp = nums[i];
                 nums[i] = nums[j];
                 nums[j] = temp;
                 j++;
             }
-
+            if(nums[i] != val){
+                j++;
+            }
         }
+
         System.out.println(Arrays.toString(nums));
         return count;
     }
@@ -31,7 +35,7 @@ public class Day02 {
 
 
     public static void main(String[] args) {
-        int[] nums = {0,1,2,2,3,0,4,2};
+        int[] nums = {2,2,2,2,3,0,4,2};
         System.out.println(removeElement(nums,2));
     }
 }
