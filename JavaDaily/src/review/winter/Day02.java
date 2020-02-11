@@ -51,7 +51,14 @@ public class Day02 {
 //        int[] nums = {2,2,2,2,3,0,4,2};
 //        System.out.println(removeElement(nums,2));
 
-        int[] nums = {1,3,5,6};
-        System.out.println(searchInsert(nums,2));
+//        int[] nums = {1,3,5,6};
+//        System.out.println(searchInsert(nums,2));
+
+        String s = "hello"+" "+"world";
+        String p = "hello world";
+        System.out.println(s==p);
+        System.out.println(s.equals(p));
+        String a = new String(s);
+        System.out.println(a.equals(s));
     }
 }
