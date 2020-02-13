@@ -8,7 +8,9 @@ import javax.sql.DataSource;
 import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * @author Maria
@@ -44,7 +46,10 @@ public class DBUtil {
      * 获取sqlite数据库文件url的方法
      * @return
      */
+    //获取target编译文件夹的路径
+    //通过classLoader.getResource()/classLoader.getResourceAsStream()这样的方法
     private static String getUrl(){
+        //获取target编译文件夹的路径
         URL classUrl = DBInit.class.getClassLoader().getResource("./");
         String dir = new File(classUrl.getPath()).getParent();
         String url = "jdbc:sqlite://" + dir + File.separator + "everything-like.db";
@@ -62,5 +67,32 @@ public class DBUtil {
 
     public static void main(String[] args) throws SQLException {
         System.out.println(getConnection());
+    }
+
+
+    public static void close(Connection connection, Statement statement) {
+        close(connection,statement,null);
+    }
+    /**
+     * 释放数据库资源
+     * @param connection 数据库连接
+     * @param statement sql语句执行对象
+     * @param  resultSet 查询语句的结果集
+     */
+    public static void close(Connection connection, Statement statement, ResultSet resultSet) {
+        try {
+            if(connection != null){
+                connection.close();
+            }
+            if(statement != null){
+                statement.close();
+            }
+            if(resultSet != null){
+                resultSet.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("关闭数据库资源失败",e);
+        }
     }
 }
