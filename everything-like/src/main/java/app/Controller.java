@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Window;
 import task.DBInit;
+import task.FileScanner;
 
 import java.io.File;
 import java.net.URL;
@@ -31,6 +32,8 @@ public class Controller implements Initializable {
 
     @FXML
     private Label srcDirectory;
+
+    private Thread task;
 
     public void initialize(URL location, ResourceBundle resources) {
         //界面初始化时，需要初始化数据库及表
@@ -54,6 +57,21 @@ public class Controller implements Initializable {
         // 获取选择的目录路径，并显示
         String path = file.getPath();
         // TODO
+        srcDirectory.setText(path);
+        //选择了目录后，需要对该目录进行扫描
+        task = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("执行文件扫描任务");
+                FileScanner fileScanner = new FileScanner();
+                fileScanner.scan(path);//为提高效率，多线程执行扫描任务
+                //等待文件扫描任务执行完毕
+                fileScanner.waitFinish();
+                //刷新表格,将扫描的结果显示在表格内
+                freshTable();
+            }
+        });
+        task.start();
     }
 
     // 刷新表格数据
