@@ -1,9 +1,8 @@
 package task;
 
 import java.io.File;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author Maria
@@ -25,27 +24,51 @@ public class FileScanner {
             new LinkedBlockingQueue<>(),new ThreadPoolExecutor.CallerRunsPolicy()
     );
 
+    //线程安全的计数器，不传入参数默认值为0
+    private volatile AtomicInteger count = new AtomicInteger();
+
+    //线程等待的锁对象
+    private Object lock = new Object();//方法1实现等待所有线程执行结束
+
+    //方法2，设置初始值，用countDown()进行latch--,用await()等待latch直到为0
+    private CountDownLatch latch = new CountDownLatch(1);
+    //方法3，用release()颁发许可的方式，acquire()阻塞等待，当许可达到一定数量后阻塞等待结束
+    private Semaphore semaphore = new Semaphore(0);
+
     /**
      * 扫描文件
      * @param path
      */
     public void scan(String path) {
+        count.incrementAndGet();//++count;
         doScan(new File(path));
     }
 
     private void doScan(File dir){
-        pool.execute(new Runnable() {
+        pool.execute(new Runnable() {//？？？这里为什么要用多线程
             @Override
             public void run() {
-                File[] children = dir.listFiles();//dir的下一级目录
-                if(children != null){
-                    for(File child : children){
-                        if(child.isDirectory()){
-                            System.out.println("文件夹："+child.getPath());
-                            doScan(child);
-                        }else{
-                            System.out.println("文件："+child);
+                try {
+                    File[] children = dir.listFiles();//dir的下一级目录
+                    if (children != null) {
+                        for (File child : children) {
+                            if (child.isDirectory()) {
+                                System.out.println("文件夹：" + child.getPath());
+                                count.incrementAndGet();
+                                doScan(child);
+                            } else {
+                                System.out.println("文件：" + child);
+                            }
                         }
+                    }
+                }finally {
+                    int r = count.decrementAndGet();//--count;
+                    if (r == 0) {
+//                        synchronized (lock) {
+//                            lock.notify();
+//                        }
+//                        latch.countDown();
+                        semaphore.release();
                     }
                 }
             }
@@ -56,7 +79,30 @@ public class FileScanner {
     /**
      * 等待扫描结束
      */
-    public void waitFinish(){
+    public void waitFinish() throws InterruptedException {
+//        synchronized (lock){
+//            lock.wait();
+//        }
+//        latch.await();
+        semaphore.acquire();
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        Object obj;
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (Thread.currentThread()) {
+                    System.out.println(Thread.currentThread().getName());
+                    Thread.currentThread().notifyAll();
+                }
+            }
+        });
+        thread.start();
+        synchronized (Thread.currentThread()){
+            Thread.currentThread().wait();
+        }
+        System.out.println(Thread.currentThread().getName());
 
     }
 }

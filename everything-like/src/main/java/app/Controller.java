@@ -62,13 +62,18 @@ public class Controller implements Initializable {
         task = new Thread(new Runnable() {
             @Override
             public void run() {
-                System.out.println("执行文件扫描任务");
-                FileScanner fileScanner = new FileScanner();
-                fileScanner.scan(path);//为提高效率，多线程执行扫描任务
-                //等待文件扫描任务执行完毕
-                fileScanner.waitFinish();
-                //刷新表格,将扫描的结果显示在表格内
-                freshTable();
+                try {
+                    System.out.println("执行文件扫描任务");
+                    FileScanner fileScanner = new FileScanner();
+                    fileScanner.scan(path);//为提高效率，多线程执行扫描任务
+                    //等待文件扫描任务执行完毕
+                    fileScanner.waitFinish();
+                    System.out.println("扫描完成，刷新表格");
+                    //刷新表格,将扫描的结果显示在表格内
+                    freshTable();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
         task.start();
@@ -80,4 +85,6 @@ public class Controller implements Initializable {
         metas.clear();
         // TODO
     }
+
+
 }
