@@ -35,6 +35,12 @@ public class FileScanner {
     //方法3，用release()颁发许可的方式，acquire()阻塞等待，当许可达到一定数量后阻塞等待结束
     private Semaphore semaphore = new Semaphore(0);
 
+    private ScanCallback scanCallback;
+
+    public FileScanner(ScanCallback scanCallback) {
+        this.scanCallback = scanCallback;
+    }
+
     /**
      * 扫描文件
      * @param path
@@ -45,6 +51,7 @@ public class FileScanner {
     }
 
     private void doScan(File dir){
+        scanCallback.callback(dir);
         pool.execute(new Runnable() {//？？？这里为什么要用多线程
             @Override
             public void run() {
@@ -53,12 +60,13 @@ public class FileScanner {
                     if (children != null) {
                         for (File child : children) {
                             if (child.isDirectory()) {
-                                System.out.println("文件夹：" + child.getPath());
+//                                System.out.println("文件夹：" + child.getPath());
                                 count.incrementAndGet();
                                 doScan(child);
-                            } else {
-                                System.out.println("文件：" + child);
                             }
+//                            else {
+//                                System.out.println("文件：" + child);
+//                            }
                         }
                     }
                 }finally {

@@ -13,7 +13,9 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Window;
 import task.DBInit;
+import task.FileSave;
 import task.FileScanner;
+import task.ScanCallback;
 
 import java.io.File;
 import java.net.URL;
@@ -64,7 +66,8 @@ public class Controller implements Initializable {
             public void run() {
                 try {
                     System.out.println("执行文件扫描任务");
-                    FileScanner fileScanner = new FileScanner();
+                    ScanCallback scanCallback = new FileSave();
+                    FileScanner fileScanner = new FileScanner(scanCallback);
                     fileScanner.scan(path);//为提高效率，多线程执行扫描任务
                     //等待文件扫描任务执行完毕
                     fileScanner.waitFinish();
