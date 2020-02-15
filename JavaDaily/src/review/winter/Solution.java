@@ -10,7 +10,11 @@ import java.util.Scanner;
  * @date 2020/2/12 10:14
  */
 public class Solution {
-
+    /**
+     * 找出字符串中最长的数字字串
+     * @param s
+     * @return
+     */
     public static String longestNums(String s){
         String re = new String();
         int l = -1;
@@ -72,6 +76,12 @@ public class Solution {
     }
 
 
+    /**
+     * 返回数组的最小k个数
+     * @param input
+     * @param k
+     * @return
+     */
     public ArrayList<Integer> GetLeastNumbers_Solution(int [] input, int k) {
         ArrayList<Integer> re = new ArrayList<>();
         sort(input,k);
