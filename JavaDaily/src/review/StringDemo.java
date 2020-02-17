@@ -11,6 +11,8 @@ public class StringDemo {
         System.out.println(s);
         return userId.toLowerCase()=="admin";//toLowerCase()方法的返回值是String类型的对象
     }
+
+
     public static void main(String[] args) {
 //        String s = new String("asdf");
 //        String s1 = "asdf";
