@@ -52,7 +52,7 @@ public class FileScanner {
 
     private void doScan(File dir){
         scanCallback.callback(dir);
-        pool.execute(new Runnable() {//？？？这里为什么要用多线程
+        pool.execute(new Runnable() {//使用多线程使扫描更加高效，尤其时多文件夹扫描时，可节省时间
             @Override
             public void run() {
                 try {
@@ -93,22 +93,33 @@ public class FileScanner {
 //        }
 //        latch.await();
         semaphore.acquire();
+        shutdown();
     }
 
+
+    /**
+     * 线程池关闭
+     */
+    public void shutdown(){
+        pool.shutdown();
+    }
+
+
+
     public static void main(String[] args) throws InterruptedException {
-        Object obj;
+        Object obj = null;
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                synchronized (Thread.currentThread()) {
+                synchronized (obj) {
                     System.out.println(Thread.currentThread().getName());
-                    Thread.currentThread().notifyAll();
+                    obj.notifyAll();
                 }
             }
         });
         thread.start();
-        synchronized (Thread.currentThread()){
-            Thread.currentThread().wait();
+        synchronized (obj){
+            obj.wait();
         }
         System.out.println(Thread.currentThread().getName());
 
