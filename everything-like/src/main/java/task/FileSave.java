@@ -17,7 +17,7 @@ public class FileSave implements ScanCallback{
         File[] children = dir.listFiles();
         if(children != null) {
             for (File chile : children) {
-//                System.out.println(chile.getPath());
+                System.out.println(chile.getPath());
                 save(chile);
             }
         }
@@ -28,6 +28,7 @@ public class FileSave implements ScanCallback{
      * @param file
      */
     private void save(File file){
+//        System.out.println(file.getPath());
         Connection connection = null;
         PreparedStatement statement = null;
         try {
@@ -52,7 +53,7 @@ public class FileSave implements ScanCallback{
             }
             statement.setString(5,pinyin);
             statement.setString(6,pinyin_first);
-            System.out.println(sql);
+//            System.out.println(sql);
             //3.执行sql
             statement.executeUpdate();
         } catch (SQLException e) {

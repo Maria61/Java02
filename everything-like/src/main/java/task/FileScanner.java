@@ -15,13 +15,13 @@ public class FileScanner {
      * 1.corePoolSize：核心线程数，始终运行的线程
      * 2.maximumPoolSize：最大线程数，有新任务，并且当前运行线程数小于最大线程数，会创建新的线程来处理任务
      * 3.keepAliveTime:超过该数量时间
-     * 4.3数量的时间单位，如果超过，2-1临时工线程会关闭
+     * 4.3数量的时间单位，如果超过3，2-1临时工线程会关闭
      * 5.工作的阻塞队列
      * 6.如果超出工作队列的长度，任务要处理的方法（4种策略）
      */
     private ThreadPoolExecutor pool = new ThreadPoolExecutor(
             3,3,0, TimeUnit.MICROSECONDS,
-            new LinkedBlockingQueue<>(),new ThreadPoolExecutor.CallerRunsPolicy()
+            new LinkedBlockingQueue<>(),new ThreadPoolExecutor.AbortPolicy()
     );
 
     //线程安全的计数器，不传入参数默认值为0
@@ -51,31 +51,32 @@ public class FileScanner {
     }
 
     private void doScan(File dir){
-        scanCallback.callback(dir);
+
         pool.execute(new Runnable() {//使用多线程使扫描更加高效，尤其时多文件夹扫描时，可节省时间
             @Override
             public void run() {
                 try {
+                    scanCallback.callback(dir);
                     File[] children = dir.listFiles();//dir的下一级目录
                     if (children != null) {
                         for (File child : children) {
                             if (child.isDirectory()) {
-//                                System.out.println("文件夹：" + child.getPath());
                                 count.incrementAndGet();
                                 doScan(child);
                             }
-//                            else {
-//                                System.out.println("文件：" + child);
-//                            }
+
                         }
                     }
                 }finally {
                     int r = count.decrementAndGet();//--count;
                     if (r == 0) {
+                        //第一种实现
 //                        synchronized (lock) {
 //                            lock.notify();
 //                        }
+                        //第二种实现
 //                        latch.countDown();
+                        //第三种实现
                         semaphore.release();
                     }
                 }
@@ -92,36 +93,31 @@ public class FileScanner {
 //            lock.wait();
 //        }
 //        latch.await();
-        semaphore.acquire();
-        shutdown();
-    }
-
-
-    /**
-     * 线程池关闭
-     */
-    public void shutdown(){
-        pool.shutdown();
-    }
-
-
-
-    public static void main(String[] args) throws InterruptedException {
-        Object obj = null;
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (obj) {
-                    System.out.println(Thread.currentThread().getName());
-                    obj.notifyAll();
-                }
-            }
-        });
-        thread.start();
-        synchronized (obj){
-            obj.wait();
+        try{
+            semaphore.acquire();
+        }finally{
+            System.out.println("关闭线程池！");
+            pool.shutdownNow();//内部实现原理：thread.interrupt()
         }
-        System.out.println(Thread.currentThread().getName());
-
     }
+
+
+//    public static void main(String[] args) throws InterruptedException {
+//        Object obj = null;
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                synchronized (obj) {
+//                    System.out.println(Thread.currentThread().getName());
+//                    obj.notifyAll();
+//                }
+//            }
+//        });
+//        thread.start();
+//        synchronized (obj){
+//            obj.wait();
+//        }
+//        System.out.println(Thread.currentThread().getName());
+//
+//    }
 }

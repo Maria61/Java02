@@ -35,7 +35,7 @@ public class Controller implements Initializable {
     @FXML
     private Label srcDirectory;
 
-    private ScannerThread task;
+    private Thread task;
 
     public void initialize(URL location, ResourceBundle resources) {
         //界面初始化时，需要初始化数据库及表
@@ -64,7 +64,25 @@ public class Controller implements Initializable {
         if(task != null){
             task.interrupt();
         }
-        task = new ScannerThread(path);
+        task = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ScanCallback callback = new FileSave();
+                FileScanner fileScanner = new FileScanner(callback);
+
+                try {
+                    System.out.println("执行文件扫描任务");
+                    fileScanner.scan(path);//为提高效率，多线程执行扫描任务
+                    //等待文件扫描任务执行完毕
+                    fileScanner.waitFinish();
+                    System.out.println("扫描完成，刷新表格");
+                    //刷新表格,将扫描的结果显示在表格内
+                    freshTable();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         task.start();
     }
 
@@ -75,38 +93,14 @@ public class Controller implements Initializable {
         // TODO
     }
 
-    private class ScannerThread extends Thread{
-        private FileScanner fileScanner;
-        private String path;
-
-        public ScannerThread(String path){
-            ScanCallback scanCallback = new FileSave();//进行回调操作，将结果存到数据库中
-            FileScanner fileScanner = new FileScanner(scanCallback);//
-            this.path = path;
-        }
-
-        @Override
-        public void run() {
-
-            try {
-                System.out.println("执行文件扫描任务");
-                fileScanner.scan(path);//为提高效率，多线程执行扫描任务
-                //等待文件扫描任务执行完毕
-                fileScanner.waitFinish();
-                System.out.println("扫描完成，刷新表格");
-                //刷新表格,将扫描的结果显示在表格内
-                freshTable();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                fileScanner.shutdown();//为什么要二次线程池中断
-            }
-        }
-
-        public void shutdown(){
-            this.interrupt();
-            fileScanner.shutdown();
-        }
-    }
+//    private class ScannerThread {
+//
+//
+//        public void shutdown(){
+//            this.interrupt();
+//            fileScanner.shutdown();
+//        }
+//    }
 
 
 }
