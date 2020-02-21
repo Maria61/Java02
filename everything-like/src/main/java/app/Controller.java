@@ -91,6 +91,12 @@ public class Controller implements Initializable {
         ObservableList<FileMeta> metas = fileTable.getItems();
         metas.clear();
         // TODO
+
+        String dir = srcDirectory.getText();
+        if(dir != null && dir.trim().length() != 0){
+            String content = searchField.getText();
+            //TODO:提供数据库的插叙方法
+        }
     }
 
 //    private class ScannerThread {

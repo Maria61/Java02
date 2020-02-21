@@ -5,6 +5,7 @@ import util.Util;
 
 import java.io.File;
 import java.util.Date;
+import java.util.Objects;
 
 public class FileMeta {
 
@@ -121,12 +122,21 @@ public class FileMeta {
                 "name='" + name + '\'' +
                 ", path='" + path + '\'' +
                 ", isDirectory=" + isDirectory +
-                ", size=" + size +
-                ", lastModified=" + lastModified +
-                ", pinyin='" + pinyin + '\'' +
-                ", pinyinFirst='" + pinyinFirst + '\'' +
-                ", sizeText='" + sizeText + '\'' +
-                ", lastModifiedText='" + lastModifiedText + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FileMeta meta = (FileMeta) o;
+        return Objects.equals(name, meta.name) &&
+                Objects.equals(path, meta.path) &&
+                Objects.equals(isDirectory, meta.isDirectory);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, path, isDirectory);
     }
 }

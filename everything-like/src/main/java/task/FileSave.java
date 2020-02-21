@@ -7,6 +7,7 @@ import util.PinyinUtil;
 import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,9 +25,61 @@ public class FileSave implements ScanCallback{
                 locals.add(new FileMeta(child));
             }
         }
+
+        List<FileMeta> metas = query(dir);
+
+        //遍历数据库中的文件信息，如果本地没有，则删除数据库中的相应数据
+        for(FileMeta meta : metas){
+            if(!locals.contains(meta)){
+                delete(meta);
+            }
+        }
+
+        //遍历本地文件信息，如果数据库没有，则插入
+        for(FileMeta meta : locals){
+            if(!metas.contains(meta)){
+                save(meta);
+            }
+        }
+
+
     }
 
 
+
+    public void delete(FileMeta meta){
+        Connection connection = null;
+        PreparedStatement ps = null;
+        try{
+            connection = DBUtil.getConnection();
+            String sql = "delete from file_meta where" +
+                    " (name=? and path=? and is_directory=?)";
+            if(meta.getDirectory()){
+                sql += " or path=? or path like ?";
+            }
+            ps = connection.prepareStatement(sql);
+            ps.setString(1,meta.getName());
+            ps.setString(2,meta.getPath());
+            ps.setBoolean(3,meta.getDirectory());
+            if(meta.getDirectory()){
+                ps.setString(4,meta.getPath()+File.separator+meta.getName());
+                ps.setString(5,meta.getPath()+File.separator+meta.getName()+File.separator);
+            }
+            ps.executeUpdate();
+
+        }catch (Exception e){
+            throw new RuntimeException("删除文件信息出错",e);
+        }finally{
+            DBUtil.close(connection,ps);
+        }
+    }
+
+
+    /**
+     * 查询数据库操作
+     * @param dir
+     * @return
+     */
     private List<FileMeta> query(File dir){
         Connection connection = null;
         PreparedStatement ps = null;
@@ -47,7 +100,7 @@ public class FileSave implements ScanCallback{
                  Timestamp lastModified = rs.getTimestamp("last_modified");
                  FileMeta meta = new FileMeta(name, path, isDirectory, size,
                          new java.util.Date(lastModified.getTime()));
-                 System.out.println(meta);
+                 System.out.println("查询操作的结果："+meta);
                  metas.add(meta);
              }
             return metas;
@@ -63,9 +116,9 @@ public class FileSave implements ScanCallback{
 
     /**
      * 将扫描结果存入数据库
-     * @param file
+     * @param meta
      */
-    private void save(File file){
+    private void save(FileMeta meta){
 //        System.out.println(file.getPath());
         Connection connection = null;
         PreparedStatement statement = null;
@@ -77,22 +130,22 @@ public class FileSave implements ScanCallback{
                     " (name,path,is_directory,size,last_modified,pinyin,pinyin_first)" +
                     " values (?,?,?,?,?,?,?)";
             statement = connection.prepareStatement(sql);
-            statement.setString(1,file.getName());
-            statement.setString(2,file.getParent());
-            statement.setBoolean(3,file.isDirectory());
-            statement.setLong(4,file.length());
-            statement.setTimestamp(5,new Timestamp(file.lastModified()));//上次的修改时间
-            String pinyin = null;
-            String pinyin_first = null;
-            //文件名中包含汉字才有拼音及拼音首字母
-            if(PinyinUtil.containsChinese(file.getName())){
-                String[] pinyins = PinyinUtil.get(file.getName());
-                pinyin = pinyins[0];
-                pinyin_first = pinyins[1];
-            }
-            statement.setString(6,pinyin);
-            statement.setString(7,pinyin_first);
-//            System.out.println(sql);
+            statement.setString(1,meta.getName());
+            statement.setString(2,meta.getPath());
+            statement.setBoolean(3,meta.getDirectory());
+            statement.setLong(4,meta.getSize());
+            statement.setString(5,meta.getLastModifiedText());//上次的修改时间
+//            String pinyin = null;
+//            String pinyin_first = null;
+//            //文件名中包含汉字才有拼音及拼音首字母
+//            if(PinyinUtil.containsChinese(meta.getName())){
+//                String[] pinyins = PinyinUtil.get(meta.getName());
+//                pinyin = pinyins[0];
+//                pinyin_first = pinyins[1];
+//            }
+            statement.setString(6,meta.getPinyin());
+            statement.setString(7,meta.getPinyinFirst());
+//            System.out.println("保存操作sql:"+sql);
             //3.执行sql
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -100,6 +153,43 @@ public class FileSave implements ScanCallback{
         }finally{
             //5.关闭结果集
             DBUtil.close(connection,statement);
+        }
+    }
+
+    public static void main(String[] args) {
+//        DBInit.init();
+//        File file = new File("E:\\me\\1.jpg");
+//        FileSave fileSave = new FileSave();
+//        fileSave.save(file);
+//        fileSave.query(file.getParentFile());
+
+        List<FileMeta> locals = new ArrayList<>();
+        locals.add(new FileMeta("新建文件夹",
+                "F:\\Java学习bt\\项目-everything-like",
+                true, 0L, new Date()));
+        locals.add(new FileMeta("中华人名共和国",
+                "F:\\Java学习bt\\项目-everything-like",
+                true, 0L, new Date()));
+        locals.add(new FileMeta("阿凡达.txt",
+                "F:\\Java学习bt\\项目-everything-like\\中华人民共和国",
+                false, 0L, new Date()));
+
+        List<FileMeta> mates = new ArrayList<>();
+        mates.add(new FileMeta("新建文件夹",
+                "F:\\Java学习bt\\项目-everything-like",
+                true, 0L, new Date()));
+        mates.add(new FileMeta("中华人名共和国2",
+                "F:\\Java学习bt\\项目-everything-like",
+                true, 0L, new Date()));
+        mates.add(new FileMeta("阿凡达.txt",
+                "F:\\Java学习bt\\项目-everything-like\\中华人名共和国2",
+                true, 0L, new Date()));
+
+
+        for(FileMeta meta : locals){
+            if(!mates.contains(meta)){
+                System.out.println(meta);
+            }
         }
     }
 }
