@@ -12,13 +12,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Window;
-import task.DBInit;
-import task.FileSave;
-import task.FileScanner;
-import task.ScanCallback;
+import task.*;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -96,6 +95,8 @@ public class Controller implements Initializable {
         if(dir != null && dir.trim().length() != 0){
             String content = searchField.getText();
             //TODO:提供数据库的插叙方法
+            List<FileMeta> fileMetas = FileSearch.search(dir,content);
+            metas.addAll(fileMetas);
         }
     }
 

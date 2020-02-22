@@ -46,6 +46,10 @@ public class FileSave implements ScanCallback{
     }
 
 
+    /**
+     * 删除数据库有本地没有的数据
+     * @param meta
+     */
 
     public void delete(FileMeta meta){
         Connection connection = null;
