@@ -21,9 +21,15 @@ import java.io.PrintWriter;
  */
 public class LoginServlet extends HttpServlet {
 
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//    @Override
+//    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//
+//
+//    }
 
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
@@ -36,5 +42,10 @@ public class LoginServlet extends HttpServlet {
         PrintWriter pw = resp.getWriter();
         pw.println("<p>用户名："+username+",密码为："+password+"</p>");
         pw.flush();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
     }
 }
