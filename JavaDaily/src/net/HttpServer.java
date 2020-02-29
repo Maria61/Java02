@@ -60,6 +60,8 @@ class HttpTask implements Runnable {
         PrintWriter pw = null;
         try {
             try {
+
+
                 //输入流处理请求
                 is = socket.getInputStream();
                 //转换流（字节流转换为字符流）
