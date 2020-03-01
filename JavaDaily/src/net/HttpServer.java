@@ -14,15 +14,15 @@ import java.util.concurrent.Executors;
  * @program JavaDaily
  * @date 2019/12/11 21:02
  */
-//è§£åŒ…-->å¤„ç†é€»è¾‘-->å“åº”å¹¶å°è£…æˆhttp
+//½â°ü-->´¦ÀíÂß¼­-->ÏìÓ¦²¢·â×°³Éhttp
 public class HttpServer {
     private static final int PORT = 9999;
-    //è·å–å¤„ç†å™¨æ ¸æ•°ï¼šå¤„ç†çš„ä»»åŠ¡é‡å’Œçº¿ç¨‹æ•°é‡ã€CPUã€å†…å­˜ç­‰èµ„æºéƒ½ç›¸å…³
+    //»ñÈ¡´¦ÀíÆ÷ºËÊı£º´¦ÀíµÄÈÎÎñÁ¿ºÍÏß³ÌÊıÁ¿¡¢CPU¡¢ÄÚ´æµÈ×ÊÔ´¶¼Ïà¹Ø
     private static final int COUNT
             = Runtime.getRuntime().availableProcessors();
-    //ä½¿ç”¨çº¿ç¨‹æ± ï¼šæ•ˆç‡æ›´é«˜ï¼Œä»£ç å¤ç”¨æ€§å¼º
+    //Ê¹ÓÃÏß³Ì³Ø£ºĞ§ÂÊ¸ü¸ß£¬´úÂë¸´ÓÃĞÔÇ¿
     private static final ExecutorService EXE
-            = Executors.newFixedThreadPool(COUNT);//åˆ›å»ºå›ºå®šå¤§å°ä¸ºCOUNTçš„çº¿ç¨‹æ± 
+            = Executors.newFixedThreadPool(COUNT);//´´½¨¹Ì¶¨´óĞ¡ÎªCOUNTµÄÏß³Ì³Ø
 
 
 
@@ -32,8 +32,8 @@ public class HttpServer {
         try {
             ServerSocket server = new ServerSocket(PORT);
             while (true) {
-                //è·å–å®¢æˆ·ç«¯è¯·æ±‚socketå¯¹è±¡
-                Socket socket = server.accept();//é˜»å¡å¼æ–¹æ³•
+                //»ñÈ¡¿Í»§¶ËÇëÇósocket¶ÔÏó
+                Socket socket = server.accept();//×èÈûÊ½·½·¨
                 EXE.submit(new HttpTask(socket));
 
             }
@@ -60,15 +60,15 @@ class HttpTask implements Runnable {
         PrintWriter pw = null;
         try {
             try {
-                //è¾“å…¥æµå¤„ç†è¯·æ±‚
+                //ÊäÈëÁ÷´¦ÀíÇëÇó
                 is = socket.getInputStream();
-                //è½¬æ¢æµï¼ˆå­—èŠ‚æµè½¬æ¢ä¸ºå­—ç¬¦æµï¼‰
+                //×ª»»Á÷£¨×Ö½ÚÁ÷×ª»»Îª×Ö·ûÁ÷£©
                 br = new BufferedReader(
                         new InputStreamReader(is, "UTF-8"));
                 Request request = new Request();
-                //è¯·æ±‚æ•°æ®çš„è§£æï¼šhttpåè®®æŠ¥çš„è§£åŒ…
-                //1.è§£æè¯·æ±‚è¡Œï¼ˆç¬¬ä¸€è¡Œï¼‰ï¼šmethod url version
-                String requestLine = br.readLine();//è¯»å–è¯·æ±‚è¡Œ//readLine()é˜»å¡å¼æ–¹æ³•,é˜»å¡mainä¸»çº¿ç¨‹
+                //ÇëÇóÊı¾İµÄ½âÎö£ºhttpĞ­Òé±¨µÄ½â°ü
+                //1.½âÎöÇëÇóĞĞ£¨µÚÒ»ĞĞ£©£ºmethod url version
+                String requestLine = br.readLine();//¶ÁÈ¡ÇëÇóĞĞ//readLine()×èÈûÊ½·½·¨,×èÈûmainÖ÷Ïß³Ì
                 String[] requestLines = requestLine.split(" ");
                 request.setMethod(requestLines[0]);
                 String url = requestLines[1];
@@ -79,58 +79,58 @@ class HttpTask implements Runnable {
                 }
                 request.setUrl(url);
                 request.setVersion(requestLines[2]);
-                //2.è§£æè¯·æ±‚å¤´ï¼š
-                //key:value æ¯ä¸ªéƒ½ä¼šæ¢è¡Œï¼Œ
+                //2.½âÎöÇëÇóÍ·£º
+                //key:value Ã¿¸ö¶¼»á»»ĞĞ£¬
                 String header;
                 while ((header = br.readLine()) != null && header.length() != 0) {
                     String key = header.substring(0, header.indexOf(":"));
                     String value = header.substring(header.indexOf(":") + 1);
-                    request.addHeader(key, value.trim());//trim()å»é™¤å­—ç¬¦ä¸²å‰åç©ºæ ¼
+                    request.addHeader(key, value.trim());//trim()È¥³ı×Ö·û´®Ç°ºó¿Õ¸ñ
                 }
-                //POSTè¯·æ±‚ï¼Œéœ€è¦æ ¹æ®è¯·æ±‚å¤´Content-Length è·å–è¯·æ±‚ä½“çš„é•¿åº¦
+                //POSTÇëÇó£¬ĞèÒª¸ù¾İÇëÇóÍ·Content-Length »ñÈ¡ÇëÇóÌåµÄ³¤¶È
                 if ("POST".equals(request.getMethod())) {
                     String len = request.getHeader("Content-Length");
                     if (len != null) {
                         int l = Integer.parseInt(len);
                         char[] chars = new char[l];
-                        //è¯»å–è¯·æ±‚ä½“
+                        //¶ÁÈ¡ÇëÇóÌå
                         br.read(chars, 0, l);
-                        //è¯·æ±‚å‚æ•°æ ¼å¼
+                        //ÇëÇó²ÎÊı¸ñÊ½
                         String requestBody = new String(chars);
                         request.parseParameters(requestBody);
                     }
                 }
                 System.out.println(request);
 
-                //è¾“å‡ºæµå“åº”è¯·æ±‚
+                //Êä³öÁ÷ÏìÓ¦ÇëÇó
                 os = socket.getOutputStream();
-                pw = new PrintWriter(os, true);//éœ€è¦è‡ªåŠ¨åˆ·æ–°
+                pw = new PrintWriter(os, true);//ĞèÒª×Ô¶¯Ë¢ĞÂ
 
                 if ("/302".equals(request.getUrl())) {
-                    pw.println("HTTP/1.0 302 é‡å®šå‘");
+                    pw.println("HTTP/1.0 302 ÖØ¶¨Ïò");
                     pw.println("Content-Type: text/html;charset=utf-8");
                     pw.println("Location: https://www.baidu.com");
                 } else if ("/login".equals(request.getUrl())) {
                     pw.println("HTTP/1.1 200 OK");
                     String username = request.getParameter("username");
                     String password = request.getParameter("password");
-                    //åˆ¤æ–­ç”¨æˆ·åå¯†ç æ˜¯å¦åˆæ³•
+                    //ÅĞ¶ÏÓÃ»§ÃûÃÜÂëÊÇ·ñºÏ·¨
                     String sessionId = UUID.randomUUID().toString();
                     HttpServer.SESSION_MAP.put(sessionId, username);
                     pw.println("Set-Cookie: SESSIONID=" + sessionId);
                     pw.println("Content-Type: text/html;charset=utf-8");
-                    String content = "<h2>æ¬¢è¿ç”¨æˆ·["
+                    String content = "<h2>»¶Ó­ÓÃ»§["
                             + request.getParameter("username")
-                            + "]ç™»å½•</h2>";
+                            + "]µÇÂ¼</h2>";
                     pw.println("Content-Length: " + content.getBytes().length);
                     pw.println();
                     pw.println(content);
-                } else if ("/setCookie".equals(request.getUrl())) {//è®¾ç½®cookie,è®°å½•ç™»å½•è®¿å®¢
+                } else if ("/setCookie".equals(request.getUrl())) {//ÉèÖÃcookie,¼ÇÂ¼µÇÂ¼·Ã¿Í
                     pw.println("HTTP/1.1 200 OK");
-                    String sessionId = UUID.randomUUID().toString();//è¿”å›éšæœºå­—ç¬¦ä¸²
+                    String sessionId = UUID.randomUUID().toString();//·µ»ØËæ»ú×Ö·û´®
                     pw.println("Set-Cookie: SESSIONID=" + sessionId);
                     pw.println("Content-Type: text/html;charset=utf-8");
-                    String content = "è®¾ç½®CookieæˆåŠŸ";
+                    String content = "ÉèÖÃCookie³É¹¦";
                     pw.println("Content-Length: " + content.getBytes().length);
                     pw.println();
 
@@ -146,8 +146,8 @@ class HttpTask implements Runnable {
                                 && HttpServer.SESSION_MAP.containsKey(value)) {
                             pw.println("HTTP/1.1 200 OK");
                             pw.println("Content-Type: text/html; charset=utf-8");
-                            String content = "<h2>ç”¨æˆ·"
-                                    + HttpServer.SESSION_MAP.get(value) + "èƒ½å¤Ÿè®¿é—®</h2>";
+                            String content = "<h2>ÓÃ»§"
+                                    + HttpServer.SESSION_MAP.get(value) + "ÄÜ¹»·ÃÎÊ</h2>";
                             pw.println("Content-Length: " + content.getBytes().length);
                             pw.println();
                             pw.println(content);
@@ -156,20 +156,20 @@ class HttpTask implements Runnable {
                     }
                     pw.println("HTTP/1.1 403 Forbidden");
                     pw.println("Content-Type: text/html; charset=utf-8");
-                    String content = "æ²¡æœ‰è®¿é—®æƒé™";
+                    String content = "Ã»ÓĞ·ÃÎÊÈ¨ÏŞ";
                     pw.println("Content-Length: " + content.getBytes().length);
                     pw.println();
                     pw.println(content);
                 } else {
-                    //è®¿é—®/login.html,è½¬åŒ–ä¸ºè®¿é—®./login.html
+                    //·ÃÎÊ/login.html,×ª»¯Îª·ÃÎÊ./login.html
                     InputStream htmlIs = HttpServer.class.getClassLoader()
-                            .getResourceAsStream("." + request.getUrl());//è¿”å›å€¼ï¼Ÿ
+                            .getResourceAsStream("." + request.getUrl());//·µ»ØÖµ£¿
                     if (htmlIs != null) {
                         pw.println("HTTP/1.1 200 OK");
                         pw.println("Content-Type: text/html;charset=utf-8");
                         pw.println();
-                        //è¿”å›é™æ€èµ„æºæ–‡ä»¶
-                        InputStreamReader htmlIsr = new InputStreamReader(htmlIs);//å­—èŠ‚æµè½¬æ¢ä¸ºå­—ç¬¦æµ
+                        //·µ»Ø¾²Ì¬×ÊÔ´ÎÄ¼ş
+                        InputStreamReader htmlIsr = new InputStreamReader(htmlIs);//×Ö½ÚÁ÷×ª»»Îª×Ö·ûÁ÷
                         BufferedReader bf = new BufferedReader(htmlIsr);
                         String content;
                         while ((content = bf.readLine()) != null) {
@@ -177,11 +177,11 @@ class HttpTask implements Runnable {
                         }
 
                     } else {
-                        //è¿”å›404
+                        //·µ»Ø404
                         pw.println("HTTP/1.1 404 Not Found");
                         pw.println("Content-Type: text/html;charset=utf-8");
                         pw.println();
-                        pw.println("<h2>æ‰¾ä¸åˆ°èµ„æº</h2>");
+                        pw.println("<h2>ÕÒ²»µ½×ÊÔ´</h2>");
                     }
                 }
             } finally {

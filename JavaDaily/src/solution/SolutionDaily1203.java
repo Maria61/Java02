@@ -76,20 +76,20 @@ public class SolutionDaily1203 {
             }
         }
         int f = flag;
-        char[] r = {'é›¶', 'å£¹', 'è´°', 'å', 'è‚†', 'ä¼', 'é™†', 'æŸ’', 'æŒ', 'çŽ–'};
-        String[] w = {"å…ƒ", "æ‹¾", "ä½°", "ä»Ÿ", "ä¸‡", "æ‹¾", "ä½°", "ä»Ÿ", "äº¿"};
-        char[] y = {'è§’', 'åˆ†'};
+        char[] r = {'Áã', 'Ò¼', '·¡', 'Èþ', 'ËÁ', 'Îé', 'Â½', 'Æâ', '°Æ', '¾Á'};
+        String[] w = {"Ôª", "Ê°", "°Û", "Çª", "Íò", "Ê°", "°Û", "Çª", "ÒÚ"};
+        char[] y = {'½Ç', '·Ö'};
         String re = new String();
         boolean b = false;
         for (int i = 0; flag > 0 && i < c.length; i++) {
             if (c[i] != '0') {
-                //å¤„ç†åä½ä¸º0ï¼Œä¸ªä½ä¸ä¸º0çš„æƒ…å†µ
+                //´¦ÀíÊ®Î»Îª0£¬¸öÎ»²»Îª0µÄÇé¿ö
                 if (i != 0 && c[i - 1] == '0') {
                     re += r[0];
                 }
                 re += r[c[i] - '0'];
                 re += w[flag - 1];
-            } else if (i == (f - 1)) {//å¤„ç†ä¸ªä½ä¸º0çš„æƒ…å†µ
+            } else if (i == (f - 1)) {//´¦Àí¸öÎ»Îª0µÄÇé¿ö
                 re += w[0];
             }
             flag--;
@@ -105,7 +105,7 @@ public class SolutionDaily1203 {
         }
         if (f + 2 == c.length) {
             if (c[f + 1] == '0') {
-                re += "æ•´";
+                re += "Õû";
             }
         }
         return re;
@@ -115,6 +115,6 @@ public class SolutionDaily1203 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         double y = sc.nextDouble();
-        System.out.println("äººåå¸" + RMB(y));
+        System.out.println("ÈËÃû±Ò" + RMB(y));
     }
 }
