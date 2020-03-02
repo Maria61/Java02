@@ -46,6 +46,7 @@ public class SolutionDaily0301 {
      * @return
      */
     public static String[] count(String[] record){
+
         HashMap<String,Integer> re = new HashMap<>();
         String[] result = null;
         for(int i = 0; i < record.length; i++){
