@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Result;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 
 /**
@@ -39,6 +40,16 @@ public class JSONUtil {
         }
     }
 
+    public static <T> T deserialize(InputStream is, Class<T> clazz){
+        ObjectMapper mapper = new ObjectMapper();
+        //设置日期格式类
+        mapper.setDateFormat(new SimpleDateFormat(DATE_PATTERN));
+        try {
+            return mapper.readValue(is,clazz);
+        } catch (IOException e) {
+            throw new RuntimeException("JSON字符串反序列化失败："+e);
+        }
+    }
 
     public static void main(String[] args) {
         Result result = new Result();

@@ -37,6 +37,21 @@
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
         </dependency>
+
+        <!-- Lombok: 自动插入编辑器并构建工具，以注解的方式，简化一些模版代码的编写，
+                    如getter/setter方法、equals/hashcode方法、toString方法等-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- 百度UEditor富文本编辑器 -->
+        <dependency>
+            <groupId>com.blingblingbang</groupId>
+            <artifactId>ueditor</artifactId>
+            <version>1.1.2</version>
+        </dependency>
     </dependencies>
     <build>
         <!-- 最后使用mvn package命令打包的文件名称 -->
