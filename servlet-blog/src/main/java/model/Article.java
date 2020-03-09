@@ -21,4 +21,5 @@ public class Article {
     private String content;
     private Integer userId;
     private Date createTime;
+    private String userAccount;
 }
