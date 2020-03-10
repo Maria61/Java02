@@ -2,6 +2,7 @@ package util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import exception.SystemException;
 import model.Result;
 
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class JSONUtil {
         try {
             return mapper.writeValueAsString(obj);
         } catch (JsonProcessingException e) {
-            throw new RuntimeException("JSON序列化失败："+obj,e);
+            throw new SystemException(Constant.JSON_ERROR_CODE,"JSON序列化失败："+obj,e);
         }
     }
 
@@ -36,7 +37,7 @@ public class JSONUtil {
         try {
             return mapper.readValue(json,clazz);
         } catch (IOException e) {
-            throw new RuntimeException("JSON字符串反序列化失败："+e);
+            throw new SystemException(Constant.JSON_ERROR_CODE,"JSON字符串反序列化失败："+e);
         }
     }
 
@@ -47,7 +48,7 @@ public class JSONUtil {
         try {
             return mapper.readValue(is,clazz);
         } catch (IOException e) {
-            throw new RuntimeException("JSON字符串反序列化失败："+e);
+            throw new SystemException(Constant.JSON_ERROR_CODE,"JSON字符串反序列化失败："+e);
         }
     }
 

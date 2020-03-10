@@ -1,6 +1,7 @@
 package util;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import exception.SystemException;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -25,7 +26,7 @@ public class DBUtil {
 
     }
 
-    private static DataSource getDataSource(){
+    private  static DataSource getDataSource(){
         if(DATA_SOURCE == null){
             synchronized (DBUtil.class){
                 if(DATA_SOURCE == null){
@@ -39,15 +40,15 @@ public class DBUtil {
         return DATA_SOURCE;
     }
 
-    private static Connection getConnection(){
+    public static Connection getConnection(){
         try{
             return getDataSource().getConnection();
         } catch (SQLException e) {
-            throw new RuntimeException("获取数据库连接失败",e);
+            throw new SystemException(Constant.DB_ERROR_CODE,"获取数据库连接失败",e);
         }
     }
 
-    private static void close(Connection connection, Statement statement, ResultSet resultSet){
+    public static void close(Connection connection, Statement statement, ResultSet resultSet){
         try{
             if(connection != null){
                 connection.close();
@@ -59,11 +60,11 @@ public class DBUtil {
                 resultSet.close();
             }
         }catch (Exception e){
-            throw new RuntimeException("释放数据库资源失败",e);
+            throw new SystemException(Constant.DB_ERROR_CODE,"释放数据库资源失败",e);
         }
     }
 
-    private static void close(Connection connection,Statement statement){
+    public static void close(Connection connection,Statement statement){
         close(connection,statement,null);
     }
 
