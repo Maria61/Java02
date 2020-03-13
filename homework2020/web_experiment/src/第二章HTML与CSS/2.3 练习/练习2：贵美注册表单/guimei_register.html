@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UFT-8" />
+<title>贵美商城注册</title>
+</head>
+<body>
+    <form method="post"action="login.html">
+        <table>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td>登录名：</td>
+                <td>
+                    <input name="name" type="text" size="15"/>（可包含 a-z、0-9 和下划线）
+                </td>
+                <td> <img src="images\read.gif" alt="read"><b> 阅读贵美网服务协议</b></td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td>
+                    <input name="password" type="password" size="15">（至少包含 6 个字符）
+                </td>
+                <td rowspan="8">
+                    <textarea name="textarea" cols="30" rows="12" >欢迎阅读服务条款协议··· ···</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>再次输入密码：</td>
+                <td>
+                    <input name="password" type="password" size="15">
+                </td>
+            </tr>
+            <tr>
+                <td>电子邮箱：</td>
+                <td>
+                    <input name="email" type="text" size="15">（必须包含@字符）
+                </td>
+            </tr>
+            <tr>
+                <td>性别：</td>
+                <td>
+                    <input name="gender" type="radio" value="男" checked="checked"> <img src="images/Male.gif" alt=""> 男
+                    <input name="gender" type="radio" value="女" > <img src="images/Female.gif" alt=""> 女<br>
+                </td>
+            </tr>
+            <tr>
+                <td>头像：</td>
+                <td><input type="file" name="photo"></td>
+            </tr>
+            <tr>
+                <td>爱好：</td>
+                <td>
+                    <input type="checkbox">玩游戏
+                    <input type="checkbox">运动 
+                    <input type="checkbox">聊天 
+                </td>
+            </tr>
+            <tr>
+                <td>喜欢的城市：</td>
+                <td>
+                    <select name="city" >
+                        <option value="" selected="selected">(请选择)</option>
+                        <option value="0">北京</option>
+                        <option value="1">上海</option>
+                        <option value="2">成都</option>
+                        <option value="3">广州</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <dd>
+                    <td>
+                        <input type="submit" name="btn" value="同意右侧服务条款，提交注册信息" disabled="disabled">
+                        <input type="reset" name="reset" value="重置">
+                    </td>
+                </dd>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
