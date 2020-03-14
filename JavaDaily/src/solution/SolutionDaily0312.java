@@ -51,21 +51,29 @@ public class SolutionDaily0312 {
     }
 
     /**
-     * 连续最大和
+     * 连续最大和(30%)
      * @param s
      * @return
      */
     public static int maxSum(String s){
         String[] sa = s.split(" ");
-        int max = 0;
+        int max = Integer.valueOf(sa[0]);
         int sum = 0;
+        boolean flag = false;
         for(int i = 0; i < sa.length; i++){
             int j = Integer.valueOf(sa[i]);
             if(j >= 0){
+                flag = true;
                 sum += j;
             }else{
                 max = Math.max(max,sum);
                 sum = 0;
+            }
+        }
+        if(flag == false){
+            for(int i = 0; i < sa.length; i++) {
+                int j = Integer.valueOf(sa[i]);
+                sum = Math.max(j,sum);
             }
         }
         max = Math.max(max,sum);
