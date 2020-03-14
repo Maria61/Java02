@@ -17,8 +17,8 @@ import java.sql.Statement;
 public class DBUtil {
 
     private static volatile DataSource DATA_SOURCE;
-
-    private static final String URL = "jdbc:mysql://localhost:3306/blogdemo";
+    //?characterEncoding=UTF-8  设置字符编码格式，可防止数据库中文乱码
+    private static final String URL = "jdbc:mysql://localhost:3306/blogdemo?characterEncoding=UTF-8";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "899900";
 
