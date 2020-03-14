@@ -17,7 +17,7 @@ public class MyActionEnter extends ActionEnter {
     private ConfigManager configManager;
     private String actionType = "config";
     private HttpServletRequest request;
-    
+
     public MyActionEnter(HttpServletRequest request, String rootPath) {
         super(request, rootPath);
         this.configManager = ConfigManager.getInstance(rootPath, "", "");
