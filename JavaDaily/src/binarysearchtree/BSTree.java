@@ -1,4 +1,10 @@
-package review;
+package binarysearchtree;
+
+/**
+ * 泛型的二叉搜索数
+ * @param <K>
+ * @param <V>
+ */
 
 // K ： 必须可以进行大小的比较
 public class BSTree<K extends Comparable<K>, V> {
@@ -174,7 +180,7 @@ public class BSTree<K extends Comparable<K>, V> {
     }
 
     public static void test3(){
-        BSTree<Integer, Integer>  bst = new BSTree<>();
+        BSTree<Integer, Integer> bst = new BSTree<>();
         bst.put(7, 7);
         bst.put(8, 8);
         bst.put(3, 3);
