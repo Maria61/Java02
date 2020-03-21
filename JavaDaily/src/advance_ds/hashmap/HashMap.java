@@ -35,7 +35,7 @@ public class HashMap<K,V> implements Map<K,V> {
          */
         int hash = key.hashCode();
         hash = (hash >>> 16)^hash;//java内部自做的优化，为了使hash值更加均衡
-        int index = hash^(table.length - 1);
+        int index = hash & (table.length - 1);
         Entry<K,V> node = table[index];
         while(node != null){
             if(node.key.equals(key)){
@@ -65,7 +65,7 @@ public class HashMap<K,V> implements Map<K,V> {
 
         int hash = key.hashCode();
         hash = (hash >>> 16)^hash;//java内部自做的优化语句，为了使hash值更加均衡
-        int index = hash^(table.length - 1);
+        int index = hash & (table.length - 1);
         Entry<K,V> node = table[index];
         if(node == null){
             Entry<K,V> newNode = new Entry<>(key,value);
