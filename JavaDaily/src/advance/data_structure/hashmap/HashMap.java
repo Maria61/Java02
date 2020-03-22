@@ -1,4 +1,4 @@
-package advance_ds.hashmap;
+package advance.data_structure.hashmap;
 
 /**
  * @author Maria
