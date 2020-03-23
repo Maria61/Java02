@@ -1,8 +1,7 @@
 package advance.thread;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
+import java.util.concurrent.*;
+
 
 /**
  * @author Maria
@@ -25,7 +24,22 @@ public class CallableRun {
         System.out.println(Thread.currentThread().getName()+"：子线程run after get()");
     }
 
+    public static void test2() throws ExecutionException, InterruptedException {
+        ExecutorService pool = Executors.newFixedThreadPool(4);
+//        ThreadPoolExecutor pool = new ThreadPoolExecutor();
+        Future future = pool.submit(new Callable<Object>() {
+            @Override
+            public Object call() throws Exception {
+                System.out.println(Thread.currentThread().getName()+" :call ");
+                return "call finish";
+            }
+        });
+        System.out.println(Thread.currentThread().getName()+"：子线程run before get()");
+        System.out.println(Thread.currentThread().getName()+future.get());
+    }
+
     public static void main(String[] args) throws Exception {
-        test1();
+//        test1();
+        test2();
     }
 }
