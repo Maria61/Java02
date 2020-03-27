@@ -51,7 +51,7 @@ class B extends A {
         System.out.println("B的静态方法");
     }
 }
-public class Review191225 {
+public class JavaExamReview191225 {
     public static void main(String[] args) {
 
         /*char类型定义以及字符转换*/
