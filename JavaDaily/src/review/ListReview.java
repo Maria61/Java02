@@ -11,7 +11,5 @@ public class ListReview {
         System.out.println();
         Node node = new Node(1);
 
-
-
     }
 }
