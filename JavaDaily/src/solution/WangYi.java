@@ -113,6 +113,8 @@ public class WangYi {
         }
         return index;
     }
+
+
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         while(sc.hasNext()){
