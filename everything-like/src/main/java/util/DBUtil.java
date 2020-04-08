@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.task.DBInit;
 
 /**
  * @author Maria
@@ -33,7 +34,7 @@ public class DBUtil {
             synchronized (DBUtil.class){
                 if(DATA_SOURCE == null){
                     SQLiteConfig config =  new SQLiteConfig();
-                    config.setDateStringFormat(Util.DATE_PATTERN);
+                    config.setDateStringFormat(util.Util.DATE_PATTERN);
                     DATA_SOURCE = new SQLiteDataSource(config);
                     ((SQLiteDataSource)DATA_SOURCE).setUrl(getUrl());
                 }

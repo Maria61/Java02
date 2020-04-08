@@ -1,4 +1,4 @@
-package task;
+package java.task;
 
 /**
  * @author Maria
