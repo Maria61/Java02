@@ -9,5 +9,8 @@
         <module name="everything-like" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="everything-like" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

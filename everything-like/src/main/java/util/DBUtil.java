@@ -2,8 +2,6 @@ package util;
 
 import org.sqlite.SQLiteConfig;
 import org.sqlite.SQLiteDataSource;
-import task.DBInit;
-
 import javax.sql.DataSource;
 import java.io.File;
 import java.net.URL;
@@ -11,7 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.task.DBInit;
+import task.DBInit;
 
 /**
  * @author Maria

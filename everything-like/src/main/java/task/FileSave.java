@@ -15,7 +15,7 @@ import java.util.List;
  * @program everything-like
  * @date 2020/2/14 11:56
  */
-public class FileSave implements ScanCallback{
+public class FileSave implements task.ScanCallback {
     @Override
     public void callback(File dir) {
         File[] children = dir.listFiles();
