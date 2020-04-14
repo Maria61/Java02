@@ -27,9 +27,9 @@ public class ControllerServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String uri = request.getRequestURI();
-        if (uri.endsWith("/showProduct")) {
+        if (uri.endsWith("/showProduct.jsp")) {
             showProduct(request, response);
-        } else if (uri.endsWith("/deleteItem")) {
+        } else if (uri.endsWith("/deleteItem.jsp")) {
             deleteItem(request, response);
         }
     }

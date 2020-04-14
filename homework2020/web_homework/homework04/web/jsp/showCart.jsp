@@ -28,7 +28,7 @@
   <td><%=product.getPname() %></td>
   <td><%=product.getPrice() %></td>
   <td><%=((int)(product.getPrice() * goodsItem.getQuantity()*100+0.5))/100.00 %></td>
-  <td><a href="deleteItem?id=<%=product.getId() %>">删除</a></td>
+  <td><a href="deleteItem.jsp?id=<%=product.getId() %>">删除</a></td>
  </tr>
 <%
     }
