@@ -1,7 +1,6 @@
 package review;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  * @author Maria
@@ -17,6 +16,10 @@ public class ThreadPoolDemo {
         ExecutorService executorService2 = Executors.newFixedThreadPool(2);//请求队列太长导致OOM
         ExecutorService executorService3 = Executors.newScheduledThreadPool(3);//线程数太大导致OOM
         ExecutorService executorService4 = Executors.newSingleThreadScheduledExecutor();
-
+        /**
+         * ThreadPoolExecutor方式：
+         */
+        ThreadPoolExecutor pool = new ThreadPoolExecutor(3,5,60L, TimeUnit.MICROSECONDS,
+                new LinkedBlockingQueue<>(),new ThreadPoolExecutor.AbortPolicy());
     }
 }
