@@ -21,7 +21,4 @@ public class GuangLianDa {
      * 问n天后的病房占用情况
      */
 
-
-
-
 }
