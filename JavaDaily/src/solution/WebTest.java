@@ -94,5 +94,7 @@ public class WebTest {
         sc.nextLine();
         String s = sc.nextLine();
         find(n,s);
+
+
     }
 }
