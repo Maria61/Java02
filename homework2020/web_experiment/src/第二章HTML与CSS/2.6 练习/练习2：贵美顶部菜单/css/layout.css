@@ -1,0 +1,12 @@
+﻿ul,ol,h1,dl,dd{list-style:none;margin:0px;padding:0px;}
+a {color:#333333;text-decoration: none;}    	
+  .upright_menu{width:45%;height:28px;float:right;padding:13px 0px 0px 0px;}
+  .upright_menu ul li{float:left;font:12px/28px 宋体;}
+  .pic{width:28px;height:28px;background:url(../images/icon.gif) no-repeat;}
+  .pic2{background-position:-28px 0px;}
+  .pic3{background-position:-84px 0px;}
+  .pic4{background-position:-112px 0px;}	
+  .h_text,.btn {padding:0px 5px;text-align:center;}
+  .btn {width:38px;background-position:0px -25px;}
+  .upright_bottom{width:62%;float:right;}      
+  .hello {padding-top:36px;color:#636362;letter-spacing:3px;}  	
