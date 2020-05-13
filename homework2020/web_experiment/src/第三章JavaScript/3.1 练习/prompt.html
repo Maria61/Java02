@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="dayin">
+<head>
+    <meta charset="UTF-8">
+    <title>打印菱形</title>
+        <script type="text/javascript">
+            var t=prompt("请输入打印的行数","");
+   for(var i=0;i<t;i++){
+                for(var j=t;j>i;j--){
+                    document.writeln("&nbsp &nbsp");
+                }
+                for(var k=0;k<i+1;k++){
+                    document.writeln("* &nbsp &nbsp &nbsp");
+                }
+                document.writeln("</br>");
+            }
+
+            for(var i=t;i>0;i--){
+                for(var j=t;j>=i-1;j--){
+                    document.writeln("&nbsp &nbsp");
+                }
+                for(var k=0;k<i-1;k++){
+                    document.writeln("* &nbsp &nbsp &nbsp");
+                }
+                document.writeln("</br>")
+            }
+
+        </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <link type="text/css" href="count.css" rel="stylesheet" />
+    <title>计算器</title>
+    <meta http-equiv="content-type" content="text/html" />
+    <script type="text/javascript">
+        <!--
+        var num1,num2,opr,flag=true;
+        function SetExp(str){
+            if(str=='+'||str=='-'||str=='*'||str=='/'){
+                flag=true;
+                opr=str;
+                num1=document.getElementById("result").value;
+            }else{
+                if(!flag)
+                    document.getElementById("result").value += str;
+                else{
+                    document.getElementById("result").value = str;
+                    flag=false;
+                }
+            }
+        }
+        function Cal(){
+            num2=document.getElementById("result").value;
+            switch(opr){
+                case '+':document.getElementById("result").value=parseFloat(num1)+parseFloat(num2); break;
+                case '-':document.getElementById("result").value=parseFloat(num1)-parseFloat(num2); break;
+                case '*':document.getElementById("result").value=parseFloat(num1)*parseFloat(num2); break;
+                case '/':document.getElementById("result").value=parseFloat(num1)/parseFloat(num2); break;
+            }
+            num1=document.getElementById("result").value;
+            flag=false;
+        }
+        function Clear(){
+            document.getElementById("result").value='0';
+            num1=0,num2=0,flag=true;
+        }
+        -->
+    </script>
+</head>
+<body>
+<div id="all">
+    <input type="text" name="result" id="result" readonly="readonly" value="0" />
+    <br /><br />
+    <div>
+        <input class="button" type="button" value="+" onclick="SetExp('+')"/>&nbsp;&nbsp;
+        <input class="button" type="button" value="-" onclick="SetExp('-')"/>&nbsp;&nbsp;
+        <input class="button" type="button" value="X" onclick="SetExp('*')"/>&nbsp;&nbsp;
+        <input class="button" type="button" value="/" onclick="SetExp('/')"/>&nbsp;&nbsp;
+    </div>
+    <br />
+    <div id="big">
+        <div>
+            <input class="button" type="button" value="7"  onclick="SetExp(7)"/>&nbsp;&nbsp;
+            <input class="button" type="button" value="8"  onclick="SetExp(8)"/>&nbsp;&nbsp;
+            <input class="button" type="button" value="9"  onclick="SetExp(9)"/>&nbsp;&nbsp;
+        </div>
+        <br /><br />
+        <div>
+            <input class="button" type="button" value="4"  onclick="SetExp(4)"/>&nbsp;&nbsp;
+            <input class="button" type="button" value="5" onclick="SetExp(5)"/>&nbsp;&nbsp;
+            <input class="button" type="button" value="6" onclick="SetExp(6)"/>&nbsp;&nbsp;
+        </div>
+        <br /><br />
+        <div>
+            <input class="button" type="button" value="1" onclick="SetExp(1)"/>&nbsp;&nbsp;
+            <input class="button" type="button" value="2" onclick="SetExp(2)"/>&nbsp;&nbsp;
+            <input class="button" type="button" value="3" onclick="SetExp(3)"/>&nbsp;&nbsp;&nbsp;
+        </div>
+        <br /><br />
+        <div>
+            <input id="zero" type="button" value="0"  onclick="SetExp(0)" />&nbsp;&nbsp;
+            <input class="button" type="button" value="." onclick="SetExp('.')"/>&nbsp;&nbsp;
+        </div>
+    </div>
+    <div class="biglong">
+        <input class="long" type="button" value="C" onclick="Clear()" />
+    </div>
+    <br />
+    <div class="biglong">
+        <input class="long" type="button" value="=" onclick="Cal()" />
+    </div>
+</div>
+</body>
+</html>
