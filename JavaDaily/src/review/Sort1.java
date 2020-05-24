@@ -28,6 +28,32 @@ public class Sort1 {
         }
     }
 
+    public static void quickSort(int[] array, int left, int right){
+        if(left > right){
+            return;
+        }
+        int key = array[left];
+        int i = left;
+        int j = right;
+        while(i != j){
+            while(i < j && array[i] <= key){
+                i++;
+            }
+            while(i < j && array[j] >= key){
+                j--;
+            }
+            if(i < j){
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = array[i];
+            }
+        }
+        array[left] = array[j];
+        array[j] = key;
+        quickSort(array, left,i - 1);
+        quickSort(array,i+1, right);
+    }
+
     public static void main(String[] args) {
 
     }
