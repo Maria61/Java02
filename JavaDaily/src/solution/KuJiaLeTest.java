@@ -53,5 +53,9 @@ public class KuJiaLeTest {
         select c_name,count(s_id),avg(score) where student_class.s_id = student.s_id and student.sex='女'
          */
 
+
+
+
+
     }
 }

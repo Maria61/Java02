@@ -9,10 +9,10 @@
     <listener>
         <listener-class>MySessionListener</listener-class>
     </listener>
+
     <listener>
         <listener-class>MyRequestListener</listener-class>
     </listener>
-
     <filter>
         <filter-name>AuditFilter</filter-name>
         <filter-class>AuditFilter</filter-class>
@@ -21,5 +21,17 @@
         <filter-name>AuditFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
+    <servlet>
+    <!--自定义，一般为类名-->
+         <servlet-name>servletDemo1</servlet-name>
+         <!--一定是package + .类名-->
+         <servlet-class>servletDemo1</servlet-class>
+     </servlet>
+     <!--给Servlet提供（映射)一个可供客户端访问的URI-->
+     <servlet-mapping>
+         <!--和servlet中的name必须相同-->
+         <servlet-name>servletDemo1</servlet-name>
+         <!-- servlet的映射路径 -->
+         <url-pattern>/servlet</url-pattern>
+     </servlet-mapping>
 </web-app>
