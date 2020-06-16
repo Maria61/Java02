@@ -9,8 +9,10 @@ import java.util.Scanner;
  * @date 2020/6/15 18:45
  */
 public class ShenXinFu2 {
-    //查看磁盘空间，文件属性，系统ip地址的linux命令
-
+    /**
+     * 将输入的字符串按从小到大的顺序输出
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
