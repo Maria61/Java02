@@ -26,6 +26,4 @@ public class HengSheng {
         System.out.println(s);
     }
 
-
-
 }
