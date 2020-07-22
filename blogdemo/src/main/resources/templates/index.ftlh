@@ -78,7 +78,7 @@
                 </div>
                 <#if user??>
                 <div class="col-2 d-flex justify-content-end align-items-center">
-                    <p class="h2">${user.nickname}</p>
+                    <p class="h4">${user.nickname}</p>
                 </div>
                 <div class="col-2 d-flex justify-content-end align-items-center">
                     <a href="/writer" class="mb-2 btn btn-lg btn-outline-secondary">发布文章</a>
@@ -135,7 +135,6 @@
                         </div>
                     <div class="col-4">
                         <img class="qrcode" src="images/GitHub.png">
-                        </p>GitHub
                     </div>
                     </div>
                 </div>
