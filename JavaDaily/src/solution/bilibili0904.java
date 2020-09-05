@@ -50,7 +50,8 @@ public class bilibili0904 {
         }
         String re = new String();
         String[] arr = new String[n];
-        for(int i = 0; i < n; i++){
+        for(int i = 0; i <= n/2; i++){
+            arr[i] = "";
             for(int j = 0; j < n/2 - i; j++){
                 arr[i] += "*";
             }
@@ -59,17 +60,19 @@ public class bilibili0904 {
             }
             String s = new String();
             s = "";
-
             for(int k = arr[i].length() - 2; k >= 0; k--){
                 s+=arr[i].charAt(k);
             }
             arr[i] += s;
-            if(i != (n-1)){
-                arr[i] += "|";
-            }
+        }
+        for(int i = arr.length - 1; i > n/2; i-- ){
+            arr[i] = arr[arr.length - i - 1];
         }
         for(int i = 0; i < arr.length; i++) {
             re += arr[i];
+            if( i != arr.length - 1){
+                re += "|";
+            }
         }
         System.out.println(re);
         return re;
@@ -78,6 +81,6 @@ public class bilibili0904 {
     public static void main(String[] args) {
 //        int[] arr = {2,3,4,3};
 //        System.out.println(Arrays.toString(find_children(1,arr)));
-        print_diamond(5);
+        print_diamond(7);
     }
 }
