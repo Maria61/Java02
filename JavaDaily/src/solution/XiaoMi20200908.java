@@ -97,5 +97,7 @@ public class XiaoMi20200908 {
 //        String[] s = {"2","3","4","K","J","9","A","A","10"};
         String[] s = {"2","3","A"};
         System.out.println(Arrays.toString(pokersort(s)));
+
+
     }
 }
