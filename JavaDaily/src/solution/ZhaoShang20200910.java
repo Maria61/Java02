@@ -30,6 +30,8 @@ public class ZhaoShang20200910 {
                     s = "";
                     break;
                 }else if(sum > n){
+                    sum = 0;
+                    s = "";
                     break;
                 }
             }
