@@ -26,21 +26,23 @@ public class QuickSort {
         int great = right;
         int p = array[right];
         while (less < great) {
-            if (less < great && array[less] <= p) {
+            while (less < great && array[less] <= p) {
                 less++;
             }
-            if (less < great && array[great] >= p) {
+            while (less < great && array[great] >= p) {
                 great--;
             }
-            int t = array[less];
-            array[less] = array[great];
-            array[great] = t;
+            if(less < great){
+                int t = array[less];
+                array[less] = array[great];
+                array[great] = t;
+            }
         }
-        int t = array[less];
-        array[less] = array[great];
+        int t = array[right];
+        array[right] = array[great];
         array[great] = t;
 
-        return 0;
+        return less;
     }
 
 
