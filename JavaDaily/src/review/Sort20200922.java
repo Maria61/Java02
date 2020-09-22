@@ -127,7 +127,7 @@ public class Sort20200922 {
         }
     }
 
-    public static void merge(){
+    public static void mergeSort(int[] arr){
 
     }
 
