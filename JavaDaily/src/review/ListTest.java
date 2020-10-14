@@ -14,7 +14,7 @@ class ListNode{
     public ListNode(int val){this.val = val;}
 }
 
-public class List20200923 {
+public class ListTest {
     /**
      * 反转单链表
      * @param head
@@ -132,5 +132,32 @@ public class List20200923 {
             }
         }
         return newHead;
+    }
+
+    /**
+     * 判断链表是否有环
+     * 思路：两个指针，一个走一步，一个走两步，如果存在环，两个指针一定会相遇。
+     */
+    public boolean hasCycle(ListNode head) {
+        if(head == null || head.next == null){
+            return false;
+        }
+        ListNode p1 = head;
+        ListNode p2 = head.next;
+        while(p1 != p2){
+            if(p2 == null || p2.next == null){
+                return false;
+            }
+            p1 = p1.next;
+            p2 = p2.next.next;
+        }
+        return true;
+    }
+
+    /**
+     * 返回环形链表环的入口结点
+     */
+    public ListNode EntryNodeOfLoop(ListNode pHead){
+        return null;
     }
 }
