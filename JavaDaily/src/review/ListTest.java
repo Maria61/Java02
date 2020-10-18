@@ -158,11 +158,18 @@ public class ListTest {
      * 返回环形链表环的入口结点
      */
     public ListNode EntryNodeOfLoop(ListNode pHead){
-        return null;
-
-
-
-
-
+        if(pHead == null || pHead.next == null){
+            return null;
+        }
+        ListNode p1 = pHead;
+        ListNode p2 = pHead.next;
+        while(p1 != p2){
+            if(p2 == null || p2.next == null){
+                return null;
+            }
+            p1 = p1.next;
+            p2 = p2.next.next;
+        }
+        return p1;
     }
 }
